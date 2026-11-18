@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611181258">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611181305">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -31,6 +31,8 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <!-- ============ CABEÇALHO ============ -->
   <header class="site-header" id="topo">
@@ -67,14 +69,27 @@
   <main id="conteudo" tabindex="-1">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
+    <!-- Indicador de secções (inspirado em "níveis" de um edifício) -->
+    <nav class="rail" aria-label="Secções da página">
+      <span class="rail-track" aria-hidden="true"><span class="rail-fill"></span></span>
+      <ol>
+        <li><a href="#inicio"><span class="rail-num">01</span><span class="rail-label">Início</span></a></li>
+        <li><a href="#projetos"><span class="rail-num">02</span><span class="rail-label">Projetos</span></a></li>
+        <li><a href="#sobre"><span class="rail-num">03</span><span class="rail-label">Sobre</span></a></li>
+        <li><a href="#percurso"><span class="rail-num">04</span><span class="rail-label">Percurso</span></a></li>
+        <li><a href="#servicos"><span class="rail-num">05</span><span class="rail-label">Serviços</span></a></li>
+        <li><a href="#contacto"><span class="rail-num">06</span><span class="rail-label">Contacto</span></a></li>
+      </ol>
+    </nav>
+
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
       <span class="hero-numeral" aria-hidden="true">01</span>
       <div class="hero-glow" aria-hidden="true"></div>
 
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow reveal">UI/UX <span aria-hidden="true">·</span> Multimédia <span aria-hidden="true">·</span> Acessibilidade</p>
-          <h1 id="hero-title" class="hero-title reveal">
+          <h1 id="hero-title" class="hero-title reveal" data-split>
             Interfaces que incluem.
             <em>Experiências que ficam.</em>
           </h1>
@@ -83,7 +98,7 @@
             Sou o João Mendo, designer UI/UX e estudante de Mestrado em Tecnologia e Multimédia na UTAD. Desenho produtos digitais centrados nas pessoas — claros, acessíveis e com intenção.
           </p>
           <div class="hero-actions reveal">
-            <a class="btn btn-primary" href="#projetos">Ver projetos <span aria-hidden="true">→</span></a>
+            <a class="btn btn-primary magnetic" href="#projetos">Ver projetos <span aria-hidden="true">→</span></a>
             <a class="btn btn-link" href="#sobre">
               <span class="btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
               Conhecer o meu percurso
@@ -91,7 +106,7 @@
           </div>
         </div>
 
-        <figure class="hero-art reveal">
+        <figure class="hero-art reveal" data-parallax>
           <img src="assets/img/hero.svg" width="1200" height="900"
                alt="Ilustração de um painel digital de mota com velocímetro, bateria e navegação, ao lado de um telemóvel com uma interface clara.">
           <figcaption class="glass hero-card">
@@ -134,7 +149,7 @@
 
         <!-- EDITAR: substitui as imagens em assets/img/ por capturas reais (formato 4:5, .webp ou .jpg) -->
         <ul class="projects">
-          <li class="project reveal" data-category="uiux">
+          <li class="project reveal tilt" data-category="uiux">
             <article>
               <img src="assets/img/projeto-1.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um painel digital de mota com velocímetro e indicadores.">
               <div class="project-info glass">
@@ -145,7 +160,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal" data-category="web">
+          <li class="project reveal tilt" data-category="web">
             <article>
               <img src="assets/img/projeto-2.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um website num browser, com título, imagem de destaque e cartões.">
               <div class="project-info glass">
@@ -156,7 +171,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal" data-category="web uiux">
+          <li class="project reveal tilt" data-category="web uiux">
             <article>
               <img src="assets/img/projeto-3.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um website de turismo em computador e telemóvel, com paisagem verde.">
               <div class="project-info glass">
@@ -167,7 +182,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal" data-category="multimedia">
+          <li class="project reveal tilt" data-category="multimedia">
             <article>
               <img src="assets/img/projeto-4.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um logótipo com paleta de cores e tipografia.">
               <div class="project-info glass">
@@ -178,7 +193,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal" data-category="multimedia">
+          <li class="project reveal tilt" data-category="multimedia">
             <article>
               <img src="assets/img/projeto-5.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um leitor de vídeo com botão de reprodução e linha do tempo.">
               <div class="project-info glass">
@@ -189,7 +204,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal" data-category="investigacao">
+          <li class="project reveal tilt" data-category="investigacao">
             <article>
               <img src="assets/img/projeto-6.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um artigo científico com gráfico e o símbolo internacional de acessibilidade.">
               <div class="project-info glass">
@@ -378,6 +393,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=202611181258" defer></script>
+  <script src="assets/js/main.js?v=202611181305" defer></script>
 </body>
 </html>
