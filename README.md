@@ -1,4 +1,4 @@
-# Portfólio
+# Portfólio — João Mendo
 
 Site estático (HTML, CSS e JS, sem build) publicado em **https://joaomendo639.github.io/portfolio/**.
 
@@ -8,15 +8,15 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 
 | O quê | Onde |
 |---|---|
-| Nome / marca | cabeçalho e rodapé (`O Teu Nome`) |
+| Nome / marca | cabeçalho e rodapé |
 | Números | secção `stats` (atributo `data-count`) |
 | Projetos | `assets/img/projeto-*.svg` → troca por imagens tuas (4:5, `.webp`/`.jpg`, ~1600 px) e atualiza `alt`, título, local e ano |
 | Fotografia | `assets/img/retrato.svg` |
 | Biografia e ferramentas | secção `#sobre` |
-| CV | coloca `assets/cv.pdf` e ativa o link comentado |
+| CV | não publicado (contém dados pessoais); versão sem morada/telefone/data de nascimento pode ir para `assets/cv.pdf` |
 | Email e redes | secção `#contacto` |
 
-Cada projeto tem `data-category` (`arquitetura`, `interiores`, `conceito`) usado pelos filtros.
+Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; vários separados por espaço) usado pelos filtros.
 
 ## Acessibilidade
 

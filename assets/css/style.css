@@ -425,3 +425,35 @@ main:focus { outline: none; }
 /* Com filtro ativo, a grelha fica alinhada (sem desfasamento) */
 .projects.is-filtered .project { transform: none !important; }
 @media (min-width: 1024px) { .projects.is-filtered { padding-bottom: 0; } }
+
+/* Destaques com 3 colunas */
+@media (min-width: 760px) {
+  .stats-3 { grid-template-columns: repeat(3, 1fr); }
+}
+.stats-3 li:nth-child(3) { grid-column: 1 / -1; }
+@media (min-width: 760px) { .stats-3 li:nth-child(3) { grid-column: auto; } }
+
+/* Serviços sobre fundo alternativo */
+.section-alt .service { background: var(--bg-alt); }
+.section-alt .service:hover { background: var(--bg); }
+
+/* Percurso */
+.journey { display: grid; gap: clamp(2rem, 5vw, 4rem); }
+@media (min-width: 900px) { .journey { grid-template-columns: 1fr 1fr; } }
+.journey .subhead:first-child { margin-top: 0; }
+.timeline { position: relative; border-left: 1px solid var(--line); margin-left: 6px; }
+.timeline li { position: relative; padding: 0 0 2rem 1.8rem; }
+.timeline li:last-child { padding-bottom: .5rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -6px; top: .45em;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--accent);
+}
+.timeline li:first-child::before { background: var(--accent); }
+.tl-date { margin: 0 0 .3rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.timeline h4, .publication h4 { margin: 0 0 .2rem; font: 400 1.6rem/1.15 var(--font-display); }
+.tl-org { margin: 0 0 .6rem; font-size: .875rem; font-weight: 600; color: var(--text); }
+.timeline li > p:last-child:not(.tl-org) { color: var(--muted); margin: 0; max-width: 52ch; }
+.publication { padding: 1.4rem 1.6rem; border-radius: var(--radius-sm); }
+.publication h4 { font-size: 1.35rem; margin-bottom: .6rem; }
+.publication .tl-org { margin: 0; font-weight: 500; color: var(--muted); }

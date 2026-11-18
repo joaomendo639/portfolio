@@ -1,20 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#e9e1d6"/><stop offset=".6" stop-color="#d9cdbd"/><stop offset="1" stop-color="#c7b49b"/>
-    </linearGradient>
-    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd59a"/><stop offset="1" stop-color="#b8692f"/></linearGradient>
-    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffcf8f" stop-opacity=".7"/><stop offset="1" stop-color="#ffcf8f" stop-opacity="0"/></radialGradient>
-  </defs>
+  <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1c48a"/><stop offset="1" stop-color="#b8692f"/></linearGradient>
+  <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e3a066" stop-opacity=".55"/><stop offset="1" stop-color="#e3a066" stop-opacity="0"/></radialGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23201d"/><stop offset="1" stop-color="#151311"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe8de"/><stop offset="1" stop-color="#d8c9b6"/></linearGradient></defs>
   <rect width="800" height="1000" fill="url(#bg)"/>
   
-  <circle cx="400" cy="330" r="220" fill="url(#halo)"/>
-  <circle cx="470" cy="300" r="70" fill="#d69c4c"/>
-  <path d="M220 420 L330 280 L400 360 L460 260 L580 420Z" fill="#8a7d72"/>
-  <rect x="210" y="410" width="380" height="14" rx="7" fill="#6a4a30"/>
-  <rect x="80" y="600" width="640" height="120" rx="40" fill="#efe6da"/>
-  <rect x="110" y="560" width="580" height="80" rx="36" fill="#f6efe5"/>
-  <rect x="160" y="575" width="90" height="70" rx="18" fill="#c98a3d"/><rect x="560" y="575" width="90" height="70" rx="18" fill="#2e4a40"/>
-  <rect x="0" y="790" width="800" height="210" fill="#b49b80"/>
-  <ellipse cx="400" cy="840" rx="160" ry="30" fill="#5a4030"/>
+  <circle cx="400" cy="380" r="150" fill="url(#warm)"/>
+  <path d="M330 440 L400 300 L470 440 M360 440 L400 360 L440 440" fill="none" stroke="#1d1a16" stroke-width="14" stroke-linejoin="round"/>
+  <circle cx="180" cy="660" r="40" fill="#1d1a16" stroke="#1d1a16" stroke-opacity=".15"/><circle cx="290" cy="660" r="40" fill="#8b5a2b" stroke="#1d1a16" stroke-opacity=".15"/><circle cx="400" cy="660" r="40" fill="#d39a63" stroke="#1d1a16" stroke-opacity=".15"/><circle cx="510" cy="660" r="40" fill="#f1c48a" stroke="#1d1a16" stroke-opacity=".15"/><circle cx="620" cy="660" r="40" fill="#fbf8f3" stroke="#1d1a16" stroke-opacity=".15"/>
+  <text x="400" y="790" text-anchor="middle" font-family="Georgia,serif" font-size="64" fill="#1d1a16">Aa</text>
 </svg>

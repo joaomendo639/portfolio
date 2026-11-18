@@ -111,7 +111,7 @@
   var counters = document.querySelectorAll('[data-count]');
   function animateCount(el) {
     var target = parseInt(el.dataset.count, 10);
-    var suffix = el.dataset.suffix || '+';
+    var suffix = 'suffix' in el.dataset ? el.dataset.suffix : '+';
     var start = null, duration = 1600;
     function step(ts) {
       if (!start) start = ts;
@@ -122,7 +122,7 @@
     }
     requestAnimationFrame(step);
   }
-  counters.forEach(function (el) { el.textContent = el.dataset.count + (el.dataset.suffix || '+'); });
+  counters.forEach(function (el) { el.textContent = el.dataset.count + ('suffix' in el.dataset ? el.dataset.suffix : '+'); });
   if ('IntersectionObserver' in window && !reduceMotion.matches) {
     var countObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -142,7 +142,7 @@
       chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
       chip.closest('.section').querySelector('.projects').classList.toggle('is-filtered', f !== 'all');
       projects.forEach(function (p) {
-        var match = f === 'all' || p.dataset.category === f;
+        var match = f === 'all' || p.dataset.category.split(' ').indexOf(f) !== -1;
         p.hidden = !match;
         if (match) { shown++; p.classList.add('is-visible'); }
       });

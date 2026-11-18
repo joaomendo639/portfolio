@@ -1,17 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#5a6aa3"/><stop offset=".6" stop-color="#b2a6c4"/><stop offset="1" stop-color="#f0c9a5"/>
-    </linearGradient>
-    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd59a"/><stop offset="1" stop-color="#b8692f"/></linearGradient>
-    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffcf8f" stop-opacity=".7"/><stop offset="1" stop-color="#ffcf8f" stop-opacity="0"/></radialGradient>
-  </defs>
+  <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1c48a"/><stop offset="1" stop-color="#b8692f"/></linearGradient>
+  <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e3a066" stop-opacity=".55"/><stop offset="1" stop-color="#e3a066" stop-opacity="0"/></radialGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23201d"/><stop offset="1" stop-color="#151311"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a3a"/><stop offset="1" stop-color="#5c7a6e"/></linearGradient></defs>
   <rect width="800" height="1000" fill="url(#bg)"/>
   
-  <circle cx="620" cy="220" r="60" fill="#f4e6d6" opacity=".85"/>
-  <polygon points="0,640 0,562.0 119.11882716049384,604.3 180.61234567901235,612.6 289.2953703703704,616.6 366.8716049382716,543.7 445.266975308642,565.7 559.9629629629629,525.7 651.3299382716049,604.2 737.9604938271605,586.6 800,640 800,1040 0,1040" fill="#8c86a8" opacity=".7"/>
-  <path d="M0 700 Q400 640 800 700 V1000 H0Z" fill="#e7d3c4"/>
-  <path d="M90 690 C90 540 230 500 400 500 H620 C720 500 740 560 740 600 C740 650 700 690 640 690Z" fill="#eef0f6"/>
-  <path d="M150 680 C150 590 240 560 360 560 H600 C660 560 680 600 680 630 C680 660 660 680 630 680Z" fill="url(#warm)"/>
-  <g stroke="#eef0f6" stroke-width="6"><line x1="260" y1="555" x2="260" y2="685"/><line x1="360" y1="555" x2="360" y2="685"/><line x1="460" y1="555" x2="460" y2="685"/><line x1="560" y1="555" x2="560" y2="685"/></g>
+  
+  <g transform="translate(60 260)">
+    <rect width="520" height="420" rx="18" fill="#fbf8f3"/>
+    <rect width="520" height="44" rx="18" fill="#e9e2d8"/><rect y="26" width="520" height="18" fill="#e9e2d8"/>
+    <circle cx="24" cy="22" r="6" fill="#d9826a"/><circle cx="44" cy="22" r="6" fill="#e0b562"/><circle cx="64" cy="22" r="6" fill="#8fb07a"/>
+    <rect x="100" y="13" width="320" height="18" rx="9" fill="#fbf8f3"/>
+    <g transform="translate(0 44)">
+    <rect width="520" height="200" fill="#7d9a86"/><path d="M0 200 L120 110 L210 170 L320 80 L520 200Z" fill="#4c6b5a"/>
+    <rect x="30" y="40" width="200" height="28" rx="6" fill="#fbf8f3"/>
+    <rect x="30" y="230" width="140" height="120" rx="12" fill="#ece5da"/><rect x="190" y="230" width="140" height="120" rx="12" fill="#ece5da"/><rect x="350" y="230" width="140" height="120" rx="12" fill="#ece5da"/></g>
+  </g>
+  <g transform="translate(500 380)">
+    <rect width="220" height="440" rx="34" fill="#0f0e0d"/><rect x="11" y="11" width="198" height="418" rx="25" fill="#fbf8f3"/>
+    <rect x="11" y="11" width="198" height="170" rx="25" fill="#7d9a86"/><path d="M11 181 L70 120 L120 160 L170 100 L209 140 V181Z" fill="#4c6b5a"/>
+    <rect x="30" y="205" width="150" height="12" rx="6" fill="#cfc6ba"/><rect x="30" y="231" width="110" height="12" rx="6" fill="#cfc6ba"/>
+    <rect x="30" y="270" width="160" height="90" rx="14" fill="#ece5da"/>
+    <rect x="30" y="380" width="160" height="34" rx="17" fill="#8b5a2b"/>
+  </g>
 </svg>
