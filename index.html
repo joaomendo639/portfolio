@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611181337">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611181346">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -101,16 +101,15 @@
   <main id="conteudo" tabindex="-1">
 
     <!-- ============ HERO ============ -->
-    <!-- Indicador de secções (inspirado em "níveis" de um edifício) -->
-    <nav class="rail" aria-label="Secções da página">
-      <span class="rail-track" aria-hidden="true"><span class="rail-fill"></span></span>
+    <!-- Painel lateral de navegação (cápsula de vidro com ícones) -->
+    <nav class="rail glass" aria-label="Secções da página">
       <ol>
-        <li><a href="#inicio"><span class="rail-num">01</span><span class="rail-label">Início</span></a></li>
-        <li><a href="#projetos"><span class="rail-num">02</span><span class="rail-label">Projetos</span></a></li>
-        <li><a href="#sobre"><span class="rail-num">03</span><span class="rail-label">Sobre</span></a></li>
-        <li><a href="#percurso"><span class="rail-num">04</span><span class="rail-label">Percurso</span></a></li>
-        <li><a href="#servicos"><span class="rail-num">05</span><span class="rail-label">Serviços</span></a></li>
-        <li><a href="#contacto"><span class="rail-num">06</span><span class="rail-label">Contacto</span></a></li>
+        <li><a href="#inicio" aria-label="Início"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5V19a1 1 0 0 1-1 1H15v-5.5H9V20H4.5a1 1 0 0 1-1-1z"/></svg><span class="rail-label" aria-hidden="true">Início</span></a></li>
+        <li><a href="#projetos" aria-label="Projetos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg><span class="rail-label" aria-hidden="true">Projetos</span></a></li>
+        <li><a href="#sobre" aria-label="Sobre"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c.8-3.6 3.8-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg><span class="rail-label" aria-hidden="true">Sobre</span></a></li>
+        <li><a href="#percurso" aria-label="Percurso"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span class="rail-label" aria-hidden="true">Percurso</span></a></li>
+        <li><a href="#servicos" aria-label="Serviços"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 3 8l9 4.5L21 8z"/><path d="M3 12.5 12 17l9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></svg><span class="rail-label" aria-hidden="true">Serviços</span></a></li>
+        <li><a href="#contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.4A8 8 0 1 1 20.5 11.5z"/></svg><span class="rail-label" aria-hidden="true">Contacto</span></a></li>
       </ol>
     </nav>
 
@@ -431,6 +430,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=202611181337" defer></script>
+  <script src="assets/js/main.js?v=202611181346" defer></script>
 </body>
 </html>

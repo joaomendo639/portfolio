@@ -513,38 +513,35 @@ main:focus { outline: none; }
 .has-pointer .cursor-glow { opacity: .55; }
 main, .site-footer { position: relative; z-index: 1; }
 
-/* Indicador lateral de secções */
+/* Painel lateral de navegação: cápsula de vidro com ícones */
 .rail { display: none; }
-@media (min-width: 1500px) {
+@media (min-width: 1440px) {
   .rail {
-    display: block; position: fixed; right: 28px; top: 50%; transform: translateY(-50%); z-index: 40;
+    display: block; position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 40;
+    padding: 8px; border-radius: 999px; box-shadow: var(--shadow);
   }
-  .rail ol { position: relative; display: grid; gap: 22px; }
-  .rail-track { position: absolute; right: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
-  .rail-fill { position: absolute; inset: 0; background: var(--accent); transform-origin: top; transform: scaleY(0); }
+  .rail ol { display: grid; gap: 6px; }
   .rail a {
-    position: relative; display: flex; align-items: center; justify-content: flex-end; gap: 12px;
-    min-height: 24px; padding-right: 22px; text-decoration: none; color: var(--muted);
-    font-size: .75rem; letter-spacing: .14em;
+    position: relative; display: grid; place-items: center;
+    width: 44px; height: 44px; border-radius: 50%;
+    color: var(--muted); text-decoration: none;
+    transition: background-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
   }
-  .rail a::after {
-    content: ""; position: absolute; right: 1px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px;
-    border-radius: 50%; background: var(--bg); border: 1px solid var(--muted);
-    transition: transform .4s var(--ease), background-color .3s, border-color .3s;
-  }
+  .rail svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .rail a:hover { color: var(--text); background: var(--line); }
+  .rail a[aria-current="true"] { background: var(--text); color: var(--bg); }
+  .rail a[aria-current="true"]:hover { transform: scale(1.06); }
   .rail-label {
-    position: absolute; right: 100%; top: 50%; white-space: nowrap; margin-right: 6px;
-    text-transform: uppercase; opacity: 0; transform: translate(8px, -50%);
-    transition: opacity .35s var(--ease), transform .35s var(--ease);
-    background: var(--glass); padding: .25em .6em; border-radius: 999px;
-    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    position: absolute; right: 100%; top: 50%; margin-right: 14px; white-space: nowrap;
+    padding: .45em .9em; border-radius: 999px;
+    font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    background: var(--text); color: var(--bg);
+    opacity: 0; visibility: hidden; transform: translate(6px, -50%);
+    transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
   }
-  .rail-num { font-variant-numeric: tabular-nums; }
-  .rail a:hover .rail-label, .rail a:focus-visible .rail-label { opacity: 1; transform: translate(0, -50%); }
-  .rail a[aria-current="true"] .rail-num { color: var(--accent); }
-  .rail a[aria-current="true"] { color: var(--text); }
-  .rail a[aria-current="true"]::after { background: var(--accent); border-color: var(--accent); transform: scale(1.35); }
-  .rail a:hover::after { border-color: var(--accent); }
+  /* ponte invisível para o rato poder passar para a etiqueta (1.4.13) */
+  .rail-label::after { content: ""; position: absolute; left: 100%; top: 0; bottom: 0; width: 16px; }
+  .rail a:hover .rail-label, .rail a:focus-visible .rail-label { opacity: 1; visibility: visible; transform: translate(0, -50%); }
 }
 
 /* Título: palavras a subir */
@@ -691,13 +688,9 @@ main, .site-footer { position: relative; z-index: 1; }
 /* 2.4.11 Foco não tapado: o cabeçalho fixo nunca cobre o elemento focado */
 html { scroll-padding-top: 96px; scroll-padding-bottom: 24px; }
 
-/* 1.4.10 Reflow: a faixa nunca passa por baixo do indicador lateral */
-@media (min-width: 1500px) {
-  .marquee { margin-right: 120px; border-right: 1px solid var(--line); border-radius: 0 12px 12px 0; }
-}
 
 /* 1.4.13 Conteúdo ao passar o rato: fecha com Esc */
-.rail.is-dismissed .rail-label { opacity: 0 !important; visibility: hidden; }
+.rail.is-dismissed .rail-label { opacity: 0 !important; visibility: hidden !important; }
 
 /* 1.4.11 Contraste não textual ≥ 3:1 nas bordas dos campos */
 :root { --field-border: #847869; }
