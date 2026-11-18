@@ -516,6 +516,15 @@
     });
   }
 
+  /* Foco de luz que segue o rato nos cartões de serviços */
+  document.querySelectorAll('.spot').forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
   var rail = document.querySelector('.rail');
   if (rail) {
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') rail.classList.add('is-dismissed'); });

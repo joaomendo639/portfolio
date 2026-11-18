@@ -646,33 +646,12 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 .no-motion .timeline::after { transform: none; }
 
-/* Serviços: cartões que se empilham */
-.services-stack { display: grid; gap: 1.2rem; background: none; border: 0; }
-@media (min-width: 860px) { .services-stack { grid-template-columns: 1fr; } }
-.services-stack .service {
-  position: sticky; top: calc(96px + var(--i, 0) * 22px);
-  display: grid; gap: .4rem 2rem; align-items: start;
-  padding: clamp(1.6rem, 4vw, 3rem); border-radius: var(--radius);
-  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
-  transform-origin: center top; will-change: transform;
-}
-.section-alt .services-stack .service, .section-alt .services-stack .service:hover { background: var(--surface); }
-@media (min-width: 860px) {
-  .services-stack .service { grid-template-columns: 140px 1fr 1.3fr; align-items: center; min-height: 220px; }
-  .services-stack .service:first-child { padding-left: clamp(1.6rem, 4vw, 3rem); }
-  .services-stack .service-num { margin: 0; font-size: 4.5rem; }
-  .services-stack .service h3 { margin: 0; font-size: 2.4rem; }
-}
-.services-stack .service:nth-child(1) { --i: 0; }
-.services-stack .service:nth-child(2) { --i: 1; }
-.services-stack .service:nth-child(3) { --i: 2; }
 
 @media (prefers-reduced-motion: no-preference) {
   .js .project.reveal { clip-path: inset(14% 0 0 0 round var(--radius)); transition: opacity 1s var(--ease), transform 1s var(--ease), clip-path 1.2s var(--ease); }
   .js .project.reveal.is-visible { clip-path: inset(0 0 0 0 round var(--radius)); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .services-stack .service { position: static; }
   .intro-show .intro { display: none; }
   .intro-show body { overflow: auto; }
 }
@@ -717,7 +696,6 @@ html { scroll-padding-top: 96px; scroll-padding-bottom: 24px; }
 .reduce-motion .marquee-row, .reduce-motion .hero-numeral, .reduce-motion .section-numeral,
 .reduce-motion .hero-art img, .reduce-motion .hero-card, .reduce-motion .tilt article, .reduce-motion .magnetic { transform: none !important; }
 .reduce-motion .project img { transform: none !important; }
-.reduce-motion .services-stack .service { position: static; transform: none !important; filter: none !important; }
 .reduce-motion .timeline::after { transform: none !important; }
 .reduce-motion .intro { display: none !important; }
 .reduce-motion.intro-show body { overflow: auto; }
@@ -732,3 +710,77 @@ html { scroll-padding-top: 96px; scroll-padding-bottom: 24px; }
 
 /* Secções que recebem foco por programação (links internos) não precisam de contorno */
 section[tabindex="-1"]:focus, header[tabindex="-1"]:focus { outline: none; }
+
+/* =========================================================
+   Serviços — grelha "bento" de vidro
+   ========================================================= */
+.bento { display: grid; gap: clamp(.9rem, 2vw, 1.4rem); grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+  .bento-main, .bento-cta { grid-column: 1 / -1; }
+}
+@media (min-width: 1080px) {
+  .bento { grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: auto auto; }
+  .bento-main { grid-column: 1; grid-row: 1 / span 2; }
+  .bento-cta { grid-column: 2 / span 2; grid-row: 2; }
+}
+.bento-card {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; gap: .9rem;
+  padding: clamp(1.5rem, 3vw, 2.2rem); border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line);
+  transition: transform .45s var(--ease), border-color .3s, box-shadow .45s var(--ease);
+}
+.bento-card:hover, .bento-card:focus-within { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: var(--shadow); }
+@media (prefers-reduced-motion: no-preference) { .bento-card:hover { transform: translateY(-4px); } }
+/* foco de luz que segue o rato */
+.spot::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--glow), transparent 60%);
+  opacity: 0; transition: opacity .4s;
+}
+.spot:hover::before { opacity: 1; }
+
+.bento-icon {
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px;
+  background: var(--bg); border: 1px solid var(--line); color: var(--accent);
+  transition: background-color .35s, color .35s, transform .45s var(--ease);
+}
+.bento-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.bento-card:hover .bento-icon { background: var(--accent); color: var(--on-accent); transform: rotate(-6deg); }
+.bento-num { position: absolute; top: clamp(1.4rem, 3vw, 2rem); right: clamp(1.5rem, 3vw, 2.2rem); font: 300 1rem/1 var(--font-display); letter-spacing: .1em; color: var(--muted); }
+.bento-card h3 { font: 400 clamp(1.7rem, 3vw, 2.2rem)/1.1 var(--font-display); margin-top: .4rem; }
+.bento-card > p { margin: 0; color: var(--muted); max-width: 44ch; }
+.bento-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; padding-top: .6rem; }
+.bento-tags li { padding: .4em .9em; border-radius: 999px; border: 1px solid var(--line); font-size: .8125rem; color: var(--text); background: var(--bg); }
+
+/* mini maqueta no cartão principal */
+.bento-visual { position: relative; height: 230px; margin-top: .6rem; }
+.mock {
+  position: absolute; left: 50%; bottom: -60px; width: 190px; height: 270px; margin-left: -95px;
+  padding: 14px; border-radius: 26px; background: var(--bg); border: 1px solid var(--line);
+  display: grid; align-content: start; gap: 9px; box-shadow: var(--shadow);
+  transition: transform .6s var(--ease);
+}
+.mock-back { z-index: -1; transform: translateX(46px) rotate(8deg) scale(.92); opacity: .6; }
+.mock-bar { width: 40%; height: 6px; border-radius: 6px; background: var(--line); justify-self: center; }
+.mock-hero { height: 70px; border-radius: 14px; background: linear-gradient(135deg, var(--accent-strong), var(--accent)); }
+.mock-line { height: 8px; width: var(--w); border-radius: 8px; background: var(--line); transition: width .6s var(--ease); }
+.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mock-grid i { height: 40px; border-radius: 10px; background: var(--line); }
+.mock-btn { height: 22px; border-radius: 999px; background: var(--text); }
+.bento-main:hover .mock { transform: translateY(-14px); }
+.bento-main:hover .mock-back { transform: translateX(62px) rotate(12deg) scale(.92); }
+.bento-main:hover .mock-line { width: 90%; }
+
+/* cartão de contacto */
+.bento-cta {
+  flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 2rem;
+  background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--accent) 14%, var(--surface)));
+}
+.bento-cta h3 { margin: 0 0 .3rem; }
+.bento-cta p { margin: 0; color: var(--muted); }
+
+.reduce-motion .bento-card, .reduce-motion .mock, .reduce-motion .bento-icon { transform: none !important; }
+@media (prefers-reduced-motion: reduce) { .mock, .bento-icon { transition: none; } .bento-main:hover .mock { transform: none; } }
+@media (max-width: 699px) { .bento-visual { height: 170px; } .mock { bottom: -110px; } }

@@ -13,6 +13,7 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 | Projetos | `assets/img/projeto-*.svg` → troca por imagens tuas (4:5, `.webp`/`.jpg`, ~1600 px) e atualiza `alt`, título, local e ano |
 | Fotografia | `assets/img/retrato.svg` |
 | Biografia e ferramentas | secção `#sobre` |
+| Serviços | grelha `.bento` em `#servicos` |
 | CV | não publicado (contém dados pessoais); versão sem morada/telefone/data de nascimento pode ir para `assets/cv.pdf` |
 | Formulário | em `#contacto`, substitui `COLOCAR_ACCESS_KEY` pela chave do [Web3Forms](https://web3forms.com) |
 | Redes | secção `#contacto` |
