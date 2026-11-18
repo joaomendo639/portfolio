@@ -515,7 +515,7 @@ main, .site-footer { position: relative; z-index: 1; }
 
 /* Indicador lateral de secções */
 .rail { display: none; }
-@media (min-width: 1400px) {
+@media (min-width: 1500px) {
   .rail {
     display: block; position: fixed; right: 28px; top: 50%; transform: translateY(-50%); z-index: 40;
   }
@@ -533,7 +533,7 @@ main, .site-footer { position: relative; z-index: 1; }
     transition: transform .4s var(--ease), background-color .3s, border-color .3s;
   }
   .rail-label {
-    position: absolute; right: calc(100% + 6px); top: 50%; white-space: nowrap; pointer-events: none;
+    position: absolute; right: 100%; top: 50%; white-space: nowrap; margin-right: 6px;
     text-transform: uppercase; opacity: 0; transform: translate(8px, -50%);
     transition: opacity .35s var(--ease), transform .35s var(--ease);
     background: var(--glass); padding: .25em .6em; border-radius: 999px;
@@ -682,3 +682,57 @@ main, .site-footer { position: relative; z-index: 1; }
 
 /* sticky precisa de overflow: clip (hidden cria contentor de scroll) */
 .section { overflow: clip; }
+
+
+/* =========================================================
+   WCAG 2.2 AA — reforços
+   ========================================================= */
+
+/* 2.4.11 Foco não tapado: o cabeçalho fixo nunca cobre o elemento focado */
+html { scroll-padding-top: 96px; scroll-padding-bottom: 24px; }
+
+/* 1.4.10 Reflow: a faixa nunca passa por baixo do indicador lateral */
+@media (min-width: 1500px) {
+  .marquee { margin-right: 120px; border-right: 1px solid var(--line); border-radius: 0 12px 12px 0; }
+}
+
+/* 1.4.13 Conteúdo ao passar o rato: fecha com Esc */
+.rail.is-dismissed .rail-label { opacity: 0 !important; visibility: hidden; }
+
+/* 1.4.11 Contraste não textual ≥ 3:1 nas bordas dos campos */
+:root { --field-border: #847869; }
+:root[data-theme="dark"] { --field-border: #8a8177; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --field-border: #8a8177; } }
+.field input, .field textarea { border-color: var(--field-border); }
+
+/* Botão "Reduzir movimento" */
+.motion-toggle .icon-play { display: none; }
+.motion-toggle[aria-pressed="true"] .icon-pause { display: none; }
+.motion-toggle[aria-pressed="true"] .icon-play { display: block; }
+.motion-toggle[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.motion-toggle svg { stroke-linejoin: round; }
+
+/* 2.2.2 / 2.3.3: preferência do visitante desliga todo o movimento */
+.reduce-motion { scroll-behavior: auto; }
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  transition-duration: .01ms !important; transition-delay: 0s !important;
+  animation-duration: .01ms !important; animation-delay: 0s !important;
+}
+.reduce-motion .reveal { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+.reduce-motion .split-word > span { transform: none !important; }
+.reduce-motion .cursor-glow, .reduce-motion .scroll-progress, .reduce-motion .tilt-glare { display: none !important; }
+.reduce-motion .marquee-row, .reduce-motion .hero-numeral, .reduce-motion .section-numeral,
+.reduce-motion .hero-art img, .reduce-motion .hero-card, .reduce-motion .tilt article, .reduce-motion .magnetic { transform: none !important; }
+.reduce-motion .project img { transform: none !important; }
+.reduce-motion .services-stack .service { position: static; transform: none !important; filter: none !important; }
+.reduce-motion .timeline::after { transform: none !important; }
+.reduce-motion .intro { display: none !important; }
+.reduce-motion.intro-show body { overflow: auto; }
+@media (min-width: 1024px) { .reduce-motion .project:nth-child(3n+2) { transform: translateY(48px) !important; } }
+
+/* Telemóveis pequenos: cabe tudo no cabeçalho a 320 px */
+@media (max-width: 380px) {
+  .header-actions { gap: .35rem; }
+  .brand-name { font-size: 1.15rem; }
+  .theme-toggle, .nav-toggle { width: 44px; height: 44px; }
+}

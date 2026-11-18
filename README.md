@@ -19,7 +19,13 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 
 Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; vários separados por espaço) usado pelos filtros.
 
-## Acessibilidade
+## Acessibilidade (WCAG 2.2 AA)
+
+- Botão **Reduzir movimento** no cabeçalho (2.2.2 / 2.3.3), guardado entre visitas; respeita também `prefers-reduced-motion`
+- Indicador lateral só aparece com margem livre (≥ 1500 px) — nunca se sobrepõe ao conteúdo (1.4.10); etiquetas fecham com `Esc` (1.4.13)
+- `scroll-padding-top` evita que o cabeçalho fixo tape o foco (2.4.11)
+- Bordas dos campos com contraste ≥ 3:1 (1.4.11); alvos ≥ 24×24 px (2.5.8)
+- Testado: axe-core (0 violações, claro/escuro, 390 e 1600 px), reflow a 320 px, espaçamento de texto 1.4.12, navegação por Tab
 
 - HTML semântico, `lang="pt-PT"`, link "Saltar para o conteúdo"
 - Navegação total por teclado, foco visível, menu móvel com `Esc` e foco contido

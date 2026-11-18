@@ -215,7 +215,8 @@
   /* =========================================================
      Interatividade — só com movimento permitido
      ========================================================= */
-  var motionOK = !reduceMotion.matches;
+  function motionOn() { return !reduceMotion.matches && !root.classList.contains('reduce-motion'); }
+  var motionOK = motionOn();
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* Título dividido em palavras (o texto continua igual para leitores de ecrã) */
@@ -265,7 +266,7 @@
       if (i === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
     });
 
-    if (motionOK && y < vh * 1.2) {
+    if (motionOn() && y < vh * 1.2) {
       if (heroArt) heroArt.style.transform = 'translate3d(0,' + (y * 0.08) + 'px,0) scale(' + (1 + y * 0.00012) + ')';
       if (heroCard) heroCard.style.transform = 'translate3d(0,' + (y * -0.12) + 'px,0)';
       if (numeral) numeral.style.transform = 'translate3d(0,' + (y * 0.35) + 'px,0)';
@@ -276,7 +277,7 @@
   window.addEventListener('resize', requestFrame);
   onFrame();
 
-  if (motionOK && finePointer) {
+  if (finePointer) {
     /* Brilho a seguir o cursor */
     var glow = document.querySelector('.cursor-glow');
     var gx = 0, gy = 0, tx = 0, ty = 0, glowRunning = false;
@@ -287,6 +288,7 @@
     }
     if (glow) {
       window.addEventListener('pointermove', function (e) {
+        if (!motionOn()) return;
         tx = e.clientX; ty = e.clientY;
         if (!document.documentElement.classList.contains('has-pointer')) {
           gx = tx; gy = ty; document.documentElement.classList.add('has-pointer');
@@ -302,6 +304,7 @@
       var glare = document.createElement('span'); glare.className = 'tilt-glare'; glare.setAttribute('aria-hidden', 'true');
       art.appendChild(glare);
       card.addEventListener('pointermove', function (e) {
+        if (!motionOn()) return;
         var r = art.getBoundingClientRect();
         var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
         card.classList.add('is-tilting');
@@ -314,6 +317,7 @@
     /* Botões "magnéticos" */
     document.querySelectorAll('.magnetic').forEach(function (btn) {
       btn.addEventListener('pointermove', function (e) {
+        if (!motionOn()) return;
         var r = btn.getBoundingClientRect();
         var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
         btn.style.transform = 'translate(' + dx * 0.25 + 'px,' + dy * 0.35 + 'px)';
@@ -408,6 +412,7 @@
     // Faixa: anda com o scroll, em sentidos opostos
     marquees.forEach(function (m) {
       var r = m.getBoundingClientRect();
+      if (!motionOn()) { m.style.transform = ''; return; }
       if (r.bottom < -100 || r.top > vh + 100 || !m._period) return;
       var dir = parseFloat(m.dataset.marquee), P = m._period;
       var o = (((vh - r.top) * 0.45) % P + P) % P;          // 0..P
@@ -415,7 +420,7 @@
       m.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0) skewX(' + Math.max(-6, Math.min(6, -velocity * 0.12)).toFixed(2) + 'deg)';
     });
 
-    if (!motionOK) return;
+    if (!motionOn()) return;
 
     // Parallax dentro das imagens dos projetos
     projImgs.forEach(function (img) {
@@ -453,7 +458,46 @@
   window.addEventListener('resize', reqScroll);
   scrollFrame();
   // continua a suavizar o "skew" da faixa quando o scroll para
-  if (motionOK) setInterval(function () { if (Math.abs(velocity) > 0.3) reqScroll(); }, 120);
+  setInterval(function () { if (Math.abs(velocity) > 0.3) reqScroll(); }, 120);
+
+  /* =========================================================
+     Acessibilidade: controlo de movimento + rail com Esc
+     ========================================================= */
+  var motionBtn = document.querySelector('.motion-toggle');
+  function clearMotionStyles() {
+    document.querySelectorAll('.hero-art img, .hero-card, .hero-numeral, .section-numeral, .tilt article, .magnetic, .marquee-row, .services-stack .service')
+      .forEach(function (el) { el.style.transform = ''; el.style.filter = ''; });
+    document.querySelectorAll('.project img').forEach(function (el) { el.style.removeProperty('--py'); });
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+    document.querySelectorAll('[data-split]').forEach(function (el) { el.classList.add('is-split'); });
+  }
+  function syncMotionBtn() {
+    var off = root.classList.contains('reduce-motion') || reduceMotion.matches;
+    motionBtn.setAttribute('aria-pressed', String(off));
+    motionBtn.setAttribute('aria-label', reduceMotion.matches ? 'Movimento reduzido pela definição do sistema'
+      : off ? 'Movimento reduzido (ativar animações)' : 'Reduzir movimento');
+    if (reduceMotion.matches) motionBtn.setAttribute('aria-disabled', 'true');
+  }
+  if (motionBtn) {
+    syncMotionBtn();
+    motionBtn.addEventListener('click', function () {
+      if (reduceMotion.matches) return; // o sistema manda
+      var off = !root.classList.contains('reduce-motion');
+      root.classList.toggle('reduce-motion', off);
+      try { localStorage.setItem('motion', off ? 'off' : 'on'); } catch (e) {}
+      if (off) clearMotionStyles();
+      syncMotionBtn();
+      if (typeof reqScroll === 'function') reqScroll();
+      requestFrame();
+    });
+  }
+
+  var rail = document.querySelector('.rail');
+  if (rail) {
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') rail.classList.add('is-dismissed'); });
+    rail.addEventListener('pointerleave', function () { rail.classList.remove('is-dismissed'); });
+    rail.addEventListener('focusin', function (e) { if (e.relatedTarget && !rail.contains(e.relatedTarget)) rail.classList.remove('is-dismissed'); });
+  }
 
   /* ---------- Ano no rodapé ---------- */
   var year = document.getElementById('year');
