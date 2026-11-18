@@ -368,6 +368,22 @@
   if (!motionOK) scrubWords.forEach(function (w) { w.classList.add('is-lit'); });
 
   var marquees = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
+  // Repete o conteúdo da faixa até cobrir o ecrã + um ciclo, para nunca haver espaços vazios
+  function fillMarquees() {
+    marquees.forEach(function (m) {
+      if (!m._orig) m._orig = Array.prototype.slice.call(m.children).map(function (n) { return n.cloneNode(true); });
+      m.innerHTML = '';
+      m._orig.forEach(function (n) { m.appendChild(n.cloneNode(true)); });
+      m._period = m.scrollWidth;
+      var copies = 1;
+      while (m.scrollWidth < window.innerWidth + m._period * 1.05 && copies < 20) {
+        m._orig.forEach(function (n) { m.appendChild(n.cloneNode(true)); }); copies++;
+      }
+    });
+  }
+  fillMarquees();
+  window.addEventListener('resize', fillMarquees);
+  document.fonts && document.fonts.ready.then(function () { fillMarquees(); reqScroll(); });
   var projImgs = Array.prototype.slice.call(document.querySelectorAll('.project img'));
   var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
   var numerals = Array.prototype.slice.call(document.querySelectorAll('.section-numeral'));
@@ -392,10 +408,11 @@
     // Faixa: anda com o scroll, em sentidos opostos
     marquees.forEach(function (m) {
       var r = m.getBoundingClientRect();
-      if (r.bottom < -100 || r.top > vh + 100) return;
-      var dir = parseFloat(m.dataset.marquee);
-      var x = ((r.top - vh) * 0.5 * dir) % (m.scrollWidth / 2);
-      m.style.transform = 'translate3d(' + (dir > 0 ? x : x - m.scrollWidth / 4) + 'px,0,0) skewX(' + Math.max(-8, Math.min(8, -velocity * 0.15)) + 'deg)';
+      if (r.bottom < -100 || r.top > vh + 100 || !m._period) return;
+      var dir = parseFloat(m.dataset.marquee), P = m._period;
+      var o = (((vh - r.top) * 0.45) % P + P) % P;          // 0..P
+      var x = dir > 0 ? -o : o - P;                          // sempre entre -P e 0
+      m.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0) skewX(' + Math.max(-6, Math.min(6, -velocity * 0.12)).toFixed(2) + 'deg)';
     });
 
     if (!motionOK) return;

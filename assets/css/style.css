@@ -626,24 +626,15 @@ main, .site-footer { position: relative; z-index: 1; }
 :root[data-theme="dark"] { --dim: #6f675e; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dim: #6f675e; } }
 
-.statement { padding-block: clamp(80px, 14vw, 180px) clamp(40px, 8vw, 90px); }
-.statement-text {
-  margin: 0; max-width: 22ch;
-  font: 300 clamp(2rem, 5.4vw, 4.6rem)/1.12 var(--font-display); letter-spacing: -.01em;
-}
-.statement-text em { color: inherit; }
-.js .statement-text .scrub-word { color: var(--dim); transition: color .35s; }
-.js .statement-text .scrub-word.is-lit { color: var(--text); }
-.js .statement-text em .scrub-word.is-lit { color: var(--accent); }
 
-.marquee { overflow: hidden; padding-block: clamp(10px, 2vw, 24px); border-block: 1px solid var(--line); user-select: none; }
+.marquee { overflow: hidden; padding-block: clamp(8px, 1.4vw, 16px); margin-top: clamp(24px, 5vw, 56px); border-block: 1px solid var(--line); user-select: none; }
 .marquee-row { display: flex; gap: 0; white-space: nowrap; will-change: transform; }
 .marquee-row span {
   flex: none; padding-inline: .6em;
-  font: 300 clamp(2.2rem, 6vw, 5rem)/1.15 var(--font-display); color: var(--text);
+  font: 300 clamp(1.3rem, 2.6vw, 2.1rem)/1.3 var(--font-display); color: var(--text);
 }
 .marquee-row span::after { content: "✦"; margin-left: 1.2em; font-size: .4em; vertical-align: middle; color: var(--accent); }
-.marquee-outline { margin-left: -30%; }
+
 .marquee-outline span { color: transparent; -webkit-text-stroke: 1px var(--muted); font-style: italic; }
 @supports not (-webkit-text-stroke: 1px black) { .marquee-outline span { color: var(--muted); } }
 
