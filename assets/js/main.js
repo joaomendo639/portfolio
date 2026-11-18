@@ -3,6 +3,30 @@
   'use strict';
 
   var root = document.documentElement;
+
+  /* ---------- Abrir sempre no início ----------
+     O browser repõe a posição ao recarregar; os links internos deixavam #secção no URL. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash && !document.querySelector('[id="' + location.hash.slice(1) + '"]')) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  if (!location.hash) window.scrollTo(0, 0);
+  window.addEventListener('pageshow', function (e) { if (e.persisted && !location.hash) window.scrollTo(0, 0); });
+
+  /* Links internos: deslocam e movem o foco para a secção, sem deixar #secção no URL */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var id = a.getAttribute('href').slice(1);
+    var target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    e.preventDefault();
+    if (id === 'topo') { window.scrollTo({ top: 0 }); }
+    else { target.scrollIntoView(); }
+    if (!target.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  });
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
