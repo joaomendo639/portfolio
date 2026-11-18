@@ -1,0 +1,42 @@
+# Portfólio
+
+Site estático (HTML, CSS e JS, sem build) publicado em **https://joaomendo639.github.io/portfolio/**.
+
+## Editar conteúdo
+
+Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.html`:
+
+| O quê | Onde |
+|---|---|
+| Nome / marca | cabeçalho e rodapé (`O Teu Nome`) |
+| Números | secção `stats` (atributo `data-count`) |
+| Projetos | `assets/img/projeto-*.svg` → troca por imagens tuas (4:5, `.webp`/`.jpg`, ~1600 px) e atualiza `alt`, título, local e ano |
+| Fotografia | `assets/img/retrato.svg` |
+| Biografia e ferramentas | secção `#sobre` |
+| CV | coloca `assets/cv.pdf` e ativa o link comentado |
+| Email e redes | secção `#contacto` |
+
+Cada projeto tem `data-category` (`arquitetura`, `interiores`, `conceito`) usado pelos filtros.
+
+## Acessibilidade
+
+- HTML semântico, `lang="pt-PT"`, link "Saltar para o conteúdo"
+- Navegação total por teclado, foco visível, menu móvel com `Esc` e foco contido
+- Contraste WCAG AA nos dois temas (claro/escuro, segue o sistema e pode ser trocado)
+- Respeita `prefers-reduced-motion` e o modo de alto contraste do Windows
+- Conteúdo visível mesmo sem JavaScript
+- Texto alternativo em todas as imagens
+
+## Pré-visualizar localmente
+
+```bash
+npx serve .
+```
+
+## Publicar
+
+```bash
+git add -A && git commit -m "Atualiza conteúdo" && git push
+```
+
+O GitHub Pages atualiza em ~1 minuto.

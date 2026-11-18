@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio — Arquitetura, Interiores &amp; Design</title>
+  <meta name="description" content="Portfólio de arquitetura, design de interiores e visualização. Projetos que unem forma, luz e função.">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f1eb" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- Open Graph (partilha em redes sociais) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfólio — Arquitetura, Interiores & Design">
+  <meta property="og:description" content="Projetos que unem forma, luz e função.">
+  <meta property="og:url" content="https://joaomendo639.github.io/portfolio/">
+  <meta property="og:locale" content="pt_PT">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
+  <script>
+    document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#topo" aria-label="Início">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28 16 4l12 24M10 28l6-12 6 12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <!-- EDITAR: o teu nome ou marca -->
+        <span class="brand-name">O Teu Nome</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="sr-only">Abrir menu</span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Mudar para tema claro">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <a class="btn btn-ghost btn-sm header-cta" href="#contacto">Falar comigo <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="hero-numeral" aria-hidden="true">01</span>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">Arquitetura <span aria-hidden="true">·</span> Interiores <span aria-hidden="true">·</span> Design</p>
+          <h1 id="hero-title" class="hero-title reveal">
+            Espaços que inspiram.
+            <em>Lugares que vivem.</em>
+          </h1>
+          <span class="rule reveal" aria-hidden="true"></span>
+          <p class="hero-lead reveal">
+            Desenho arquitetura e interiores intemporais, onde a luz, o material e a função se encontram — sempre à volta de quem os habita.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#projetos">Ver projetos <span aria-hidden="true">→</span></a>
+            <a class="btn btn-link" href="#sobre">
+              <span class="btn-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
+              Conhecer o meu trabalho
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero-art reveal">
+          <img src="assets/img/hero.svg" width="1200" height="900"
+               alt="Ilustração de uma casa moderna de betão e vidro, iluminada ao entardecer, refletida num espelho de água com montanhas ao fundo.">
+          <figcaption class="glass hero-card">
+            <span class="hero-card-label">Projeto em destaque</span>
+            <strong class="hero-card-title">Casa do Lago</strong>
+            <span class="hero-card-meta">Douro, Portugal · 2026</span>
+            <a class="icon-btn" href="#projetos" aria-label="Ver projeto Casa do Lago">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- EDITAR: números reais -->
+      <div class="container">
+        <ul class="stats glass reveal" aria-label="Números">
+          <li><strong data-count="40">40</strong><span>Projetos concluídos</span></li>
+          <li><strong data-count="6">6</strong><span>Anos de experiência</span></li>
+          <li><strong data-count="98" data-suffix="%">98%</strong><span>Clientes satisfeitos</span></li>
+          <li><strong data-count="5">5</strong><span>Prémios e menções</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROJETOS ============ -->
+    <section class="section" id="projetos" aria-labelledby="projetos-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 — Projetos</p>
+            <h2 id="projetos-title" class="section-title reveal">Trabalho <em>selecionado</em></h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filtrar projetos por categoria">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true">Todos</button>
+            <button type="button" class="chip" data-filter="arquitetura" aria-pressed="false">Arquitetura</button>
+            <button type="button" class="chip" data-filter="interiores" aria-pressed="false">Interiores</button>
+            <button type="button" class="chip" data-filter="conceito" aria-pressed="false">Conceito</button>
+          </div>
+        </div>
+        <p class="sr-only" id="filter-status" aria-live="polite"></p>
+
+        <!-- EDITAR: substitui as imagens em assets/img/ pelos teus projetos (formato 4:5, .webp ou .jpg) -->
+        <ul class="projects">
+          <li class="project reveal" data-category="arquitetura">
+            <article>
+              <img src="assets/img/projeto-1.svg" width="800" height="1000" loading="lazy" alt="Moradia em betão com grandes vãos envidraçados ao pôr do sol.">
+              <div class="project-info glass">
+                <p class="project-tag">Arquitetura</p>
+                <h3><a href="#projetos" class="project-link">Casa do Lago</a></h3>
+                <p class="project-meta">Douro · 2026</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+          <li class="project reveal" data-category="interiores">
+            <article>
+              <img src="assets/img/projeto-2.svg" width="800" height="1000" loading="lazy" alt="Sala de jantar escura com ripado de madeira e candeeiros suspensos.">
+              <div class="project-info glass">
+                <p class="project-tag">Interiores</p>
+                <h3><a href="#projetos" class="project-link">Apartamento Noir</a></h3>
+                <p class="project-meta">Lisboa · 2025</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+          <li class="project reveal" data-category="conceito">
+            <article>
+              <img src="assets/img/projeto-3.svg" width="800" height="1000" loading="lazy" alt="Casa de formas curvas e orgânicas numa paisagem de deserto ao entardecer.">
+              <div class="project-info glass">
+                <p class="project-tag">Conceito</p>
+                <h3><a href="#projetos" class="project-link">Oásis Lunar</a></h3>
+                <p class="project-meta">Estudo · 2025</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+          <li class="project reveal" data-category="interiores">
+            <article>
+              <img src="assets/img/projeto-4.svg" width="800" height="1000" loading="lazy" alt="Sala de estar clara com sofá em tons de areia e peça de arte iluminada na parede.">
+              <div class="project-info glass">
+                <p class="project-tag">Interiores</p>
+                <h3><a href="#projetos" class="project-link">Sala Âmbar</a></h3>
+                <p class="project-meta">Porto · 2024</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+          <li class="project reveal" data-category="arquitetura">
+            <article>
+              <img src="assets/img/projeto-5.svg" width="800" height="1000" loading="lazy" alt="Pavilhão minimalista de volumes brancos sobre a encosta.">
+              <div class="project-info glass">
+                <p class="project-tag">Arquitetura</p>
+                <h3><a href="#projetos" class="project-link">Pavilhão Encosta</a></h3>
+                <p class="project-meta">Sintra · 2024</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+          <li class="project reveal" data-category="conceito">
+            <article>
+              <img src="assets/img/projeto-6.svg" width="800" height="1000" loading="lazy" alt="Torre conceptual em camadas com terraços ajardinados.">
+              <div class="project-info glass">
+                <p class="project-tag">Conceito</p>
+                <h3><a href="#projetos" class="project-link">Torre Jardim</a></h3>
+                <p class="project-meta">Concurso · 2023</p>
+                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="section section-alt" id="sobre" aria-labelledby="sobre-title">
+      <span class="section-numeral" aria-hidden="true">03</span>
+      <div class="container about">
+        <figure class="about-photo reveal">
+          <!-- EDITAR: a tua fotografia (formato 4:5) -->
+          <img src="assets/img/retrato.svg" width="800" height="1000" loading="lazy" alt="Espaço reservado para fotografia de perfil.">
+        </figure>
+        <div class="about-copy">
+          <p class="eyebrow">03 — Sobre</p>
+          <h2 id="sobre-title" class="section-title reveal">Desenho com <em>intenção</em>, construo com cuidado.</h2>
+          <!-- EDITAR: a tua biografia -->
+          <p class="reveal">Sou arquiteto(a) e designer de interiores. Acredito que um bom espaço se sente antes de se ver: na forma como a luz entra, no toque dos materiais, no silêncio entre as coisas.</p>
+          <p class="reveal">Trabalho do primeiro esboço à visualização final, com atenção ao detalhe, à sustentabilidade e às pessoas que vão viver cada projeto.</p>
+
+          <h3 class="subhead">Ferramentas</h3>
+          <ul class="tags" aria-label="Ferramentas">
+            <li>AutoCAD</li><li>Revit</li><li>SketchUp</li><li>Rhino</li>
+            <li>Enscape</li><li>V-Ray</li><li>Photoshop</li><li>Figma</li>
+          </ul>
+
+          <!-- EDITAR: coloca o teu CV em assets/cv.pdf e retira o comentário da linha abaixo -->
+          <!-- <a class="btn btn-ghost" href="assets/cv.pdf" download>Descarregar CV <span aria-hidden="true">↓</span></a> -->
+          <a class="btn btn-ghost" href="#contacto">Pedir portfólio completo <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section class="section" id="servicos" aria-labelledby="servicos-title">
+      <div class="container">
+        <p class="eyebrow">04 — Serviços</p>
+        <h2 id="servicos-title" class="section-title reveal">Como posso <em>ajudar</em></h2>
+        <ol class="services">
+          <li class="service reveal">
+            <span class="service-num" aria-hidden="true">01</span>
+            <h3>Arquitetura</h3>
+            <p>Projeto de habitação e espaços comerciais, do estudo prévio ao licenciamento e acompanhamento de obra.</p>
+          </li>
+          <li class="service reveal">
+            <span class="service-num" aria-hidden="true">02</span>
+            <h3>Design de Interiores</h3>
+            <p>Conceito, layout, seleção de materiais, iluminação e mobiliário à medida para cada espaço.</p>
+          </li>
+          <li class="service reveal">
+            <span class="service-num" aria-hidden="true">03</span>
+            <h3>Visualização 3D</h3>
+            <p>Imagens e percursos fotorrealistas que comunicam o projeto antes de ele existir.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section contact" id="contacto" aria-labelledby="contacto-title">
+      <div class="hero-glow contact-glow" aria-hidden="true"></div>
+      <div class="container contact-inner">
+        <p class="eyebrow">05 — Contacto</p>
+        <h2 id="contacto-title" class="contact-title reveal">Vamos criar algo <em>juntos.</em></h2>
+        <p class="contact-lead reveal">Tem um projeto em mente? Escreva-me — respondo em 48 horas.</p>
+        <!-- EDITAR: o teu email -->
+        <a class="btn btn-primary btn-lg reveal" href="mailto:o-teu-email@exemplo.com">o-teu-email@exemplo.com <span aria-hidden="true">↗</span></a>
+
+        <!-- EDITAR: as tuas redes -->
+        <ul class="socials" aria-label="Redes sociais">
+          <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (abre num novo separador)</span></a></li>
+          <li><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram<span class="sr-only"> (abre num novo separador)</span></a></li>
+          <li><a href="https://www.behance.net/" rel="noopener" target="_blank">Behance<span class="sr-only"> (abre num novo separador)</span></a></li>
+          <li><a href="https://github.com/joaomendo639" rel="noopener" target="_blank">GitHub<span class="sr-only"> (abre num novo separador)</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> O Teu Nome. Todos os direitos reservados.</p>
+      <a href="#topo" class="to-top">Voltar ao topo <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
