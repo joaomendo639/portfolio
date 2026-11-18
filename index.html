@@ -326,7 +326,40 @@
         <p class="eyebrow">06 — Contacto</p>
         <h2 id="contacto-title" class="contact-title reveal">Vamos desenhar algo <em>juntos.</em></h2>
         <p class="contact-lead reveal">Procuro oportunidades em UI/UX e Multimédia. Tem um projeto ou uma vaga em mente? Escreva-me.</p>
-        <a class="btn btn-primary btn-lg reveal" href="mailto:joaomendo12@outlook.pt">joaomendo12@outlook.pt <span aria-hidden="true">↗</span></a>
+
+        <!-- Formulário via Web3Forms (https://web3forms.com). EDITAR: access_key -->
+        <form class="contact-form glass reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="COLOCAR_ACCESS_KEY">
+          <input type="hidden" name="subject" value="Nova mensagem do portfólio">
+          <input type="hidden" name="from_name" value="Portfólio João Mendo">
+          <input type="hidden" name="redirect" value="https://joaomendo639.github.io/portfolio/#contacto">
+          <!-- Armadilha anti-spam: invisível para pessoas -->
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <p class="form-note">Todos os campos são obrigatórios.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="cf-name">Nome</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="cf-name-err">
+              <p class="field-error" id="cf-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150" aria-describedby="cf-email-err">
+              <p class="field-error" id="cf-email-err"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Mensagem</label>
+            <textarea id="cf-message" name="message" rows="5" required minlength="10" maxlength="3000" aria-describedby="cf-message-err"></textarea>
+            <p class="field-error" id="cf-message-err"></p>
+          </div>
+          <div class="form-foot">
+            <p class="form-privacy">Os seus dados são usados apenas para responder à mensagem.</p>
+            <button class="btn btn-primary" type="submit">Enviar mensagem <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
 
         <ul class="socials" aria-label="Redes sociais">
           <li><a href="https://www.linkedin.com/in/jo%C3%A3o-mendo-249212256/" rel="noopener" target="_blank">LinkedIn<span class="sr-only"> (abre num novo separador)</span></a></li>

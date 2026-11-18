@@ -150,6 +150,68 @@
     });
   });
 
+  /* ---------- Formulário de contacto (Web3Forms) ---------- */
+  var form = document.getElementById('contact-form');
+  if (form && window.fetch) {
+    var statusEl = document.getElementById('form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var messages = {
+      name: { valueMissing: 'Indique o seu nome.' },
+      email: { valueMissing: 'Indique o seu email.', typeMismatch: 'Indique um email válido, por exemplo nome@dominio.pt.' },
+      message: { valueMissing: 'Escreva a sua mensagem.', tooShort: 'A mensagem deve ter pelo menos 10 caracteres.' }
+    };
+    var fields = form.querySelectorAll('input[required], textarea[required]');
+    function validateField(field) {
+      var err = document.getElementById(field.id + '-err');
+      var v = field.validity, m = messages[field.name] || {}, text = '';
+      if (v.valueMissing) text = m.valueMissing;
+      else if (v.typeMismatch) text = m.typeMismatch;
+      else if (v.tooShort) text = m.tooShort;
+      field.setAttribute('aria-invalid', text ? 'true' : 'false');
+      if (err) err.textContent = text || '';
+      return !text;
+    }
+    fields.forEach(function (f) {
+      f.addEventListener('blur', function () { if (f.value) validateField(f); });
+      f.addEventListener('input', function () { if (f.getAttribute('aria-invalid') === 'true') validateField(f); });
+    });
+    function setStatus(text, ok) {
+      statusEl.textContent = text;
+      statusEl.className = 'form-status ' + (ok ? 'is-ok' : 'is-error');
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstInvalid = null;
+      fields.forEach(function (f) { if (!validateField(f) && !firstInvalid) firstInvalid = f; });
+      if (firstInvalid) { firstInvalid.focus(); setStatus('Corrija os campos assinalados.', false); return; }
+      if (form.elements.access_key.value.indexOf('COLOCAR') === 0) {
+        setStatus('O formulário ainda não está ativo. Contacte-me pelo LinkedIn, por favor.', false);
+        return;
+      }
+      var data = {};
+      new FormData(form).forEach(function (v, k) { if (k !== 'redirect') data[k] = v; });
+      submitBtn.disabled = true;
+      setStatus('A enviar…', true);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res.success) {
+            form.reset();
+            fields.forEach(function (f) { f.removeAttribute('aria-invalid'); });
+            setStatus('Obrigado! A mensagem foi enviada. Respondo em breve.', true);
+          } else {
+            setStatus('Não foi possível enviar. Tente novamente ou contacte-me pelo LinkedIn.', false);
+          }
+        })
+        .catch(function () { setStatus('Sem ligação. Verifique a internet e tente novamente.', false); })
+        .then(function () { submitBtn.disabled = false; });
+    });
+  }
+
   /* ---------- Ano no rodapé ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();

@@ -14,7 +14,8 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 | Fotografia | `assets/img/retrato.svg` |
 | Biografia e ferramentas | secção `#sobre` |
 | CV | não publicado (contém dados pessoais); versão sem morada/telefone/data de nascimento pode ir para `assets/cv.pdf` |
-| Email e redes | secção `#contacto` |
+| Formulário | em `#contacto`, substitui `COLOCAR_ACCESS_KEY` pela chave do [Web3Forms](https://web3forms.com) |
+| Redes | secção `#contacto` |
 
 Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; vários separados por espaço) usado pelos filtros.
 
