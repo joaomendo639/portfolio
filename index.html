@@ -21,15 +21,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611181305">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611181320">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
     document.documentElement.classList.add('js');
+    // Animação de entrada: 1x por sessão e só se o movimento for permitido
+    try {
+      if (!sessionStorage.getItem('introSeen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro-show', 'intro-running');
+      }
+    } catch (e) {}
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
 </head>
 <body>
+  <!-- Animação de entrada: o logótipo desenha-se e o site "abre" como duas portas -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-door intro-door-left">
+      <div class="intro-inner">
+          <svg class="intro-mark" viewBox="0 0 32 32"><path pathLength="100" d="M4 28 16 4l12 24"/><path pathLength="100" d="M10 28l6-12 6 12"/></svg>
+          <p class="intro-name">João Mendo</p>
+          <p class="intro-role">UI/UX · Multimédia</p>
+          <span class="intro-bar"><span></span></span>
+        </div>
+    </div>
+    <div class="intro-door intro-door-right">
+      <div class="intro-inner">
+          <svg class="intro-mark" viewBox="0 0 32 32"><path pathLength="100" d="M4 28 16 4l12 24"/><path pathLength="100" d="M10 28l6-12 6 12"/></svg>
+          <p class="intro-name">João Mendo</p>
+          <p class="intro-role">UI/UX · Multimédia</p>
+          <span class="intro-bar"><span></span></span>
+        </div>
+    </div>
+    <p class="intro-skip">Clique ou prima uma tecla para saltar</p>
+  </div>
+
   <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -128,6 +155,19 @@
         </ul>
       </div>
     </section>
+
+    <!-- ============ MANIFESTO (texto que acende com o scroll) ============ -->
+    <section class="statement" aria-labelledby="manifesto-title">
+      <div class="container">
+        <h2 id="manifesto-title" class="sr-only">Manifesto</h2>
+        <p class="statement-text" data-scrub>O bom design não se nota — <em>simplesmente funciona</em>, para toda a gente. Desenho interfaces que respeitam as pessoas: o seu tempo, as suas capacidades e o contexto em que vivem.</p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-row" data-marquee="1"><span>UI/UX Design</span><span>Acessibilidade</span><span>Prototipagem</span><span>Multimédia</span><span>Branding</span><span>Design centrado no utilizador</span><span>UI/UX Design</span><span>Acessibilidade</span><span>Prototipagem</span><span>Multimédia</span><span>Branding</span><span>Design centrado no utilizador</span></div>
+      <div class="marquee-row marquee-outline" data-marquee="-1"><span>Figma</span><span>Illustrator</span><span>Adobe XD</span><span>Vídeo</span><span>Web</span><span>Kotlin</span><span>Figma</span><span>Illustrator</span><span>Adobe XD</span><span>Vídeo</span><span>Web</span><span>Kotlin</span></div>
+    </div>
 
     <!-- ============ PROJETOS ============ -->
     <section class="section" id="projetos" aria-labelledby="projetos-title">
@@ -314,7 +354,7 @@
       <div class="container">
         <p class="eyebrow">05 — Serviços</p>
         <h2 id="servicos-title" class="section-title reveal">Como posso <em>ajudar</em></h2>
-        <ol class="services">
+        <ol class="services services-stack">
           <li class="service reveal">
             <span class="service-num" aria-hidden="true">01</span>
             <h3>UI/UX Design</h3>
@@ -393,6 +433,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=202611181305" defer></script>
+  <script src="assets/js/main.js?v=202611181320" defer></script>
 </body>
 </html>

@@ -322,6 +322,122 @@
     });
   }
 
+  /* =========================================================
+     Entrada + scroll avançado
+     ========================================================= */
+  /* Animação de entrada */
+  (function () {
+    if (!root.classList.contains('intro-show')) return;
+    try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (!location.hash) window.scrollTo(0, 0);
+    var t1 = setTimeout(function () { root.classList.remove('intro-running'); }, 1800);
+    var t2 = setTimeout(end, 2800);
+    function end() {
+      clearTimeout(t1); clearTimeout(t2);
+      root.classList.remove('intro-running', 'intro-show');
+      document.removeEventListener('keydown', end);
+      if (location.hash) { var t = document.querySelector(location.hash); t && t.scrollIntoView(); }
+    }
+    var intro = document.querySelector('.intro');
+    intro && intro.addEventListener('click', end);
+    document.addEventListener('keydown', end);
+  })();
+
+  if (!motionOK) root.classList.add('no-motion');
+
+  /* Manifesto: palavras acendem com o scroll */
+  var scrubWords = [];
+  document.querySelectorAll('[data-scrub]').forEach(function (el) {
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span'); w.className = 'scrub-word'; w.textContent = part;
+            frag.appendChild(w); scrubWords.push(w);
+          });
+          child.parentNode.replaceChild(frag, child);
+        } else if (child.nodeType === 1) { walk(child); }
+      });
+    })(el);
+  });
+  var scrubEl = document.querySelector('[data-scrub]');
+  if (!motionOK) scrubWords.forEach(function (w) { w.classList.add('is-lit'); });
+
+  var marquees = Array.prototype.slice.call(document.querySelectorAll('[data-marquee]'));
+  var projImgs = Array.prototype.slice.call(document.querySelectorAll('.project img'));
+  var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
+  var numerals = Array.prototype.slice.call(document.querySelectorAll('.section-numeral'));
+  var stackCards = Array.prototype.slice.call(document.querySelectorAll('.services-stack .service'));
+  var lastY = window.scrollY, velocity = 0, sTicking = false;
+
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+  function scrollFrame() {
+    sTicking = false;
+    var y = window.scrollY, vh = window.innerHeight;
+    velocity = velocity * 0.8 + (y - lastY) * 0.2; lastY = y;
+
+    // Manifesto
+    if (scrubEl && motionOK) {
+      var r = scrubEl.getBoundingClientRect();
+      var p = clamp01((vh * 0.85 - r.top) / (r.height + vh * 0.35));
+      var lit = Math.round(p * scrubWords.length);
+      scrubWords.forEach(function (w, i) { w.classList.toggle('is-lit', i < lit); });
+    }
+
+    // Faixa: anda com o scroll, em sentidos opostos
+    marquees.forEach(function (m) {
+      var r = m.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var dir = parseFloat(m.dataset.marquee);
+      var x = ((r.top - vh) * 0.5 * dir) % (m.scrollWidth / 2);
+      m.style.transform = 'translate3d(' + (dir > 0 ? x : x - m.scrollWidth / 4) + 'px,0,0) skewX(' + Math.max(-8, Math.min(8, -velocity * 0.15)) + 'deg)';
+    });
+
+    if (!motionOK) return;
+
+    // Parallax dentro das imagens dos projetos
+    projImgs.forEach(function (img) {
+      var r = img.parentNode.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var c = (r.top + r.height / 2 - vh / 2) / vh; // -1..1
+      img.style.setProperty('--py', (c * -36).toFixed(1) + 'px');
+    });
+
+    // Linha do percurso
+    timelines.forEach(function (t) {
+      var r = t.getBoundingClientRect();
+      t.style.setProperty('--tl', clamp01((vh * 0.65 - r.top) / r.height).toFixed(3));
+    });
+
+    // Números grandes de fundo
+    numerals.forEach(function (n) {
+      var r = n.parentNode.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      n.style.transform = 'translate3d(0,' + (r.top * -0.18).toFixed(1) + 'px,0)';
+    });
+
+    // Cartões empilhados: o de baixo encolhe quando o seguinte chega
+    stackCards.forEach(function (card, i) {
+      var next = stackCards[i + 1];
+      if (!next) { card.style.transform = ''; card.style.filter = ''; return; }
+      var a = card.getBoundingClientRect(), b = next.getBoundingClientRect();
+      var overlap = clamp01((a.bottom - b.top) / a.height);
+      card.style.transform = 'scale(' + (1 - overlap * 0.06).toFixed(3) + ')';
+      card.style.filter = 'brightness(' + (1 - overlap * 0.25).toFixed(3) + ')';
+    });
+  }
+  function reqScroll() { if (!sTicking) { sTicking = true; requestAnimationFrame(scrollFrame); } }
+  window.addEventListener('scroll', reqScroll, { passive: true });
+  window.addEventListener('resize', reqScroll);
+  scrollFrame();
+  // continua a suavizar o "skew" da faixa quando o scroll para
+  if (motionOK) setInterval(function () { if (Math.abs(velocity) > 0.3) reqScroll(); }, 120);
+
   /* ---------- Ano no rodapé ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
