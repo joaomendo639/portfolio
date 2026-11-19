@@ -23,7 +23,7 @@ Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; v
 ## Acessibilidade (WCAG 2.2 AA)
 
 ### Painel de acessibilidade
-Botão com o símbolo de acessibilidade no cabeçalho (todos os tamanhos de ecrã). Abre um `<dialog>` com:
+Botão flutuante "Acessibilidade" no canto inferior direito (todos os tamanhos de ecrã; só ícone abaixo de 700 px). Abre um `<dialog>` com:
 tema (sistema/claro/escuro), tamanho do texto (100–200 %, 1.4.4), alto contraste (1.4.6), reduzir movimento (2.2.2/2.3.3),
 espaçamento de texto (1.4.12), letra legível (Atkinson Hyperlegible), sublinhar links (1.4.1), foco reforçado (2.4.13), cursor grande
 e "Repor predefinições". As escolhas ficam em `localStorage` (`a11y`, `theme`, `motion`) e são aplicadas antes da pintura.
