@@ -1,13 +1,14 @@
 name: Acessibilidade (WCAG 2.2 AA/AAA + AccessMonitor)
 
-# Corre o axe-core em cada alteração e todas as semanas
-# (as regras do axe são atualizadas com a WCAG).
+# Só corre quando é necessário: quando o site muda (push para main ou pull request)
+# ou à mão, no separador Actions do GitHub ("Run workflow").
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'wcag-version.txt'
   pull_request:
-  schedule:
-    - cron: '0 6 * * 1'
   workflow_dispatch:
 
 permissions:
