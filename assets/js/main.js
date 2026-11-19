@@ -39,13 +39,21 @@
     var next = currentTheme() === 'dark' ? 'claro' : 'escuro';
     themeBtn.setAttribute('aria-label', 'Mudar para tema ' + next);
   }
+  // 'light' | 'dark' guarda a escolha; 'system' volta a seguir o sistema operativo
+  function setThemeMode(mode) {
+    if (mode === 'light' || mode === 'dark') {
+      root.dataset.theme = mode;
+      try { localStorage.setItem('theme', mode); } catch (e) {}
+    } else {
+      delete root.dataset.theme;
+      try { localStorage.removeItem('theme'); } catch (e) {}
+    }
+    if (themeBtn) syncThemeButton();
+  }
   if (themeBtn) {
     syncThemeButton();
     themeBtn.addEventListener('click', function () {
-      var next = currentTheme() === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      syncThemeButton();
+      setThemeMode(currentTheme() === 'dark' ? 'light' : 'dark');
     });
     prefersDark.addEventListener && prefersDark.addEventListener('change', syncThemeButton);
   }
@@ -505,15 +513,18 @@
   if (motionBtn) {
     syncMotionBtn();
     motionBtn.addEventListener('click', function () {
-      if (reduceMotion.matches) return; // o sistema manda
-      var off = !root.classList.contains('reduce-motion');
-      root.classList.toggle('reduce-motion', off);
-      try { localStorage.setItem('motion', off ? 'off' : 'on'); } catch (e) {}
-      if (off) clearMotionStyles();
-      syncMotionBtn();
-      if (typeof reqScroll === 'function') reqScroll();
-      requestFrame();
+      setMotion(!root.classList.contains('reduce-motion'));
     });
+  }
+  // Partilhado pelo botão do cabeçalho e pelo painel de acessibilidade
+  function setMotion(off) {
+    if (reduceMotion.matches) return; // o sistema manda
+    root.classList.toggle('reduce-motion', off);
+    try { localStorage.setItem('motion', off ? 'off' : 'on'); } catch (e) {}
+    if (off) clearMotionStyles();
+    if (motionBtn) syncMotionBtn();
+    if (typeof reqScroll === 'function') reqScroll();
+    requestFrame();
   }
 
   /* Foco de luz que segue o rato nos cartões de serviços */
@@ -530,6 +541,94 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') rail.classList.add('is-dismissed'); });
     rail.addEventListener('pointerleave', function () { rail.classList.remove('is-dismissed'); });
     rail.addEventListener('focusin', function (e) { if (e.relatedTarget && !rail.contains(e.relatedTarget)) rail.classList.remove('is-dismissed'); });
+  }
+
+  /* =========================================================
+     Painel de acessibilidade (WCAG 2.2)
+     Preferências em localStorage 'a11y'; tema e movimento usam
+     as chaves 'theme' e 'motion' (partilhadas com o cabeçalho).
+     ========================================================= */
+  var A11Y_FLAGS = ['contrast', 'spacing', 'font', 'links', 'focus', 'cursor'];
+  var a11y = (function () { try { return JSON.parse(localStorage.getItem('a11y') || '{}') || {}; } catch (e) { return {}; } })();
+  function saveA11y() { try { localStorage.setItem('a11y', JSON.stringify(a11y)); } catch (e) {} }
+  function loadReadableFont() {
+    if (document.getElementById('font-legivel')) return;
+    var l = document.createElement('link');
+    l.id = 'font-legivel'; l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap';
+    document.head.appendChild(l);
+  }
+  function applyA11y() {
+    A11Y_FLAGS.forEach(function (k) { root.classList.toggle('a11y-' + k, !!a11y[k]); });
+    root.style.fontSize = a11y.fs && a11y.fs !== 100 ? a11y.fs + '%' : '';
+    if (a11y.font) loadReadableFont();
+    if (typeof fillMarquees === 'function') fillMarquees();
+    if (typeof reqScroll === 'function') reqScroll();
+  }
+
+  var a11yPanel = document.getElementById('a11y-panel');
+  var a11yOpen = document.querySelector('.a11y-open');
+  if (a11yPanel && a11yOpen && typeof a11yPanel.showModal !== 'function') {
+    a11yOpen.hidden = true; // browser muito antigo: sem <dialog>
+  } else if (a11yPanel && a11yOpen) {
+    var a11yStatus = document.getElementById('a11y-status');
+    var say = function (msg) { if (a11yStatus) { a11yStatus.textContent = ''; setTimeout(function () { a11yStatus.textContent = msg; }, 50); } };
+    var syncPanel = function () {
+      var mode = root.dataset.theme || 'system';
+      a11yPanel.querySelectorAll('input[name="a11y-theme"]').forEach(function (r) { r.checked = r.value === mode; });
+      var fs = String(a11y.fs || 100);
+      a11yPanel.querySelectorAll('input[name="a11y-fs"]').forEach(function (r) { r.checked = r.value === fs; });
+      a11yPanel.querySelectorAll('input[data-a11y]').forEach(function (cb) {
+        var k = cb.dataset.a11y;
+        if (k === 'motion') {
+          cb.checked = reduceMotion.matches || root.classList.contains('reduce-motion');
+          cb.disabled = reduceMotion.matches;
+          if (reduceMotion.matches) cb.setAttribute('aria-describedby', 'sw-motion-d sw-motion-sys');
+        } else {
+          cb.checked = !!a11y[k];
+        }
+      });
+    };
+    if (reduceMotion.matches) {
+      var note = document.createElement('small');
+      note.id = 'sw-motion-sys'; note.textContent = 'Já está ativo nas definições do seu sistema.';
+      var desc = document.getElementById('sw-motion-d');
+      if (desc) desc.parentNode.appendChild(note);
+    }
+
+    a11yOpen.addEventListener('click', function () {
+      if (toggle && toggle.getAttribute('aria-expanded') === 'true') setMenu(false);
+      syncPanel();
+      a11yPanel.showModal();
+    });
+    a11yPanel.addEventListener('close', function () { a11yOpen.focus(); });
+    // Clicar fora do painel (no fundo escurecido) também fecha
+    a11yPanel.addEventListener('click', function (e) { if (e.target === a11yPanel) a11yPanel.close(); });
+
+    a11yPanel.addEventListener('change', function (e) {
+      var t = e.target;
+      if (t.name === 'a11y-theme') {
+        setThemeMode(t.value);
+        say('Tema: ' + t.parentNode.textContent.trim());
+      } else if (t.name === 'a11y-fs') {
+        a11y.fs = parseInt(t.value, 10); saveA11y(); applyA11y();
+        say('Tamanho do texto: ' + t.value + '%');
+      } else if (t.dataset && t.dataset.a11y) {
+        var k = t.dataset.a11y;
+        if (k === 'motion') setMotion(t.checked);
+        else { a11y[k] = t.checked; saveA11y(); applyA11y(); }
+      }
+    });
+
+    a11yPanel.querySelector('.a11y-reset').addEventListener('click', function () {
+      a11y = {};
+      try { localStorage.removeItem('a11y'); } catch (e) {}
+      setThemeMode('system');
+      if (!reduceMotion.matches) setMotion(false);
+      applyA11y();
+      syncPanel();
+      say('Predefinições repostas.');
+    });
   }
 
   /* ---------- Ano no rodapé ---------- */

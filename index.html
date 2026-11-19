@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611190906">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611190915">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -34,6 +34,13 @@
     } catch (e) {}
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
     try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('reduce-motion'); } catch (e) {}
+    // Preferências do painel de acessibilidade (texto, contraste, espaçamento…)
+    try {
+      var a = JSON.parse(localStorage.getItem('a11y') || '{}') || {}, h = document.documentElement;
+      if (a.fs && a.fs !== 100) h.style.fontSize = a.fs + '%';
+      ['contrast', 'spacing', 'font', 'links', 'focus', 'cursor'].forEach(function (k) { if (a[k]) h.classList.add('a11y-' + k); });
+      if (a.font) document.write('<link id="font-legivel" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">');
+    } catch (e) {}
   </script>
 </head>
 <body>
@@ -85,6 +92,9 @@
       </nav>
 
       <div class="header-actions">
+        <button class="theme-toggle a11y-open" type="button" aria-haspopup="dialog" aria-controls="a11y-panel" aria-label="Opções de acessibilidade">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="7" r="1.3"/><path d="M7.2 9.6 12 10.8l4.8-1.2M12 10.8v3.4l-2.4 4.1M12 14.2l2.4 4.1"/></svg>
+        </button>
         <button class="theme-toggle motion-toggle" type="button" aria-pressed="false" aria-label="Reduzir movimento">
           <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
           <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7Z"/></svg>
@@ -460,6 +470,66 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=202611190906" defer></script>
+  <!-- ============ PAINEL DE ACESSIBILIDADE (WCAG 2.2) ============
+       <dialog> modal: foco contido, Esc fecha e o foco volta ao botão que o abriu.
+       A versão de referência da WCAG está em wcag-version.txt (verificada todos os meses pelo GitHub Actions). -->
+  <dialog class="a11y-panel" id="a11y-panel" aria-labelledby="a11y-title" aria-describedby="a11y-intro">
+    <form method="dialog" class="a11y-inner">
+      <div class="a11y-head">
+        <h2 id="a11y-title">Acessibilidade</h2>
+        <button class="a11y-close" value="close" aria-label="Fechar opções de acessibilidade">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p class="a11y-intro" id="a11y-intro">Ajuste o site às suas necessidades. As escolhas ficam guardadas neste dispositivo.</p>
+
+      <fieldset class="a11y-group">
+        <legend>Tema</legend>
+        <div class="seg">
+          <label><input type="radio" name="a11y-theme" value="system"><span>Sistema</span></label>
+          <label><input type="radio" name="a11y-theme" value="light"><span>Claro</span></label>
+          <label><input type="radio" name="a11y-theme" value="dark"><span>Escuro</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="a11y-group">
+        <legend>Tamanho do texto</legend>
+        <div class="seg">
+          <label><input type="radio" name="a11y-fs" value="100"><span>100%</span></label>
+          <label><input type="radio" name="a11y-fs" value="125"><span>125%</span></label>
+          <label><input type="radio" name="a11y-fs" value="150"><span>150%</span></label>
+          <label><input type="radio" name="a11y-fs" value="175"><span>175%</span></label>
+          <label><input type="radio" name="a11y-fs" value="200"><span>200%</span></label>
+        </div>
+      </fieldset>
+
+      <ul class="a11y-switches">
+        <li><label class="switch"><span><strong id="sw-contrast">Alto contraste</strong><small id="sw-contrast-d">Texto com contraste de pelo menos 7:1 (WCAG 1.4.6).</small></span>
+          <input type="checkbox" role="switch" data-a11y="contrast" aria-labelledby="sw-contrast" aria-describedby="sw-contrast-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-motion">Reduzir movimento</strong><small id="sw-motion-d">Para animações, parallax e a faixa deslizante (WCAG 2.2.2 e 2.3.3).</small></span>
+          <input type="checkbox" role="switch" data-a11y="motion" aria-labelledby="sw-motion" aria-describedby="sw-motion-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-spacing">Espaçamento de texto</strong><small id="sw-spacing-d">Mais espaço entre linhas, letras e palavras (WCAG 1.4.12).</small></span>
+          <input type="checkbox" role="switch" data-a11y="spacing" aria-labelledby="sw-spacing" aria-describedby="sw-spacing-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-font">Letra mais legível</strong><small id="sw-font-d">Usa a Atkinson Hyperlegible e retira o itálico.</small></span>
+          <input type="checkbox" role="switch" data-a11y="font" aria-labelledby="sw-font" aria-describedby="sw-font-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-links">Sublinhar links</strong><small id="sw-links-d">Os links não dependem só da cor (WCAG 1.4.1).</small></span>
+          <input type="checkbox" role="switch" data-a11y="links" aria-labelledby="sw-links" aria-describedby="sw-links-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-focus">Foco reforçado</strong><small id="sw-focus-d">Contorno mais grosso no elemento ativo do teclado (WCAG 2.4.13).</small></span>
+          <input type="checkbox" role="switch" data-a11y="focus" aria-labelledby="sw-focus" aria-describedby="sw-focus-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-cursor">Cursor grande</strong><small id="sw-cursor-d">Ponteiro do rato maior e com contorno.</small></span>
+          <input type="checkbox" role="switch" data-a11y="cursor" aria-labelledby="sw-cursor" aria-describedby="sw-cursor-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+      </ul>
+
+      <button type="button" class="btn btn-ghost a11y-reset">Repor predefinições</button>
+      <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
+
+      <p class="a11y-meta">
+        Este site segue as diretrizes <span data-wcag-version>WCAG 2.2</span>, nível AA, e é testado automaticamente a cada atualização.
+        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Saber mais sobre a WCAG<span class="sr-only"> (abre num novo separador)</span></a>
+      </p>
+    </form>
+  </dialog>
+
+  <script src="assets/js/main.js?v=202611190915" defer></script>
 </body>
 </html>
