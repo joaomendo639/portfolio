@@ -42,7 +42,9 @@ const only = process.argv[2];
         const related = (a, b) => a.contains(b) || b.contains(a);
         // texto pode ficar sobre a SUA imagem de fundo (cartões / destaque) — permitido
         const overlayOk = (a, b) => { const img = a.ctl && a.el.tagName === 'IMG' ? a : b.ctl && b.el.tagName === 'IMG' ? b : null; if (!img) return false; const other = img === a ? b : a; const card = img.el.closest('article, figure'); return card && card.contains(other.el); };
-        for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+        // ordenadas por y: cada caixa só é comparada com as que começam antes de ela acabar
+        boxes.sort((p, q) => p.y1 - q.y1);
+        for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length && boxes[j].y1 < boxes[i].y2; j++) {
           const a = boxes[i], b = boxes[j];
           if (a.el === b.el || related(a.el, b.el)) continue;
           const ox = Math.min(a.x2, b.x2) - Math.max(a.x1, b.x1), oy = Math.min(a.y2, b.y2) - Math.max(a.y1, b.y1);
