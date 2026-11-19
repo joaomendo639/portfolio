@@ -31,7 +31,7 @@ PROJETOS = [
         "meta": [('Ano', '2024–25'), ('Papel', 'UI/UX Designer · Bolseiro de Investigação'), ('Contexto', 'Projeto A-MoVeR, Vila Real'), ('Ferramentas', 'Figma, Adobe Illustrator, Adobe XD')],
         # Carrossel: (imagem em assets/img/, texto alternativo, legenda). EDITAR: trocar por imagens reais.
         "galeria": [
-            ('projetos/interfaces-a-mover/perfil.jpg', 'Mota elétrica A-MoVeR de perfil, num cavalete, numa pista de testes.', 'A mota elétrica'),
+            ('projetos/interfaces-a-mover/perfil.jpg', 'Mota elétrica A-MoVeR de perfil, num cavalete, no exterior da fábrica da AJP.', 'Visita à fábrica da AJP'),
             ('projetos/interfaces-a-mover/frente-tres-quartos.jpg', 'Mota elétrica vista de frente, a três quartos, com o painel digital no guiador.', 'Três quartos'),
             ('projetos/interfaces-a-mover/frente.jpg', 'Mota vista de frente, com o farol redondo e os espelhos.', 'Frente'),
             ('projetos/interfaces-a-mover/detalhe-suspensao.jpg', 'Pormenor da suspensão traseira amarela e do motor na roda.', 'Suspensão e motor'),
@@ -41,7 +41,7 @@ PROJETOS = [
         ],
         # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>O A-MoVeR é um projeto de investigação em <mark>mobilidade elétrica</mark>, com uma mota elétrica desenvolvida com a AJP. Entre junho de 2024 e junho de 2025, como Bolseiro de Investigação, fui responsável pelo <mark>design de interfaces das soluções digitais</mark> do projeto.</p>'),
+            ('texto', 'Contexto', '<p>O A-MoVeR é um projeto de investigação em <mark>mobilidade elétrica</mark>, com uma mota elétrica desenvolvida com a AJP. As fotografias foram feitas numa <mark>visita à fábrica da AJP</mark>. Entre junho de 2024 e junho de 2025, como Bolseiro de Investigação, fui responsável pelo <mark>design de interfaces das soluções digitais</mark> do projeto.</p>'),
             ('frase', 'O desafio', 'Um painel de mota é lido em segundos, em andamento, ao sol, à chuva ou à noite. A informação essencial — velocidade, bateria e navegação — tem de ser percebida de relance, sem distrair o condutor, e servir pessoas com necessidades diferentes.'),
             ('passos', 'O que fiz', ['Revisão de literatura sobre interfaces para veículos e acessibilidade digital.', 'Wireframes e protótipos de baixa e alta fidelidade.', 'Hierarquia visual centrada na informação crítica: velocidade, autonomia e navegação.', 'Avaliação das propostas com utilizadores e iteração do design.']),
             ('texto', 'Acessibilidade', '<p><mark>Contraste elevado</mark> e números de grande dimensão para leitura rápida, <mark>estados que não dependem só da cor</mark> e o estudo de como a Inteligência Artificial pode adaptar a interface a cada condutor — tema do artigo que apresentei na IntelliSys 2025.</p>'),
