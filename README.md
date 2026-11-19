@@ -18,7 +18,7 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 | Formulário | em `#contacto`, substitui `COLOCAR_ACCESS_KEY` pela chave do [Web3Forms](https://web3forms.com) |
 | Redes | secção `#contacto` |
 
-Cada projeto abre a sua página em `projetos/<nome>.html`. **Não editar essas páginas à mão**: o texto está em `tools/gerar-projetos.py` (lista `PROJETOS`); depois de alterar o texto ou o `index.html`, correr `python tools/gerar-projetos.py` para as gerar de novo (cabeçalho, painel de acessibilidade e rodapé são copiados do `index.html`).
+Cada projeto abre a sua página em `projetos/<nome>.html`. **Não editar essas páginas à mão**: o texto está em `tools/gerar-projetos.py` (lista `PROJETOS`); depois de alterar o texto ou o `index.html`, correr `python tools/gerar-projetos.py` para as gerar de novo (cabeçalho, painel de acessibilidade e rodapé são copiados do `index.html`). Cada projeto tem `galeria` (imagens do carrossel: ficheiro em `assets/img/`, texto alternativo e legenda) e `capitulos` (`texto`, `frase` que acende com o scroll, ou `passos`).
 
 Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; vários separados por espaço) usado pelos filtros.
 
