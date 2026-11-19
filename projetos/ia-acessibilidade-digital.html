@@ -16,11 +16,11 @@
   <meta property="og:locale" content="pt_PT">
   <!-- Página gerada por tools/gerar-projetos.py — editar o texto lá, não aqui -->
 
-  <link rel="icon" href="../assets/img/favicon.svg?v=202611191335" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon.svg?v=202611191355" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611191335">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611191355">
 
   <script>
     document.documentElement.classList.add('js');
@@ -154,35 +154,67 @@
       </section>
 
       <div class="case-story container">
-        <nav class="story-index" aria-label="Capítulos deste projeto">
-          <ol>
+        <div class="story-aside">
+          <div class="story-stage" aria-hidden="true">
+            <img class="stage-img is-on" data-k="0" data-cap="O artigo" src="../assets/img/projeto-6.svg" alt="" width="800" height="1000">
+            <img class="stage-img" data-k="1" data-cap="Contexto" src="../assets/img/projeto-1.svg" alt="" width="800" height="1000" loading="lazy">
+            <img class="stage-img" data-k="2" data-cap="A pergunta" src="../assets/img/projeto-6.svg" alt="" width="800" height="1000" loading="lazy">
+            <img class="stage-img" data-k="3" data-cap="Contribuição" src="../assets/img/projeto-1.svg" alt="" width="800" height="1000" loading="lazy">
+            <span class="stage-num">01</span>
+            <span class="stage-cap">O artigo</span>
+          </div>
+          <nav class="story-index" aria-label="Capítulos deste projeto">
+            <ol>
             <li><a href="#c-o-artigo"><span class="story-n" aria-hidden="true">01</span> O artigo</a></li>
             <li><a href="#c-contexto"><span class="story-n" aria-hidden="true">02</span> Contexto</a></li>
             <li><a href="#c-a-pergunta"><span class="story-n" aria-hidden="true">03</span> A pergunta</a></li>
             <li><a href="#c-contribuicao"><span class="story-n" aria-hidden="true">04</span> Contribuição</a></li>
-          </ol>
-          <span class="story-line" aria-hidden="true"><span></span></span>
-        </nav>
+            </ol>
+            <span class="story-line" aria-hidden="true"><span></span></span>
+          </nav>
+        </div>
         <div class="story-chapters">
-        <section class="chapter chapter-texto" id="c-o-artigo" aria-labelledby="c-o-artigo-t">
+        <section class="chapter chapter-texto" id="c-o-artigo" aria-labelledby="c-o-artigo-t" data-stage="0">
           <p class="chapter-num" aria-hidden="true">01</p>
+          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-6.svg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-o-artigo-t">O artigo</h2>
           <div class="chapter-text reveal"><p lang="en"><em>New Solution to Old Problems: Leveraging AI to Customize Motorcycle User Interfaces and Guarantee Digital Accessibility</em></p></div>
         </section>
-        <section class="chapter chapter-texto" id="c-contexto" aria-labelledby="c-contexto-t">
+        <section class="chapter chapter-texto" id="c-contexto" aria-labelledby="c-contexto-t" data-stage="1">
           <p class="chapter-num" aria-hidden="true">02</p>
+          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-1.svg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-contexto-t">Contexto</h2>
-          <div class="chapter-text reveal"><p>O artigo nasce do trabalho de design de interfaces no projeto A-MoVeR, onde a acessibilidade foi uma preocupação desde o início.</p></div>
+          <div class="chapter-text reveal"><p>O artigo nasce do trabalho de design de interfaces no projeto A-MoVeR, onde <mark>a acessibilidade foi uma preocupação desde o início</mark>.</p></div>
         </section>
-        <section class="chapter chapter-frase" id="c-a-pergunta" aria-labelledby="c-a-pergunta-t">
+        <section class="chapter chapter-frase" id="c-a-pergunta" aria-labelledby="c-a-pergunta-t" data-stage="2">
           <p class="chapter-num" aria-hidden="true">03</p>
+          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-6.svg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-a-pergunta-t">A pergunta</h2>
           <p class="chapter-statement" data-scrub>As interfaces dos veículos são, em geral, iguais para todos. Como pode a Inteligência Artificial ajudar a adaptá-las a cada condutor, para que ninguém fique de fora?</p>
         </section>
-        <section class="chapter chapter-texto" id="c-contribuicao" aria-labelledby="c-contribuicao-t">
+        <section class="chapter chapter-texto" id="c-contribuicao" aria-labelledby="c-contribuicao-t" data-stage="3">
           <p class="chapter-num" aria-hidden="true">04</p>
+          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-1.svg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-contribuicao-t">Contribuição</h2>
-          <div class="chapter-text reveal"><p>O artigo explora a personalização de interfaces de motociclos com Inteligência Artificial como forma de responder a necessidades de acessibilidade digital que as abordagens tradicionais não resolvem.</p></div>
+          <div class="chapter-text reveal"><p>O artigo explora a <mark>personalização de interfaces de motociclos</mark> com Inteligência Artificial como forma de responder a necessidades de acessibilidade digital que as abordagens tradicionais não resolvem.</p></div>
+          <div class="a11y-demo reveal">
+            <p class="demo-label">Experimente</p>
+            <div class="demo-toggles" role="group" aria-label="Simular preferências de acessibilidade na pré-visualização">
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="contrast">Contraste elevado</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="large">Texto maior</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="mono">Ver sem cores</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="dark">Modo noite</button>
+            </div>
+            <div class="demo-card" role="group" aria-label="Pré-visualização de interface">
+              <div class="demo-top"><span class="demo-title">IA e acessibilidade digital</span><span class="demo-chip demo-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Concluído</span></div>
+              <p class="demo-metric">68<span>%</span></p>
+              <p class="demo-sub">Progresso</p>
+              <div class="demo-bar" role="progressbar" aria-label="Progresso" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+              <div class="demo-row"><span class="demo-chip demo-warn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3zM12 10v4M12 17.5v.5"/></svg>Atenção</span><span class="demo-chip demo-err"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Erro</span></div>
+              <span class="demo-action">Continuar <span aria-hidden="true">→</span></span>
+            </div>
+            <p class="demo-note">Em todos os modos a informação continua lá: cada estado tem ícone e texto, não só cor.</p>
+          </div>
         </section>
         </div>
       </div>
@@ -279,7 +311,7 @@
     </form>
   </dialog>
 
-  <script src="../assets/js/main.js?v=202611191335" defer></script>
-  <script src="../assets/js/projeto.js?v=202611191335" defer></script>
+  <script src="../assets/js/main.js?v=202611191355" defer></script>
+  <script src="../assets/js/projeto.js?v=202611191355" defer></script>
 </body>
 </html>

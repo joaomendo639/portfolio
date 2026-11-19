@@ -35,13 +35,13 @@ PROJETOS = [
             ('hero.svg', 'Painel de mota ao lado de um telemóvel com a aplicação.', 'Painel e aplicação móvel'),
             ('projeto-6.svg', 'Artigo científico com gráfico e o símbolo de acessibilidade.', 'Investigação em acessibilidade'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>O A-MoVeR é um projeto de investigação em mobilidade elétrica. Entre junho de 2024 e junho de 2025, como Bolseiro de Investigação, fui responsável pelo design de interfaces das soluções digitais do projeto.</p>'),
+            ('texto', 'Contexto', '<p>O A-MoVeR é um projeto de investigação em <mark>mobilidade elétrica</mark>. Entre junho de 2024 e junho de 2025, como Bolseiro de Investigação, fui responsável pelo <mark>design de interfaces das soluções digitais</mark> do projeto.</p>'),
             ('frase', 'O desafio', 'Um painel de mota é lido em segundos, em andamento, ao sol, à chuva ou à noite. A informação essencial — velocidade, bateria e navegação — tem de ser percebida de relance, sem distrair o condutor, e servir pessoas com necessidades diferentes.'),
             ('passos', 'O que fiz', ['Revisão de literatura sobre interfaces para veículos e acessibilidade digital.', 'Wireframes e protótipos de baixa e alta fidelidade.', 'Hierarquia visual centrada na informação crítica: velocidade, autonomia e navegação.', 'Avaliação das propostas com utilizadores e iteração do design.']),
-            ('texto', 'Acessibilidade', '<p>Contraste elevado e números de grande dimensão para leitura rápida, estados que não dependem só da cor e o estudo de como a Inteligência Artificial pode adaptar a interface a cada condutor — tema do artigo que apresentei na IntelliSys 2025.</p>'),
-            ('texto', 'Resultado', '<p>Um sistema de interfaces coerente entre o painel e a aplicação móvel, e a base de investigação para a publicação científica de que sou autor principal.</p>'),
+            ('texto', 'Acessibilidade', '<p><mark>Contraste elevado</mark> e números de grande dimensão para leitura rápida, <mark>estados que não dependem só da cor</mark> e o estudo de como a Inteligência Artificial pode adaptar a interface a cada condutor — tema do artigo que apresentei na IntelliSys 2025.</p>'),
+            ('texto', 'Resultado', '<p>Um <mark>sistema de interfaces coerente</mark> entre o painel e a aplicação móvel, e a base de investigação para a publicação científica de que sou <mark>autor principal</mark>.</p>'),
         ],
         "behance": True,
     },
@@ -57,13 +57,13 @@ PROJETOS = [
             ('projeto-4.svg', 'Logótipo com paleta de cores e tipografia.', 'Identidade aplicada ao site'),
             ('projeto-5.svg', 'Leitor de vídeo com botão de reprodução.', 'Conteúdos multimédia'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>O website é o ponto central de comunicação do A-MoVeR, ao lado das redes sociais e das newsletters que também produzi.</p>'),
+            ('texto', 'Contexto', '<p>O website é o <mark>ponto central de comunicação</mark> do A-MoVeR, ao lado das redes sociais e das newsletters que também produzi.</p>'),
             ('frase', 'O desafio', 'Explicar um projeto técnico de forma clara a públicos muito diferentes e manter o site simples de atualizar à medida que a investigação avança.'),
             ('passos', 'O que fiz', ['Arquitetura de informação e estrutura das páginas.', 'Design da interface alinhado com a identidade visual do projeto.', 'Desenvolvimento e publicação do website.', 'Produção de conteúdos multimédia para as páginas.']),
-            ('texto', 'Acessibilidade', '<p>Títulos com estrutura semântica, contraste adequado, texto alternativo nas imagens e navegação por teclado, seguindo as diretrizes WCAG.</p>'),
-            ('texto', 'Resultado', '<p>Um website que reúne a informação do projeto num só lugar e que liga a comunicação nas redes sociais e nas newsletters.</p>'),
+            ('texto', 'Acessibilidade', '<p>Títulos com <mark>estrutura semântica</mark>, contraste adequado, texto alternativo nas imagens e <mark>navegação por teclado</mark>, seguindo as diretrizes WCAG.</p>'),
+            ('texto', 'Resultado', '<p>Um website que reúne a informação do projeto <mark>num só lugar</mark> e que liga a comunicação nas redes sociais e nas newsletters.</p>'),
         ],
         "behance": True,
     },
@@ -78,13 +78,13 @@ PROJETOS = [
             ('projeto-3.svg', 'Website de turismo em computador e telemóvel, com paisagem verde.', 'Computador e telemóvel'),
             ('projeto-2.svg', 'Website num browser, com título, imagem de destaque e cartões.', 'Estrutura das páginas'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>Durante o estágio curricular na Câmara Municipal de Mirandela (maio a junho de 2023), trabalhei no website de turismo do município e na sua presença digital.</p>'),
+            ('texto', 'Contexto', '<p>Durante o <mark>estágio curricular</mark> na Câmara Municipal de Mirandela (maio a junho de 2023), trabalhei no <mark>website de turismo</mark> do município e na sua presença digital.</p>'),
             ('frase', 'O desafio', 'Tornar mais fácil encontrar o que ver, fazer e visitar no concelho — tanto no computador como no telemóvel.'),
             ('passos', 'O que fiz', ['Análise do website existente e dos seus problemas de usabilidade.', 'Reorganização da arquitetura de informação.', 'Protótipos para computador e telemóvel.', 'Conteúdos para a presença digital e materiais gráficos promocionais.']),
-            ('texto', 'Acessibilidade', '<p>Design responsivo, hierarquia clara, contraste suficiente e áreas de toque confortáveis no telemóvel.</p>'),
-            ('texto', 'Resultado', '<p>Uma proposta de redesign centrada no visitante, acompanhada de conteúdos digitais e materiais para a promoção turística do concelho.</p>'),
+            ('texto', 'Acessibilidade', '<p><mark>Design responsivo</mark>, hierarquia clara, contraste suficiente e <mark>áreas de toque confortáveis</mark> no telemóvel.</p>'),
+            ('texto', 'Resultado', '<p>Uma proposta de redesign <mark>centrada no visitante</mark>, acompanhada de conteúdos digitais e materiais para a promoção turística do concelho.</p>'),
         ],
         "behance": True,
     },
@@ -100,13 +100,13 @@ PROJETOS = [
             ('projeto-2.svg', 'Website num browser com a identidade aplicada.', 'Aplicação no website'),
             ('projeto-5.svg', 'Leitor de vídeo com a identidade aplicada.', 'Aplicação nos vídeos'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>Um projeto de investigação comunica em muitos sítios ao mesmo tempo: website, redes sociais, newsletters, vídeos e apresentações.</p>'),
+            ('texto', 'Contexto', '<p>Um projeto de investigação comunica <mark>em muitos sítios ao mesmo tempo</mark>: website, redes sociais, newsletters, vídeos e apresentações.</p>'),
             ('frase', 'O desafio', 'Manter a identidade reconhecível e coerente em formatos, tamanhos e fundos muito diferentes.'),
             ('passos', 'O que fiz', ['Adaptação do logótipo e da paleta de cores a diferentes formatos.', 'Modelos para publicações nas redes sociais e para newsletters.', 'Aplicação da identidade no website e nos vídeos do projeto.']),
-            ('texto', 'Acessibilidade', '<p>Combinações de cor com contraste suficiente para texto e versões do logótipo para fundos claros e escuros.</p>'),
-            ('texto', 'Resultado', '<p>Uma comunicação consistente em todos os canais do A-MoVeR.</p>'),
+            ('texto', 'Acessibilidade', '<p>Combinações de cor com <mark>contraste suficiente para texto</mark> e versões do logótipo para <mark>fundos claros e escuros</mark>.</p>'),
+            ('texto', 'Resultado', '<p>Uma comunicação <mark>consistente em todos os canais</mark> do A-MoVeR.</p>'),
         ],
         "behance": True,
     },
@@ -121,13 +121,13 @@ PROJETOS = [
             ('projeto-5.svg', 'Leitor de vídeo com botão de reprodução e linha do tempo.', 'Vídeo promocional'),
             ('projeto-4.svg', 'Logótipo e paleta usados nos grafismos.', 'Grafismos com a identidade'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
-            ('texto', 'Contexto', '<p>As redes sociais foram um dos principais canais de comunicação do A-MoVeR, e o vídeo o formato com mais alcance.</p>'),
+            ('texto', 'Contexto', '<p>As redes sociais foram um dos principais canais de comunicação do A-MoVeR, e <mark>o vídeo o formato com mais alcance</mark>.</p>'),
             ('frase', 'O desafio', 'Explicar investigação em poucos segundos, num feed onde a maioria das pessoas vê os vídeos sem som.'),
             ('passos', 'O que fiz', ['Planeamento e guião de cada vídeo.', 'Captação e edição.', 'Grafismos animados com a identidade visual do projeto.', 'Adaptação a formatos horizontais, verticais e quadrados.']),
-            ('texto', 'Acessibilidade', '<p>Mensagem apoiada em texto no ecrã, para ser percebida sem som, com contraste suficiente e sem flashes rápidos.</p>'),
-            ('texto', 'Resultado', '<p>Uma série de vídeos que acompanhou o projeto nas redes sociais ao longo de 2024 e 2025.</p>'),
+            ('texto', 'Acessibilidade', '<p>Mensagem apoiada em texto no ecrã, para ser <mark>percebida sem som</mark>, com contraste suficiente e sem flashes rápidos.</p>'),
+            ('texto', 'Resultado', '<p>Uma série de vídeos que acompanhou o projeto nas redes sociais <mark>ao longo de 2024 e 2025</mark>.</p>'),
         ],
         "behance": True,
     },
@@ -142,12 +142,12 @@ PROJETOS = [
             ('projeto-6.svg', 'Artigo científico com gráfico e o símbolo internacional de acessibilidade.', 'O artigo'),
             ('projeto-1.svg', 'Painel digital de mota com velocímetro e indicadores.', 'Interfaces de motociclos'),
         ],
-        # Capítulos: ("texto", título, html) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
+        # Capítulos: ("texto", título, html com <mark> nas palavras-chave) · ("frase", título, texto que acende com o scroll) · ("passos", título, [passos])
         "capitulos": [
             ('texto', 'O artigo', '<p lang="en"><em>New Solution to Old Problems: Leveraging AI to Customize Motorcycle User Interfaces and Guarantee Digital Accessibility</em></p>'),
-            ('texto', 'Contexto', '<p>O artigo nasce do trabalho de design de interfaces no projeto A-MoVeR, onde a acessibilidade foi uma preocupação desde o início.</p>'),
+            ('texto', 'Contexto', '<p>O artigo nasce do trabalho de design de interfaces no projeto A-MoVeR, onde <mark>a acessibilidade foi uma preocupação desde o início</mark>.</p>'),
             ('frase', 'A pergunta', 'As interfaces dos veículos são, em geral, iguais para todos. Como pode a Inteligência Artificial ajudar a adaptá-las a cada condutor, para que ninguém fique de fora?'),
-            ('texto', 'Contribuição', '<p>O artigo explora a personalização de interfaces de motociclos com Inteligência Artificial como forma de responder a necessidades de acessibilidade digital que as abordagens tradicionais não resolvem.</p>'),
+            ('texto', 'Contribuição', '<p>O artigo explora a <mark>personalização de interfaces de motociclos</mark> com Inteligência Artificial como forma de responder a necessidades de acessibilidade digital que as abordagens tradicionais não resolvem.</p>'),
         ],
         "behance": False,
     },
@@ -185,8 +185,31 @@ def ident(t):
     return re.sub(r"[^a-z0-9]+", "-", t.lower().translate(str.maketrans("áàâãéêíóôõúç", "aaaaeeiooouc"))).strip("-")
 
 
-def capitulo(n, tipo, titulo, conteudo):
+DEMO = """
+          <div class="a11y-demo reveal">
+            <p class="demo-label">Experimente</p>
+            <div class="demo-toggles" role="group" aria-label="Simular preferências de acessibilidade na pré-visualização">
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="contrast">Contraste elevado</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="large">Texto maior</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="mono">Ver sem cores</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="dark">Modo noite</button>
+            </div>
+            <div class="demo-card" role="group" aria-label="Pré-visualização de interface">
+              <div class="demo-top"><span class="demo-title">{titulo}</span><span class="demo-chip demo-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Concluído</span></div>
+              <p class="demo-metric">68<span>%</span></p>
+              <p class="demo-sub">Progresso</p>
+              <div class="demo-bar" role="progressbar" aria-label="Progresso" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+              <div class="demo-row"><span class="demo-chip demo-warn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3zM12 10v4M12 17.5v.5"/></svg>Atenção</span><span class="demo-chip demo-err"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Erro</span></div>
+              <span class="demo-action">Continuar <span aria-hidden="true">→</span></span>
+            </div>
+            <p class="demo-note">Em todos os modos a informação continua lá: cada estado tem ícone e texto, não só cor.</p>
+          </div>"""
+
+
+def capitulo(p, n, tipo, titulo, conteudo):
     cid = "c-" + ident(titulo)
+    img = p["galeria"][(n - 1) % len(p["galeria"])][0]
+    extra = ""
     if tipo == "frase":
         corpo = f'<p class="chapter-statement" data-scrub>{esc(conteudo)}</p>'
     elif tipo == "passos":
@@ -196,8 +219,13 @@ def capitulo(n, tipo, titulo, conteudo):
         corpo = f'<ol class="steps">\n{itens}\n          </ol>'
     else:
         corpo = f'<div class="chapter-text reveal">{conteudo}</div>'
-    return f"""        <section class="chapter chapter-{tipo}" id="{cid}" aria-labelledby="{cid}-t">
+        if titulo in ("Acessibilidade", "Contribuição"):
+            corpo += DEMO.replace("{titulo}", esc(p["titulo"]))
+        if titulo == "Resultado":
+            extra = " chapter-result"
+    return f"""        <section class="chapter chapter-{tipo}{extra}" id="{cid}" aria-labelledby="{cid}-t" data-stage="{n - 1}">
           <p class="chapter-num" aria-hidden="true">{n:02d}</p>
+          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/{img}" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="{cid}-t">{esc(titulo)}</h2>
           {corpo}
         </section>"""
@@ -243,7 +271,12 @@ def pagina(i, p):
     indice = "\n".join(
         f'            <li><a href="#c-{ident(t)}"><span class="story-n" aria-hidden="true">{n:02d}</span> {esc(t)}</a></li>'
         for n, (tipo, t, c) in enumerate(caps, 1))
-    capitulos = "\n".join(capitulo(n, *c) for n, c in enumerate(caps, 1))
+    capitulos = "\n".join(capitulo(p, n, *c) for n, c in enumerate(caps, 1))
+    palco = "\n".join(
+        f'            <img class="stage-img{" is-on" if n == 1 else ""}" data-k="{n - 1}" data-cap="{esc(t)}" '
+        f'src="../assets/img/{p["galeria"][(n - 1) % len(p["galeria"])][0]}" alt="" width="800" height="1000"'
+        + (' loading="lazy"' if n > 1 else '') + '>'
+        for n, (tipo, t, c) in enumerate(caps, 1))
     behance = ""
     if p["behance"]:
         behance = (f'\n        <p class="case-ext reveal"><a class="btn btn-ghost" href="{BEHANCE}" target="_blank" rel="noopener">'
@@ -299,12 +332,19 @@ def pagina(i, p):
 {galeria(p)}
 
       <div class="case-story container">
-        <nav class="story-index" aria-label="Capítulos deste projeto">
-          <ol>
+        <div class="story-aside">
+          <div class="story-stage" aria-hidden="true">
+{palco}
+            <span class="stage-num">01</span>
+            <span class="stage-cap">{esc(caps[0][1])}</span>
+          </div>
+          <nav class="story-index" aria-label="Capítulos deste projeto">
+            <ol>
 {indice}
-          </ol>
-          <span class="story-line" aria-hidden="true"><span></span></span>
-        </nav>
+            </ol>
+            <span class="story-line" aria-hidden="true"><span></span></span>
+          </nav>
+        </div>
         <div class="story-chapters">
 {capitulos}{behance}
         </div>

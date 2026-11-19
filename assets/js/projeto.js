@@ -99,7 +99,42 @@
     setActive(0);
   }
 
-  /* ---------- Índice de capítulos: capítulo atual e linha de leitura ---------- */
+  /* ---------- Demonstração "Experimente" (acessibilidade) ---------- */
+  document.querySelectorAll('.a11y-demo').forEach(function (demo) {
+    var card = demo.querySelector('.demo-card');
+    demo.querySelectorAll('.demo-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var on = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(on));
+        card.classList.toggle('is-' + btn.dataset.demo, on);
+      });
+    });
+  });
+
+  /* ---------- Capítulos: marcador acende quando o capítulo entra no ecrã ---------- */
+  var chs = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
+  if ('IntersectionObserver' in window) {
+    var inObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); inObs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -25% 0px' });
+    chs.forEach(function (c) { inObs.observe(c); });
+  } else { chs.forEach(function (c) { c.classList.add('is-in'); }); }
+
+  /* ---------- Índice de capítulos: capítulo atual, imagem do painel e linha de leitura ---------- */
+  var stage = document.querySelector('.story-stage');
+  var stageImgs = stage ? Array.prototype.slice.call(stage.querySelectorAll('.stage-img')) : [];
+  var stageNum = stage && stage.querySelector('.stage-num');
+  var stageCap = stage && stage.querySelector('.stage-cap');
+  var stageNow = 0;
+  function setStage(k) {
+    if (!stage || k === stageNow || !stageImgs[k]) return;
+    stageNow = k;
+    stageImgs.forEach(function (img, i) { img.classList.toggle('is-on', i === k); });
+    if (stageNum) stageNum.textContent = (k < 9 ? '0' : '') + (k + 1);
+    if (stageCap) stageCap.textContent = stageImgs[k].dataset.cap;
+    stage.classList.remove('is-changing'); void stage.offsetWidth; stage.classList.add('is-changing');
+  }
+
   var index = document.querySelector('.story-index');
   var chapters = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
   if (index && chapters.length) {
@@ -112,6 +147,7 @@
       var vh = window.innerHeight, active = 0;
       chapters.forEach(function (c, k) { if (c.getBoundingClientRect().top < vh * 0.45) active = k; });
       links.forEach(function (a, k) { if (k === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      setStage(active);
       if (line && story) {
         var r = story.getBoundingClientRect();
         var p = (vh * 0.45 - r.top) / r.height;
