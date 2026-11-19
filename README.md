@@ -33,6 +33,7 @@ e "Repor predefinições". As escolhas ficam em `localStorage` (`a11y`, `theme`,
 - `.github/workflows/acessibilidade.yml` — axe-core (WCAG 2.0/2.1/2.2 A e AA) em cada push e todas as segundas-feiras:
   smartphone, tablet e PC × claro, escuro, alto contraste e texto 200 %, com o painel fechado e aberto.
 - `tests/sobreposicao.mjs` — deteta texto ou botões sobrepostos e scroll horizontal em 6 larguras × texto 100–200 % × espaçamento/letra legível.
+- `tests/sobreposicao.mjs` — deteta texto ou botões sobrepostos e scroll horizontal em 6 larguras × texto 100–200 % × espaçamento/letra legível.
 - `.github/workflows/wcag-versao.yml` — no dia 1 de cada mês compara com https://www.w3.org/TR/WCAG/ e abre uma *issue* se houver nova versão.
 - Correr os testes localmente: `cd tests && npm install && npx playwright install chromium && BASE_URL=http://localhost:8000/ npm test`
 
