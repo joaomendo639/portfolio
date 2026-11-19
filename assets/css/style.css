@@ -188,6 +188,7 @@ main:focus { outline: none; }
   transition: border-color .3s, color .3s;
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle, .nav-toggle { -webkit-tap-highlight-color: transparent; } /* sem quadrado azul ao tocar (o foco por teclado continua visível) */
 .theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 .icon-sun { display: none; }
 :root[data-theme="dark"] .icon-sun { display: block; }
@@ -202,7 +203,7 @@ main:focus { outline: none; }
 @media (max-width: 860px) {
   .header-cta { display: none; }
   .nav { order: 3; }
-  .header-actions { margin-left: 0; }
+  .header-actions { margin-left: 0; position: relative; z-index: 2; } /* botões de tema e movimento ficam acima do menu aberto */
   .nav-toggle {
     display: grid; place-items: center; width: 44px; height: 44px;
     border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer;

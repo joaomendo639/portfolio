@@ -31,7 +31,7 @@
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
   /* ---------- Tema claro/escuro ---------- */
-  var themeBtn = document.querySelector('.theme-toggle');
+  var themeBtn = document.querySelector('.color-toggle');
   function currentTheme() {
     return root.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
   }
@@ -84,7 +84,7 @@
     // Mantém o foco dentro do menu aberto (Tab circular)
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Tab' || toggle.getAttribute('aria-expanded') !== 'true') return;
-      var items = [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a')));
+      var items = Array.prototype.slice.call(document.querySelectorAll('.header-actions button')).concat([toggle], Array.prototype.slice.call(menu.querySelectorAll('a')));
       var first = items[0], last = items[items.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -139,7 +139,7 @@
     var start = null, duration = 1600;
     function step(ts) {
       if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
+      var p = root.classList.contains('reduce-motion') ? 1 : Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - p, 3);
       el.textContent = Math.round(target * eased) + suffix;
       if (p < 1) requestAnimationFrame(step);
