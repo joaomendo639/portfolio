@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611191057">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611191116">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -113,10 +113,6 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle motion-toggle" type="button" aria-pressed="false" aria-label="Reduzir movimento">
-          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
-          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7Z"/></svg>
-        </button>
         <button class="theme-toggle color-toggle" type="button" aria-label="Mudar para tema claro">
           <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
@@ -528,10 +524,10 @@
       </fieldset>
 
       <ul class="a11y-switches">
+        <li><label class="switch"><span><strong id="sw-motion">Pausar animações</strong><small id="sw-motion-d">Para as animações, o parallax e a faixa de texto em movimento (WCAG 2.2.2 e 2.3.3).</small></span>
+          <input type="checkbox" role="switch" data-a11y="motion" aria-labelledby="sw-motion" aria-describedby="sw-motion-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
         <li><label class="switch"><span><strong id="sw-contrast">Alto contraste</strong><small id="sw-contrast-d">Texto com contraste de pelo menos 7:1 (WCAG 1.4.6).</small></span>
           <input type="checkbox" role="switch" data-a11y="contrast" aria-labelledby="sw-contrast" aria-describedby="sw-contrast-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
-        <li><label class="switch"><span><strong id="sw-motion">Reduzir movimento</strong><small id="sw-motion-d">Para animações, parallax e a faixa deslizante (WCAG 2.2.2 e 2.3.3).</small></span>
-          <input type="checkbox" role="switch" data-a11y="motion" aria-labelledby="sw-motion" aria-describedby="sw-motion-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
         <li><label class="switch"><span><strong id="sw-spacing">Espaçamento de texto</strong><small id="sw-spacing-d">Mais espaço entre linhas, letras e palavras (WCAG 1.4.12).</small></span>
           <input type="checkbox" role="switch" data-a11y="spacing" aria-labelledby="sw-spacing" aria-describedby="sw-spacing-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
         <li><label class="switch"><span><strong id="sw-font">Letra mais legível</strong><small id="sw-font-d">Usa a Atkinson Hyperlegible e retira o itálico.</small></span>
@@ -554,6 +550,6 @@
     </form>
   </dialog>
 
-  <script src="assets/js/main.js?v=202611191057" defer></script>
+  <script src="assets/js/main.js?v=202611191116" defer></script>
 </body>
 </html>
