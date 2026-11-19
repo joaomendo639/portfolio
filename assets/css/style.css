@@ -1274,3 +1274,7 @@ body:has(.a11y-panel[open]) { overflow: hidden; }
   .story-line span, .gallery-progress span { background: Highlight; }
 }
 .a11y-contrast .gallery-slide:not(.is-active) img { filter: none; }
+
+/* Fotografias reais: inteiras no carrossel; nos recortes o enquadramento fica no rosto */
+.gallery-slide img.is-photo { object-fit: contain; background: #1b1916; }
+.stage-img.is-photo, .chapter-figure img.is-photo, .next-img.is-photo, .project img.is-photo { object-position: 50% 22%; }

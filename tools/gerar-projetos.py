@@ -132,6 +132,25 @@ PROJETOS = [
         "behance": True,
     },
     {
+        "slug": 'primeira-comunhao',
+        "titulo": 'Primeira Comunhão',
+        "etiqueta": 'Fotografia · Reportagem',
+        "resumo": 'Reportagem fotográfica de uma Primeira Comunhão: a alegria de um dia único, contada em retratos.',
+        "meta": [('Ano', '2024'), ('Papel', 'Fotografia e vídeo'), ('Contexto', 'Cerimónia religiosa · reportagem de evento'), ('Equipamento', 'Canon EOS R50')],
+        # Só imagens com autorização da família (menor de idade). Sem nome da criança. Dados do certificado desfocados.
+        "galeria": [
+            ('projetos/primeira-comunhao/retrato.jpg', 'Retrato de uma menina vestida de branco, a sorrir, com um fio dourado nas mãos.', 'Retrato'),
+            ('projetos/primeira-comunhao/certificado.jpg', 'Menina a sorrir a mostrar o certificado da Primeira Comunhão em frente ao altar.', 'O certificado'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>Reportagem de uma cerimónia de <mark>Primeira Comunhão</mark>, em maio de 2024, em fotografia e vídeo.</p>'),
+            ('frase', 'O desafio', 'Captar um dia que só acontece uma vez, sem interferir na cerimónia: luz de igreja, movimento constante e emoções que não se repetem.'),
+            ('passos', 'O que fiz', ['Acompanhamento da cerimónia do início ao fim.', 'Fotografia e vídeo em simultâneo.', 'Seleção e edição das imagens.', 'Entrega do trabalho à família.']),
+            ('texto', 'Privacidade', '<p>Por se tratar de crianças, só são publicadas imagens <mark>com autorização da família</mark>. O vídeo e as fotografias de grupo ficam reservados, e os dados pessoais visíveis foram desfocados.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'ia-acessibilidade-digital',
         "titulo": 'IA e acessibilidade digital',
         "etiqueta": 'Investigação · Acessibilidade',
@@ -181,6 +200,11 @@ def esc(t):
     return html.escape(t, quote=True)
 
 
+def foto(img):
+    """Fotografias (jpg/webp/png) mostram-se inteiras no carrossel e com o rosto ao centro nos recortes."""
+    return img.lower().endswith((".jpg", ".jpeg", ".webp", ".png"))
+
+
 def ident(t):
     return re.sub(r"[^a-z0-9]+", "-", t.lower().translate(str.maketrans("áàâãéêíóôõúç", "aaaaeeiooouc"))).strip("-")
 
@@ -225,7 +249,7 @@ def capitulo(p, n, tipo, titulo, conteudo):
             extra = " chapter-result"
     return f"""        <section class="chapter chapter-{tipo}{extra}" id="{cid}" aria-labelledby="{cid}-t" data-stage="{n - 1}">
           <p class="chapter-num" aria-hidden="true">{n:02d}</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/{img}" alt="" width="800" height="1000" loading="lazy"></figure>
+          <figure class="chapter-figure" aria-hidden="true"><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="{cid}-t">{esc(titulo)}</h2>
           {corpo}
         </section>"""
@@ -236,7 +260,7 @@ def galeria(p):
     total = len(g)
     slides = "\n".join(
         f"""          <div class="gallery-slide" role="group" aria-roledescription="diapositivo" aria-label="{k} de {total}: {esc(leg)}">
-            <figure><img src="../assets/img/{img}" width="800" height="1000" alt="{esc(alt)}"{' loading="lazy"' if k > 1 else ''}><figcaption>{esc(leg)}</figcaption></figure>
+            <figure><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" width="800" height="1000" alt="{esc(alt)}"{' loading="lazy"' if k > 1 else ''}><figcaption>{esc(leg)}</figcaption></figure>
           </div>""" for k, (img, alt, leg) in enumerate(g, 1))
     thumbs = "\n".join(
         f'            <button type="button" class="gallery-thumb" data-go="{k - 1}" aria-label="Mostrar imagem {k}: {esc(leg)}"'
@@ -273,7 +297,7 @@ def pagina(i, p):
         for n, (tipo, t, c) in enumerate(caps, 1))
     capitulos = "\n".join(capitulo(p, n, *c) for n, c in enumerate(caps, 1))
     palco = "\n".join(
-        f'            <img class="stage-img{" is-on" if n == 1 else ""}" data-k="{n - 1}" data-cap="{esc(t)}" '
+        f'            <img class="stage-img{" is-on" if n == 1 else ""}{" is-photo" if foto(p["galeria"][(n - 1) % len(p["galeria"])][0]) else ""}" data-k="{n - 1}" data-cap="{esc(t)}" '
         f'src="../assets/img/{p["galeria"][(n - 1) % len(p["galeria"])][0]}" alt="" width="800" height="1000"'
         + (' loading="lazy"' if n > 1 else '') + '>'
         for n, (tipo, t, c) in enumerate(caps, 1))
@@ -357,7 +381,7 @@ def pagina(i, p):
             <span class="next-title">{esc(seg["titulo"])}</span>
             <span class="next-tag">{esc(seg["etiqueta"])}</span>
           </span>
-          <img class="next-img" src="../assets/img/{seg["galeria"][0][0]}" alt="" width="800" height="1000" loading="lazy">
+          <img class="next-img{' is-photo' if foto(seg["galeria"][0][0]) else ''}" src="../assets/img/{seg["galeria"][0][0]}" alt="" width="800" height="1000" loading="lazy">
         </a>
         <a class="prev-link" href="{ant["slug"]}.html"><span aria-hidden="true">←</span> Anterior: {esc(ant["titulo"])}</a>
       </nav>
