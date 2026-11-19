@@ -165,8 +165,8 @@ main:focus { outline: none; }
 }
 .header-inner { display: flex; align-items: center; gap: 1rem; }
 .brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; margin-right: auto; min-height: 44px; }
-.brand-mark { width: 30px; height: 30px; color: var(--accent); }
-.brand-name { font: 500 1.35rem/1 var(--font-display); letter-spacing: .02em; }
+.brand-mark { width: 34px; height: 36px; flex: none; }
+.brand-name { font: 500 1.1rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; }
 
 .nav-menu { display: flex; gap: clamp(1rem, 3vw, 2.4rem); }
 .nav-menu a {
@@ -593,14 +593,10 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 .intro-door-left .intro-inner { left: 0; }
 .intro-door-right .intro-inner { right: 0; }
-.intro-mark { width: clamp(72px, 12vw, 120px); height: auto; overflow: visible; margin-bottom: 1rem; }
-.intro-mark path {
-  fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
-  stroke-dasharray: 100; stroke-dashoffset: 100;
-  animation: draw 1.1s cubic-bezier(.65, 0, .35, 1) .15s forwards;
-}
-.intro-mark path + path { animation-delay: .5s; }
-.intro-name { margin: 0; font: 300 clamp(2rem, 5vw, 3.2rem)/1 var(--font-display); letter-spacing: .04em; opacity: 0; animation: rise .8s var(--ease) .75s forwards; }
+.intro-mark { width: clamp(72px, 12vw, 120px); height: auto; overflow: visible; margin-bottom: 1rem;
+  clip-path: inset(100% 0 0 0); animation: logo-reveal 1.1s cubic-bezier(.65, 0, .35, 1) .15s forwards; }
+@keyframes logo-reveal { to { clip-path: inset(-10% -10% -10% -10%); } } /* o logótipo "sobe" de baixo para cima */
+.intro-name { margin: 0; font: 400 clamp(1.6rem, 4vw, 2.6rem)/1 var(--font-display); letter-spacing: .3em; text-transform: uppercase; margin-right: -.3em; opacity: 0; animation: rise .8s var(--ease) .75s forwards; }
 .intro-role { margin: 0; font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); opacity: 0; animation: rise .8s var(--ease) .95s forwards; }
 .intro-bar { display: block; width: 140px; height: 1px; margin-top: 1.4rem; background: var(--line); overflow: hidden; }
 .intro-bar span { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; animation: fill 1.45s cubic-bezier(.65, 0, .35, 1) .2s forwards; }
@@ -623,6 +619,18 @@ main, .site-footer { position: relative; z-index: 1; }
    Scroll: manifesto, faixa em movimento, cartões empilhados
    ========================================================= */
 :root { --dim: #8a7f72; }
+
+/* Cores do logótipo (proposta A) */
+:root {
+  --logo-1a: #5a3410; --logo-1b: #8b5a2b; --logo-1c: #c88d58;
+  --logo-2a: #e6b282; --logo-2b: #a86e3a; --logo-dot: #c88d58;
+  --logo-fill-1: url(#logo-g1); --logo-fill-2: url(#logo-g2);
+}
+:root[data-theme="dark"] { --logo-1a: #a86e3a; --logo-1b: #d39a63; --logo-1c: #e6b282; --logo-2a: #e6b282; --logo-2b: #f6dcc0; --logo-dot: #f6dcc0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --logo-1a: #a86e3a; --logo-1b: #d39a63; --logo-1c: #e6b282; --logo-2a: #e6b282; --logo-2b: #f6dcc0; --logo-dot: #f6dcc0; }
+}
+@media (forced-colors: active) { :root { --logo-fill-1: CanvasText; --logo-fill-2: CanvasText; --logo-dot: CanvasText; --logo-fold: 1; } }
 :root[data-theme="dark"] { --dim: #6f675e; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dim: #6f675e; } }
 
@@ -707,7 +715,7 @@ html { scroll-padding-top: 96px; scroll-padding-bottom: 24px; }
 /* Telemóveis pequenos: cabe tudo no cabeçalho a 320 px */
 @media (max-width: 380px) {
   .header-actions { gap: .35rem; }
-  .brand-name { font-size: 1.15rem; }
+  .brand-name { font-size: 1rem; letter-spacing: .16em; }
   .theme-toggle, .nav-toggle { width: 44px; height: 44px; }
 }
 

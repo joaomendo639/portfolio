@@ -8,7 +8,7 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 
 | O quê | Onde |
 |---|---|
-| Nome / marca | cabeçalho e rodapé |
+| Nome / marca | cabeçalho e rodapé; logótipo "jm" no `<symbol id="logo-jm">` no início do `<body>` (cores em `--logo-*` no CSS) e em `assets/img/favicon.svg` |
 | Números | secção `stats` (atributo `data-count`) |
 | Projetos | `assets/img/projeto-*.svg` → troca por imagens tuas (4:5, `.webp`/`.jpg`, ~1600 px) e atualiza `alt`, título, local e ano |
 | Fotografia | `assets/img/retrato.svg` |
