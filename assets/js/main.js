@@ -97,10 +97,24 @@
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
-    window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) {
-      if (m.matches) setMenu(false);
-    });
+    window.addEventListener('resize', updateCompactNav);
   }
+
+  // Depois de mudar a largura ou o tamanho do texto: fecha o menu ☰ se deixou de existir
+  // e esconde o nome (fica o logótipo) se o cabeçalho já não couber numa linha
+  var headerInner = document.querySelector('.header-inner');
+  var brandName = document.querySelector('.brand-name');
+  function updateCompactNav() {
+    if (toggle && toggle.getAttribute('aria-expanded') === 'true' && !toggle.offsetParent) setMenu(false);
+    if (!headerInner || !brandName) return;
+    // 1.º esconde "Falar comigo" (o Contacto continua no menu); 2.º se ainda não couber, esconde o nome
+    var tight = function () { return headerInner.scrollWidth > headerInner.clientWidth + 1 || headerInner.offsetHeight > 90; };
+    root.classList.remove('hdr-no-cta', 'brand-compact');
+    if (tight()) root.classList.add('hdr-no-cta');
+    if (tight()) root.classList.add('brand-compact');
+  }
+  updateCompactNav();
+  document.fonts && document.fonts.ready.then(updateCompactNav);
 
   /* ---------- Link ativo na navegação ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-menu a'));
@@ -561,6 +575,10 @@
   function applyA11y() {
     A11Y_FLAGS.forEach(function (k) { root.classList.toggle('a11y-' + k, !!a11y[k]); });
     root.style.fontSize = a11y.fs && a11y.fs !== 100 ? a11y.fs + '%' : '';
+    if (a11y.fs && a11y.fs !== 100) root.style.setProperty('--fsx', a11y.fs / 100); else root.style.removeProperty('--fsx');
+    if (window.scaleMedia) window.scaleMedia((a11y.fs || 100) / 100);
+    root.classList.toggle('a11y-fs-big', (a11y.fs || 100) >= 150);
+    updateCompactNav();
     if (a11y.font) loadReadableFont();
     if (typeof fillMarquees === 'function') fillMarquees();
     if (typeof reqScroll === 'function') reqScroll();

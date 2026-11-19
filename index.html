@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611190926">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611190947">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -37,7 +37,28 @@
     // Preferências do painel de acessibilidade (texto, contraste, espaçamento…)
     try {
       var a = JSON.parse(localStorage.getItem('a11y') || '{}') || {}, h = document.documentElement;
-      if (a.fs && a.fs !== 100) h.style.fontSize = a.fs + '%';
+      if (a.fs && a.fs !== 100) { h.style.fontSize = a.fs + '%'; h.style.setProperty('--fsx', a.fs / 100); }
+    } catch (e) {}
+    // Texto aumentado: os pontos de quebra (@media min/max-width) crescem na mesma proporção,
+    // como no zoom do browser — o layout reorganiza-se em vez de apertar o texto (1.4.4 / 1.4.10)
+    window.scaleMedia = function (k) {
+      var orig = window.scaleMedia.orig || (window.scaleMedia.orig = new WeakMap());
+      (function walk(rules) {
+        for (var i = 0; i < rules.length; i++) {
+          var r = rules[i];
+          if (r.media && r.cssRules && r.type === 4) {
+            if (!orig.has(r)) orig.set(r, r.media.mediaText);
+            var o = orig.get(r);
+            if (/(min|max)-width/.test(o)) r.media.mediaText = o.replace(/((?:min|max)-width:\s*)([\d.]+)px/g, function (m, p, v) { return p + (v * k) + 'px'; });
+          }
+          if (r.cssRules) walk(r.cssRules);
+        }
+      })([].concat.apply([], [].map.call(document.styleSheets, function (ss) { try { return [].slice.call(ss.cssRules); } catch (e) { return []; } })));
+    };
+    try {
+      var a2 = JSON.parse(localStorage.getItem('a11y') || '{}') || {};
+      if (a2.fs && a2.fs !== 100) window.scaleMedia(a2.fs / 100);
+      if (a2.fs >= 150) h.classList.add('a11y-fs-big');
       ['contrast', 'spacing', 'font', 'links', 'focus', 'cursor'].forEach(function (k) { if (a[k]) h.classList.add('a11y-' + k); });
       if (a.font) document.write('<link id="font-legivel" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">');
     } catch (e) {}
@@ -158,7 +179,7 @@
         </figure>
       </div>
 
-      <div class="container">
+      <div class="container stats-wrap">
         <ul class="stats stats-3 glass reveal" aria-label="Destaques">
           <li><strong data-count="12" data-suffix="">12</strong><span>Meses como bolseiro de investigação</span></li>
           <li><strong data-count="2" data-suffix="">2</strong><span>Websites desenhados de raiz</span></li>
@@ -533,6 +554,6 @@
     </form>
   </dialog>
 
-  <script src="assets/js/main.js?v=202611190926" defer></script>
+  <script src="assets/js/main.js?v=202611190947" defer></script>
 </body>
 </html>

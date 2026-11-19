@@ -131,7 +131,7 @@ main:focus { outline: none; }
   transition: transform .3s var(--ease), background-color .3s, color .3s, border-color .3s, box-shadow .3s;
 }
 .btn-sm { min-height: 44px; padding: .7em 1.2em; font-size: .8125rem; }
-.btn-lg { font-size: clamp(.95rem, 2.4vw, 1.15rem); padding: 1.1em 2em; }
+.btn-lg { font-size: clamp(.95rem, calc(2.4vw * var(--fsx, 1)), 1.15rem); padding: 1.1em 2em; }
 .btn-primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 10px 30px -10px var(--glow); }
 .btn-primary:hover { background: var(--accent-strong); transform: translateY(-2px); }
 .btn-ghost { border-color: var(--line); color: var(--text); }
@@ -220,7 +220,7 @@ main:focus { outline: none; }
 
   .js .nav-menu {
     position: fixed; inset: 0; z-index: 1;
-    flex-direction: column; justify-content: center; align-items: center; gap: 1.2rem;
+    flex-direction: column; justify-content: safe center; align-items: center; gap: 1.2rem; overflow-y: auto; padding-block: 80px 24px;
     background: var(--bg);
     opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility .35s;
   }
@@ -232,6 +232,7 @@ main:focus { outline: none; }
   html:not(.js) .nav-toggle { display: none; }
   html:not(.js) .nav-menu { flex-wrap: wrap; gap: 1rem; }
 }
+
 
 /* ---------- Hero ---------- */
 .hero {
@@ -257,12 +258,12 @@ main:focus { outline: none; }
   .hero-grid { grid-template-columns: 1fr 1.1fr; }
 }
 .hero-title {
-  font: 300 clamp(2.9rem, 8vw, 6.4rem)/.98 var(--font-display);
+  font: 300 min(clamp(2.9rem, calc(8vw * var(--fsx, 1)), 6.4rem), 15vw)/.98 var(--font-display);
   letter-spacing: -.015em; margin-bottom: 1.8rem;
 }
 .hero-title em { display: block; color: var(--muted); font-weight: 300; }
 .rule { display: block; width: 56px; height: 1px; background: var(--accent); margin-bottom: 1.8rem; }
-.hero-lead { max-width: 44ch; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.1rem); margin-bottom: 2.4rem; }
+.hero-lead { max-width: 44ch; color: var(--muted); font-size: clamp(1rem, calc(1.6vw * var(--fsx, 1)), 1.1rem); margin-bottom: 2.4rem; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.8rem; }
 
 .hero-art { position: relative; margin: 0; }
@@ -291,7 +292,7 @@ main:focus { outline: none; }
 .stats li + li { border-left: 1px solid var(--line); }
 .stats li:nth-child(3) { border-left: 0; }
 .stats li:nth-child(n+3) { border-top: 1px solid var(--line); }
-.stats strong { font: 300 clamp(2.2rem, 5vw, 3.2rem)/1 var(--font-display); color: var(--text); }
+.stats strong { font: 300 clamp(2.2rem, calc(5vw * var(--fsx, 1)), 3.2rem)/1 var(--font-display); color: var(--text); }
 .stats span { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 @media (min-width: 760px) {
   .stats { grid-template-columns: repeat(4, 1fr); }
@@ -303,7 +304,7 @@ main:focus { outline: none; }
 .section { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(72px, 12vw, 140px); }
 .section-alt { background: var(--bg-alt); }
 .section-numeral { right: -3vw; top: 4vw; }
-.section-title { font: 300 clamp(2.4rem, 6vw, 4.4rem)/1 var(--font-display); letter-spacing: -.01em; margin-bottom: 2rem; }
+.section-title { font: 300 min(clamp(2.4rem, calc(6vw * var(--fsx, 1)), 4.4rem), 15vw)/1 var(--font-display); letter-spacing: -.01em; margin-bottom: 2rem; }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem 2rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section-head .section-title { margin-bottom: 0; }
 
@@ -338,7 +339,7 @@ main:focus { outline: none; }
   color: #f6f1ea; background: rgba(20, 18, 16, .42); border-color: rgba(255, 255, 255, .16);
 }
 .project-tag { grid-column: 1; margin: 0; font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase; opacity: .85; }
-.project-info h3 { grid-column: 1; font: 400 1.6rem/1.15 var(--font-display); }
+.project-info h3 { grid-column: 1; font: 400 min(1.6rem, 11vw)/1.15 var(--font-display); }
 .project-meta { grid-column: 1; margin: 0; font-size: .8125rem; opacity: .85; }
 .project-info .icon-btn { grid-column: 2; grid-row: 1 / span 3; background: #f6f1ea; color: #1d1a16; }
 .project-link { text-decoration: none; }
@@ -374,7 +375,7 @@ main:focus { outline: none; }
 .contact { text-align: center; }
 .contact-glow { left: 50%; top: 50%; transform: translate(-50%, -50%); }
 .contact-inner { display: flex; flex-direction: column; align-items: center; }
-.contact-title { font: 300 clamp(2.8rem, 9vw, 7rem)/.95 var(--font-display); letter-spacing: -.015em; margin-bottom: 1.4rem; }
+.contact-title { font: 300 min(clamp(2.8rem, calc(9vw * var(--fsx, 1)), 7rem), 15vw)/.95 var(--font-display); letter-spacing: -.015em; margin-bottom: 1.4rem; }
 .contact-title em { display: block; }
 .contact-lead { color: var(--muted); max-width: 40ch; margin-bottom: 2.4rem; }
 .contact .btn-lg { word-break: break-all; text-align: center; }
@@ -629,7 +630,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .marquee-row { display: flex; gap: 0; white-space: nowrap; will-change: transform; }
 .marquee-row span {
   flex: none; padding-inline: .6em;
-  font: 300 clamp(1.3rem, 2.6vw, 2.1rem)/1.3 var(--font-display); color: var(--text);
+  font: 300 clamp(1.3rem, calc(2.6vw * var(--fsx, 1)), 2.1rem)/1.3 var(--font-display); color: var(--text);
 }
 .marquee-row span::after { content: "✦"; margin-left: 1.2em; font-size: .4em; vertical-align: middle; color: var(--accent); }
 
@@ -750,7 +751,7 @@ section[tabindex="-1"]:focus, header[tabindex="-1"]:focus { outline: none; }
 .bento-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .bento-card:hover .bento-icon { background: var(--accent); color: var(--on-accent); transform: rotate(-6deg); }
 .bento-num { position: absolute; top: clamp(1.4rem, 3vw, 2rem); right: clamp(1.5rem, 3vw, 2.2rem); font: 300 1rem/1 var(--font-display); letter-spacing: .1em; color: var(--muted); }
-.bento-card h3 { font: 400 clamp(1.7rem, 3vw, 2.2rem)/1.1 var(--font-display); margin-top: .4rem; }
+.bento-card h3 { font: 400 clamp(1.7rem, calc(3vw * var(--fsx, 1)), 2.2rem)/1.1 var(--font-display); margin-top: .4rem; }
 .bento-card > p { margin: 0; color: var(--muted); max-width: 44ch; }
 .bento-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; padding-top: .6rem; }
 .bento-tags li { padding: .4em .9em; border-radius: 999px; border: 1px solid var(--line); font-size: .8125rem; color: var(--text); background: var(--bg); }
@@ -942,4 +943,39 @@ body:has(.a11y-panel[open]) { overflow: hidden; }
 .a11y-cursor .cursor-glow { display: none; }
 
 /* Texto grande (1.4.4) e espaçamento (1.4.12): palavras longas partem em vez de sair do ecrã */
-.hero-title, .section-title, .contact-title, .brand-name, h1, h2, h3, h4 { overflow-wrap: anywhere; }
+.hero-title, .section-title, .contact-title, h1, h2, h3, h4 { overflow-wrap: break-word; }
+.brand-name { white-space: nowrap; }
+/* Cabeçalho apertado (texto muito grande num ecrã estreito): fica só o logótipo, que tem aria-label */
+.brand-compact .brand-name, .hdr-no-cta .header-cta { display: none; }
+
+/* --fsx = tamanho do texto escolhido no painel (1 = 100 %); os títulos que dependem da largura do ecrã também crescem */
+
+/* Destaques: uma coluna quando o texto aumentado já não cabe (em = tamanho atual do texto) */
+.stats-wrap { container-type: inline-size; }
+@container (max-width: 17.5em) {
+  .stats, .stats-3 { grid-template-columns: 1fr; }
+  .stats li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .stats-3 li:nth-child(3) { grid-column: auto; }
+}
+.stats li, .stats span { min-width: 0; overflow-wrap: break-word; }
+
+/* Formulário nunca mais largo que o ecrã */
+.contact-form { grid-template-columns: minmax(0, 1fr); }
+.field-row > *, .field, .form-foot > * { min-width: 0; }
+.btn { max-width: 100%; white-space: normal; text-align: center; }
+
+/* Grelhas: as colunas nunca crescem além do ecrã por causa de uma palavra comprida */
+.hero-grid > *, .journey > *, .about > *, .projects > *, .bento > *, .field-row > * { min-width: 0; }
+
+/* Cartões de projeto: imagem e texto na mesma célula da grelha — o cartão cresce se o texto aumentado não couber */
+.project article { display: grid; }
+.project article > img, .project-info { grid-area: 1 / 1; }
+.project img { height: 100%; }
+.project-info { position: relative; left: auto; right: auto; bottom: auto; align-self: end; margin: 12px; grid-template-columns: minmax(0, 1fr) auto; }
+.project-info > * { min-width: 0; overflow-wrap: break-word; }
+/* Texto ≥ 150 %: a seta decorativa dos cartões sai para o texto ter a largura toda */
+.a11y-fs-big .project-info { grid-template-columns: minmax(0, 1fr); }
+.a11y-fs-big .project-info .icon-btn { display: none; }
+/* Texto ≥ 150 %: etiquetas em maiúsculas com menos espaço entre letras para não partirem palavras
+   (a opção "Espaçamento de texto" usa !important e continua a prevalecer) */
+.a11y-fs-big :is(.eyebrow, .project-tag, .stats span, .subhead, .nav-menu a, .socials a, .hero-card-label, .field label, .a11y-group legend) { letter-spacing: .05em; }
