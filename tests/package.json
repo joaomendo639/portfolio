@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node a11y.mjs && node sobreposicao.mjs"
+    "test": "node a11y.mjs && node sobreposicao.mjs && node qualweb.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
-    "playwright": "1.49.1"
+    "playwright": "1.49.1",
+    "@qualweb/core": "0.7.80"
   }
 }

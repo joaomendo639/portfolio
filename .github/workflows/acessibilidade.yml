@@ -1,4 +1,4 @@
-name: Acessibilidade (WCAG 2.2 AA)
+name: Acessibilidade (WCAG 2.2 AA/AAA + AccessMonitor)
 
 # Corre o axe-core em cada alteração e todas as semanas
 # (as regras do axe são atualizadas com a WCAG).
@@ -16,7 +16,7 @@ permissions:
 jobs:
   axe:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,7 +25,7 @@ jobs:
       - name: Instalar dependências
         working-directory: tests
         run: |
-          npm install --no-audit --no-fund
+          PUPPETEER_SKIP_DOWNLOAD=1 npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
       - name: Servir o site
         run: python3 -m http.server 8000 &

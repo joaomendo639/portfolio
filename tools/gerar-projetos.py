@@ -248,7 +248,7 @@ def galeria(p):
           <div class="gallery-track" id="gallery-track" tabindex="0" role="group" aria-label="Imagens: deslize ou use as setas do teclado">
 {slides}
           </div>
-          <span class="gallery-cursor" aria-hidden="true">Arrastar</span>
+          <span class="gallery-cursor" aria-hidden="true"></span>
         </div>
         <div class="gallery-bar">
           <button type="button" class="gallery-btn gallery-prev" aria-controls="gallery-track" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -266,7 +266,7 @@ def galeria(p):
 def pagina(i, p):
     ant = PROJETOS[i - 1]
     seg = PROJETOS[(i + 1) % len(PROJETOS)]
-    meta = "\n".join(f'          <div class="case-chip glass reveal"><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in p["meta"])
+    meta = "\n".join(f'          <li class="case-chip glass reveal"><span class="chip-k">{esc(k)}:</span> <span class="chip-v">{esc(v)}</span></li>' for k, v in p["meta"])
     caps = p["capitulos"]
     indice = "\n".join(
         f'            <li><a href="#c-{ident(t)}"><span class="story-n" aria-hidden="true">{n:02d}</span> {esc(t)}</a></li>'
@@ -324,9 +324,9 @@ def pagina(i, p):
         <p class="eyebrow">{esc(p["etiqueta"])}</p>
         <h1 class="case-title" data-split>{esc(p["titulo"])}</h1>
         <p class="case-lead reveal">{esc(p["resumo"])}</p>
-        <dl class="case-chips">
+        <ul class="case-chips" aria-label="Ficha do projeto">
 {meta}
-        </dl>
+        </ul>
       </header>
 
 {galeria(p)}

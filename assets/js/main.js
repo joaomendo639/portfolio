@@ -138,19 +138,26 @@
 
   /* ---------- Animações de entrada ---------- */
   var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduceMotion.matches) {
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObs.unobserve(entry.target);
-        }
+  if (!reduceMotion.matches) {
+    // A revelação usa clip-path (sem opacity, para o contraste ser sempre o real).
+    // O IntersectionObserver conta o clip-path e veria área zero, por isso usa-se a posição real.
+    var pending = Array.prototype.slice.call(reveals);
+    pending.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 90 + 'ms'; });
+    var revealTick = false;
+    var checkReveals = function () {
+      revealTick = false;
+      var limit = window.innerHeight - 40;
+      pending = pending.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < limit && r.bottom > 0 && (r.width || r.height)) { el.classList.add('is-visible'); return false; }
+        return true;
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(function (el, i) {
-      el.style.transitionDelay = (i % 4) * 90 + 'ms';
-      revealObs.observe(el);
-    });
+      if (!pending.length) { window.removeEventListener('scroll', onRevealScroll); window.removeEventListener('resize', onRevealScroll); }
+    };
+    var onRevealScroll = function () { if (!revealTick) { revealTick = true; requestAnimationFrame(checkReveals); } };
+    window.addEventListener('scroll', onRevealScroll, { passive: true });
+    window.addEventListener('resize', onRevealScroll);
+    checkReveals();
   } else {
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
   }
