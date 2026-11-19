@@ -304,6 +304,7 @@ main:focus { outline: none; }
 .section { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(72px, 12vw, 140px); }
 .section-alt { background: var(--bg-alt); }
 .section-numeral { right: -3vw; top: 4vw; }
+.section-numeral-left { right: auto; left: -3vw; } /* alterna os lados: 02 e 04 à esquerda, 03 e 05 à direita */
 .section-title { font: 300 min(clamp(2.4rem, calc(6vw * var(--fsx, 1)), 4.4rem), 15vw)/1 var(--font-display); letter-spacing: -.01em; margin-bottom: 2rem; }
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem 2rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section-head .section-title { margin-bottom: 0; }
