@@ -129,7 +129,9 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     navLinks.forEach(function (a) {
-      var s = document.querySelector(a.getAttribute('href'));
+      var href = a.getAttribute('href');
+      if (href.charAt(0) !== '#') return; // nas páginas de projeto os links apontam para ../#secção
+      var s = document.querySelector(href);
       if (s) sectionObs.observe(s);
     });
   }

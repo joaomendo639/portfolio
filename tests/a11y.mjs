@@ -8,6 +8,8 @@ import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:8000/';
+import { readdirSync } from 'node:fs';
+const PROJECT_PAGES = readdirSync(new URL('../projetos/', import.meta.url)).filter(f => f.endsWith('.html')).map(f => 'projetos/' + f);
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 const VIEWPORTS = [
   { name: 'smartphone', width: 390, height: 844, touch: true },
@@ -65,6 +67,19 @@ for (const vp of VIEWPORTS) {
       }
     }
     if (overflow > 1) { failures++; console.log(`✗ ${vp.name} · ${sc.name}: deslocamento horizontal de ${overflow}px (1.4.10)`); }
+
+    // Páginas de projeto
+    for (const pg of PROJECT_PAGES) {
+      await page.goto(BASE_URL + pg, { waitUntil: 'networkidle' });
+      const res = await new AxeBuilder({ page }).withTags(TAGS).analyze();
+      const ov = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      const label = `${vp.name} · ${sc.name} · ${pg}`;
+      if (res.violations.length || ov > 1) {
+        failures += res.violations.length + (ov > 1 ? 1 : 0);
+        console.log(`✗ ${label}` + (ov > 1 ? ` (deslocamento horizontal ${ov}px)` : ''));
+        for (const v of res.violations) console.log(`   [${v.impact}] ${v.id}: ${v.help} — ${v.nodes[0].target.join(' ')}`);
+      } else console.log(`✓ ${label}`);
+    }
     if (errors.length) { failures += errors.length; console.log(`✗ ${vp.name} · ${sc.name}: erros JS`, errors); }
     await ctx.close();
   }

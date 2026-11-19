@@ -8,6 +8,8 @@ const CASES = [];
 for (const fs of [100, 125, 150, 175, 200]) CASES.push({ fs });
 CASES.push({ fs: 200, spacing: true }, { fs: 200, font: true, spacing: true }, { fs: 100, spacing: true });
 const only = process.argv[2];
+import { readdirSync } from 'node:fs';
+const PAGES = ['', ...readdirSync(new URL('../projetos/', import.meta.url)).filter(f => f.endsWith('.html')).map(f => 'projetos/' + f)];
   const b = await chromium.launch(process.env.BROWSER_PATH ? { executablePath: process.env.BROWSER_PATH } : {});
   let total = 0;
   for (const [n, w, h, t] of VPS) {
@@ -16,7 +18,8 @@ const only = process.argv[2];
       const c = await b.newContext({ viewport: { width: w, height: h }, hasTouch: t, isMobile: t, reducedMotion: 'reduce' });
       await c.addInitScript((a) => { sessionStorage.setItem('introSeen', '1'); localStorage.setItem('a11y', JSON.stringify(a)); }, cs);
       const p = await c.newPage();
-      await p.goto(BASE_URL + '?' + Date.now()); await p.waitForTimeout(900);
+      for (const pg of PAGES) {
+      await p.goto(BASE_URL + pg + '?' + Date.now()); await p.waitForTimeout(pg ? 500 : 900);
       const res = await p.evaluate(() => {
         const sy = scrollY;
         const skip = el => el.closest('[aria-hidden="true"], dialog, .intro, .sr-only, .hp, .site-header, .a11y-fab, .rail, .skip-link, script, style');
@@ -61,9 +64,10 @@ const only = process.argv[2];
         if (document.documentElement.scrollWidth > innerWidth + 1) out.push('scroll horizontal ' + (document.documentElement.scrollWidth - innerWidth));
         return [...new Set(out)];
       });
-      const tag = `${n} ${JSON.stringify(cs)}`;
+      const tag = `${n} ${JSON.stringify(cs)} ${pg || 'index'}`;
       if (res.length) { total += res.length; console.log('✗ ' + tag + '\n   ' + res.slice(0, 8).join('\n   ') + (res.length > 8 ? `\n   … +${res.length - 8}` : '')); }
       else console.log('✓ ' + tag);
+      }
       await c.close();
     }
   }

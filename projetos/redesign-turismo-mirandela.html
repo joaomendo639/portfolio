@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redesign Turismo Mirandela — João Mendo</title>
+  <meta name="description" content="Redesign do website institucional de turismo de Mirandela, com foco na experiência de quem planeia uma visita ao concelho.">
+  <meta name="author" content="João Mendo">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f1eb" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Redesign Turismo Mirandela — João Mendo">
+  <meta property="og:description" content="Redesign do website institucional de turismo de Mirandela, com foco na experiência de quem planeia uma visita ao concelho.">
+  <meta property="og:url" content="https://joaomendo639.github.io/portfolio/projetos/redesign-turismo-mirandela.html">
+  <meta property="og:locale" content="pt_PT">
+  <!-- Página gerada por tools/gerar-projetos.py — editar o texto lá, não aqui -->
+
+  <link rel="icon" href="../assets/img/favicon.svg?v=202611191144" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611191144">
+
+  <script>
+    document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('reduce-motion'); } catch (e) {}
+    // Preferências do painel de acessibilidade (texto, contraste, espaçamento…)
+    try {
+      var a = JSON.parse(localStorage.getItem('a11y') || '{}') || {}, h = document.documentElement;
+      if (a.fs && a.fs !== 100) { h.style.fontSize = a.fs + '%'; h.style.setProperty('--fsx', a.fs / 100); }
+    } catch (e) {}
+    // Texto aumentado: os pontos de quebra (@media min/max-width) crescem na mesma proporção,
+    // como no zoom do browser — o layout reorganiza-se em vez de apertar o texto (1.4.4 / 1.4.10)
+    window.scaleMedia = function (k) {
+      var orig = window.scaleMedia.orig || (window.scaleMedia.orig = new WeakMap());
+      (function walk(rules) {
+        for (var i = 0; i < rules.length; i++) {
+          var r = rules[i];
+          if (r.media && r.cssRules && r.type === 4) {
+            if (!orig.has(r)) orig.set(r, r.media.mediaText);
+            var o = orig.get(r);
+            if (/(min|max)-width/.test(o)) r.media.mediaText = o.replace(/((?:min|max)-width:\s*)([\d.]+)px/g, function (m, p, v) { return p + (v * k) + 'px'; });
+          }
+          if (r.cssRules) walk(r.cssRules);
+        }
+      })([].concat.apply([], [].map.call(document.styleSheets, function (ss) { try { return [].slice.call(ss.cssRules); } catch (e) { return []; } })));
+    };
+    try {
+      var a2 = JSON.parse(localStorage.getItem('a11y') || '{}') || {};
+      if (a2.fs && a2.fs !== 100) window.scaleMedia(a2.fs / 100);
+      if (a2.fs >= 150) h.classList.add('a11y-fs-big');
+      ['contrast', 'spacing', 'font', 'links', 'focus', 'cursor'].forEach(function (k) { if (a[k]) h.classList.add('a11y-' + k); });
+      if (a.font) document.write('<link id="font-legivel" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">');
+    } catch (e) {}
+  </script>
+</head>
+<body class="page-case">
+  <!-- Logótipo "jm" (proposta A — fita): o j e o m num só traço, o ponto é o pingo do j e o utilizador.
+       Cores em variáveis CSS (--logo-*), para seguir os temas claro/escuro e o alto contraste do Windows. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="logo-g1" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" style="stop-color:var(--logo-1a)"/><stop offset=".55" style="stop-color:var(--logo-1b)"/><stop offset="1" style="stop-color:var(--logo-1c)"/>
+      </linearGradient>
+      <linearGradient id="logo-g2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color:var(--logo-2a)"/><stop offset="1" style="stop-color:var(--logo-2b)"/>
+      </linearGradient>
+      <symbol id="logo-jm" viewBox="0 0 106 112">
+        <path d="M35 50V92A14 14 0 0 1 7 92H17A4 4 0 0 0 25 92V50ZM25 50A21 21 0 0 1 67 50V92H57V45A11 11 0 0 0 35 45V50Z" style="fill:var(--logo-fill-1)"/>
+        <path d="M57 50A21 21 0 0 1 99 50V92H89V45A11 11 0 0 0 67 45V50Z" style="fill:var(--logo-fill-2);opacity:var(--logo-fold, .9)"/>
+        <circle class="logo-dot" cx="12" cy="30" r="6.5" style="fill:var(--logo-dot)"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="João Mendo — início">
+        <svg class="brand-mark" viewBox="0 0 106 112" aria-hidden="true" focusable="false"><use href="#logo-jm"/></svg>
+        <span class="brand-name">João Mendo</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="sr-only">Abrir menu</span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../#projetos">Projetos</a></li>
+          <li><a href="../#sobre">Sobre</a></li>
+          <li><a href="../#percurso">Percurso</a></li>
+          <li><a href="../#servicos">Serviços</a></li>
+          <li><a href="../#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle color-toggle" type="button" aria-label="Mudar para tema claro">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <a class="btn btn-ghost btn-sm header-cta" href="../#contacto">Falar comigo <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <article class="case">
+      <header class="case-hero container">
+        <nav aria-label="Caminho">
+          <a class="case-back" href="../#projetos"><span aria-hidden="true">←</span> Todos os projetos</a>
+        </nav>
+        <p class="eyebrow">UI/UX · Web</p>
+        <h1 class="case-title">Redesign Turismo Mirandela</h1>
+        <p class="case-lead">Redesign do website institucional de turismo de Mirandela, com foco na experiência de quem planeia uma visita ao concelho.</p>
+        <dl class="case-meta">
+            <div><dt>Ano</dt><dd>2023</dd></div>
+            <div><dt>Papel</dt><dd>Estágio curricular · UI/UX</dd></div>
+            <div><dt>Contexto</dt><dd>Câmara Municipal de Mirandela</dd></div>
+            <div><dt>Ferramentas</dt><dd>Figma, Adobe XD, Adobe Illustrator</dd></div>
+        </dl>
+      </header>
+
+      <figure class="case-cover container">
+        <img src="../assets/img/projeto-3.svg" width="800" height="1000" alt="Ilustração de um website de turismo em computador e telemóvel, com paisagem verde.">
+      </figure>
+
+      <div class="case-body container">
+        <section class="case-section reveal" aria-labelledby="s1">
+          <h2 id="s1" class="case-h">Contexto</h2>
+          <div class="case-text"><p>Durante o estágio curricular na Câmara Municipal de Mirandela (maio a junho de 2023), trabalhei no website de turismo do município e na sua presença digital.</p></div>
+        </section>
+        <section class="case-section reveal" aria-labelledby="s2">
+          <h2 id="s2" class="case-h">O desafio</h2>
+          <div class="case-text"><p>Tornar mais fácil encontrar o que ver, fazer e visitar no concelho — tanto no computador como no telemóvel.</p></div>
+        </section>
+        <section class="case-section reveal" aria-labelledby="s3">
+          <h2 id="s3" class="case-h">O que fiz</h2>
+          <div class="case-text"><ul><li>Análise do website existente e dos seus problemas de usabilidade.</li><li>Reorganização da arquitetura de informação.</li><li>Protótipos para computador e telemóvel.</li><li>Conteúdos para a presença digital e materiais gráficos promocionais.</li></ul></div>
+        </section>
+        <section class="case-section reveal" aria-labelledby="s4">
+          <h2 id="s4" class="case-h">Acessibilidade</h2>
+          <div class="case-text"><p>Design responsivo, hierarquia clara, contraste suficiente e áreas de toque confortáveis no telemóvel.</p></div>
+        </section>
+        <section class="case-section reveal" aria-labelledby="s5">
+          <h2 id="s5" class="case-h">Resultado</h2>
+          <div class="case-text"><p>Uma proposta de redesign centrada no visitante, acompanhada de conteúdos digitais e materiais para a promoção turística do concelho.</p></div>
+        </section>
+        <p class="case-ext"><a class="btn btn-ghost" href="https://www.behance.net/joomendo" target="_blank" rel="noopener">Ver mais imagens no Behance <span aria-hidden="true">↗</span><span class="sr-only"> (abre num novo separador)</span></a></p>
+      </div>
+
+      <nav class="case-nav container" aria-label="Outros projetos">
+        <a class="case-nav-link" href="website-a-mover.html"><span class="case-nav-label"><span aria-hidden="true">←</span> Projeto anterior</span><span class="case-nav-title">Website A-MoVeR</span></a>
+        <a class="case-nav-link case-nav-next" href="identidade-visual-a-mover.html"><span class="case-nav-label">Projeto seguinte <span aria-hidden="true">→</span></span><span class="case-nav-title">Identidade Visual A-MoVeR</span></a>
+      </nav>
+
+      <section class="case-cta container" aria-labelledby="cta-title">
+        <h2 id="cta-title" class="case-cta-title">Tem um projeto <em>em mente?</em></h2>
+        <a class="btn btn-primary" href="../#contacto">Falar comigo <span aria-hidden="true">→</span></a>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> João Mendo. Todos os direitos reservados.</p>
+      <a href="#topo" class="to-top">Voltar ao topo <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de acessibilidade: sempre visível em todos os ecrãs -->
+  <button class="a11y-fab a11y-open" type="button" aria-haspopup="dialog" aria-controls="a11y-panel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="7" r="1.3"/><path d="M7.2 9.6 12 10.8l4.8-1.2M12 10.8v3.4l-2.4 4.1M12 14.2l2.4 4.1"/></svg>
+    <span class="a11y-fab-text">Acessibilidade</span>
+  </button>
+
+  <!-- ============ PAINEL DE ACESSIBILIDADE (WCAG 2.2) ============
+       <dialog> modal: foco contido, Esc fecha e o foco volta ao botão que o abriu.
+       A versão de referência da WCAG está em wcag-version.txt (verificada todos os meses pelo GitHub Actions). -->
+  <dialog class="a11y-panel" id="a11y-panel" aria-labelledby="a11y-title" aria-describedby="a11y-intro">
+    <form method="dialog" class="a11y-inner">
+      <div class="a11y-head">
+        <h2 id="a11y-title">Acessibilidade</h2>
+        <button class="a11y-close" value="close" aria-label="Fechar opções de acessibilidade">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p class="a11y-intro" id="a11y-intro">Ajuste o site às suas necessidades. As escolhas ficam guardadas neste dispositivo.</p>
+
+      <fieldset class="a11y-group">
+        <legend>Tema</legend>
+        <div class="seg">
+          <label><input type="radio" name="a11y-theme" value="system"><span>Sistema</span></label>
+          <label><input type="radio" name="a11y-theme" value="light"><span>Claro</span></label>
+          <label><input type="radio" name="a11y-theme" value="dark"><span>Escuro</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="a11y-group">
+        <legend>Tamanho do texto</legend>
+        <div class="seg">
+          <label><input type="radio" name="a11y-fs" value="100"><span>100%</span></label>
+          <label><input type="radio" name="a11y-fs" value="125"><span>125%</span></label>
+          <label><input type="radio" name="a11y-fs" value="150"><span>150%</span></label>
+          <label><input type="radio" name="a11y-fs" value="175"><span>175%</span></label>
+          <label><input type="radio" name="a11y-fs" value="200"><span>200%</span></label>
+        </div>
+      </fieldset>
+
+      <ul class="a11y-switches">
+        <li><label class="switch"><span><strong id="sw-motion">Pausar animações</strong><small id="sw-motion-d">Para as animações, o parallax e a faixa de texto em movimento (WCAG 2.2.2 e 2.3.3).</small></span>
+          <input type="checkbox" role="switch" data-a11y="motion" aria-labelledby="sw-motion" aria-describedby="sw-motion-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-contrast">Alto contraste</strong><small id="sw-contrast-d">Texto com contraste de pelo menos 7:1 (WCAG 1.4.6).</small></span>
+          <input type="checkbox" role="switch" data-a11y="contrast" aria-labelledby="sw-contrast" aria-describedby="sw-contrast-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-spacing">Espaçamento de texto</strong><small id="sw-spacing-d">Mais espaço entre linhas, letras e palavras (WCAG 1.4.12).</small></span>
+          <input type="checkbox" role="switch" data-a11y="spacing" aria-labelledby="sw-spacing" aria-describedby="sw-spacing-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-font">Letra mais legível</strong><small id="sw-font-d">Usa a Atkinson Hyperlegible e retira o itálico.</small></span>
+          <input type="checkbox" role="switch" data-a11y="font" aria-labelledby="sw-font" aria-describedby="sw-font-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-links">Sublinhar links</strong><small id="sw-links-d">Os links não dependem só da cor (WCAG 1.4.1).</small></span>
+          <input type="checkbox" role="switch" data-a11y="links" aria-labelledby="sw-links" aria-describedby="sw-links-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-focus">Foco reforçado</strong><small id="sw-focus-d">Contorno mais grosso no elemento ativo do teclado (WCAG 2.4.13).</small></span>
+          <input type="checkbox" role="switch" data-a11y="focus" aria-labelledby="sw-focus" aria-describedby="sw-focus-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+        <li><label class="switch"><span><strong id="sw-cursor">Cursor grande</strong><small id="sw-cursor-d">Ponteiro do rato maior e com contorno.</small></span>
+          <input type="checkbox" role="switch" data-a11y="cursor" aria-labelledby="sw-cursor" aria-describedby="sw-cursor-d"><span class="switch-ui" aria-hidden="true"></span></label></li>
+      </ul>
+
+      <button type="button" class="btn btn-ghost a11y-reset">Repor predefinições</button>
+      <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
+
+      <p class="a11y-meta">
+        Este site segue as diretrizes <span data-wcag-version>WCAG 2.2</span>, nível AA, e é testado automaticamente a cada atualização.
+        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Saber mais sobre a WCAG<span class="sr-only"> (abre num novo separador)</span></a>
+      </p>
+    </form>
+  </dialog>
+
+  <script src="../assets/js/main.js?v=202611191144" defer></script>
+</body>
+</html>
