@@ -225,7 +225,7 @@ main:focus { outline: none; }
     opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility .35s;
   }
   .js .nav-menu.is-open { opacity: 1; visibility: visible; }
-  .js .nav-menu a { font: 300 2.4rem/1.2 var(--font-display); letter-spacing: 0; text-transform: none; color: var(--text); }
+  .js .nav-menu a { font: 300 min(2.4rem, 12vw)/1.2 var(--font-display); overflow-wrap: break-word; max-width: 100%; text-align: center; letter-spacing: 0; text-transform: none; color: var(--text); }
   /* Sem JS: menu visível em linha por baixo do cabeçalho */
   html:not(.js) .header-inner { flex-wrap: wrap; }
   html:not(.js) .nav { order: 4; width: 100%; }
@@ -979,3 +979,12 @@ body:has(.a11y-panel[open]) { overflow: hidden; }
 /* Texto ≥ 150 %: etiquetas em maiúsculas com menos espaço entre letras para não partirem palavras
    (a opção "Espaçamento de texto" usa !important e continua a prevalecer) */
 .a11y-fs-big :is(.eyebrow, .project-tag, .stats span, .subhead, .nav-menu a, .socials a, .hero-card-label, .field label, .a11y-group legend) { letter-spacing: .05em; }
+
+/* Cartão "Projeto em destaque": imagem e cartão na mesma célula — com texto grande o bloco cresce em vez de o cartão sair por cima */
+.hero-art { display: grid; }
+.hero-art img, .hero-card { grid-area: 1 / 1; }
+.hero-art img { height: 100%; }
+.hero-card { position: relative; right: auto; bottom: auto; align-self: end; justify-self: end; margin: clamp(12px, 3vw, 24px); grid-template-columns: minmax(0, 1fr) auto; }
+.hero-card > * { min-width: 0; overflow-wrap: break-word; }
+.a11y-fs-big .hero-card { grid-template-columns: minmax(0, 1fr); max-width: calc(100% - 24px); }
+.a11y-fs-big .hero-card .icon-btn { display: none; }
