@@ -1,0 +1,35 @@
+name: Acessibilidade (WCAG 2.2 AA)
+
+# Corre o axe-core em cada alteração e todas as semanas
+# (as regras do axe são atualizadas com a WCAG).
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar dependências
+        working-directory: tests
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Servir o site
+        run: python3 -m http.server 8000 &
+      - name: Testar acessibilidade
+        working-directory: tests
+        env:
+          BASE_URL: http://localhost:8000/
+        run: npm test

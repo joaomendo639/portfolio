@@ -1,0 +1,49 @@
+name: Verificar nova versão da WCAG
+
+# Todos os meses compara a versão em vigor da WCAG (W3C) com a de wcag-version.txt.
+# Se a W3C publicar uma nova Recomendação, abre um aviso (issue) no repositório
+# para rever o site e atualizar o painel de acessibilidade.
+on:
+  schedule:
+    - cron: '0 7 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  versao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comparar versões
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          atual=$(head -n1 wcag-version.txt | tr -d '\r')
+          curl -fsSL https://www.w3.org/TR/WCAG/ -o wcag.html
+          titulo=$(grep -o -m1 '<title>[^<]*</title>' wcag.html | sed 's/<[^>]*>//g')
+          w3c=$(echo "$titulo" | grep -oE 'WCAG\) [0-9]+(\.[0-9]+)?' | sed 's/WCAG) /WCAG /')
+          echo "Versão no site: $atual"
+          echo "Versão na W3C:  $w3c ($titulo)"
+          if [ -z "$w3c" ]; then
+            echo "::warning::Não foi possível ler a versão da W3C."
+            exit 0
+          fi
+          if [ "$w3c" != "$atual" ]; then
+            existe=$(gh issue list --state open --search "\"$w3c\" in:title" --json number --jq 'length')
+            if [ "$existe" = "0" ]; then
+              gh issue create \
+                --title "Nova versão da WCAG publicada: $w3c" \
+                --body "A W3C publicou a **$w3c** (https://www.w3.org/TR/WCAG/). O site segue a **$atual**.
+
+          Para atualizar:
+          1. Ler as novidades em https://www.w3.org/WAI/standards-guidelines/wcag/new-in-$(echo "$w3c" | grep -oE '[0-9.]+$')/
+          2. Rever o site e o painel de acessibilidade (\`index.html\`, \`#a11y-panel\`)
+          3. Atualizar \`wcag-version.txt\`, o texto \`data-wcag-version\` e as etiquetas em \`tests/a11y.mjs\`
+          4. Correr o workflow *Acessibilidade*"
+            fi
+          else
+            echo "Site atualizado com a versão em vigor."
+          fi
