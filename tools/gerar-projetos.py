@@ -241,13 +241,13 @@ def modulo_fotografia(p):
             <div class="foto-info"><p class="foto-leg">{esc(leg)}</p><ul class="foto-params" aria-label="Parâmetros da fotografia">{chips}</ul></div>
           </li>""")
     ficha = [("Câmara", camera), ("Data", "-".join(reversed(data.split("-"))) if data else ""), ("Fotografias", str(len(p["galeria"])))]
-    ficha_html = "".join(f"<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>" for a, b in ficha if b)
+    ficha_html = "".join(f'<li><span class="ficha-k">{esc(a)}:</span> <span class="ficha-v">{esc(b)}</span></li>' for a, b in ficha if b)
     return f"""      <section class="modulo modulo-foto" aria-labelledby="mod-foto">
         <div class="container">
           <div class="modulo-head">
             <p class="eyebrow">Fotografia</p>
             <h2 id="mod-foto" class="modulo-title">Galeria</h2>
-            <dl class="foto-ficha">{ficha_html}</dl>
+            <ul class="foto-ficha" aria-label="Ficha técnica">{ficha_html}</ul>
           </div>
           <ul class="foto-grelha">
 {chr(10).join(itens)}
@@ -255,7 +255,7 @@ def modulo_fotografia(p):
         </div>
         <dialog class="lightbox" aria-label="Fotografia em ecrã inteiro">
           <div class="lightbox-inner">
-            <figure class="lightbox-fig"><img src="" alt=""><figcaption><span class="lightbox-leg"></span><ul class="foto-params lightbox-params" aria-label="Parâmetros da fotografia"></ul></figcaption></figure>
+            <figure class="lightbox-fig"><img src="" alt=""><figcaption><span class="lightbox-leg"></span><span class="lightbox-params"></span></figcaption></figure>
             <button type="button" class="lightbox-btn lightbox-prev" aria-label="Fotografia anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
             <button type="button" class="lightbox-btn lightbox-next" aria-label="Fotografia seguinte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
             <button type="button" class="lightbox-btn lightbox-close" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -275,7 +275,7 @@ def modulo_design(p):
         nivel = "AAA" if melhor >= 7 else ("AA" if melhor >= 4.5 else "AA texto grande")
         cores.append(f"""          <li class="cor reveal">
             <button type="button" class="cor-copiar" data-copiar="{hexcor}" style="--cor:{hexcor};--cor-texto:{texto}" aria-label="Copiar {esc(nome)}, {hexcor}">
-              <span class="cor-amostra" aria-hidden="true">Aa</span>
+              <span class="cor-amostra" aria-hidden="true"></span>
             </button>
             <p class="cor-nome">{esc(nome)}</p>
             <p class="cor-valores"><span>{hexcor}</span> <span>RGB {r} {g} {b}</span></p>

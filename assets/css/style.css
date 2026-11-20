@@ -1321,9 +1321,9 @@ body.tipo-investigacao { --tipo-acc: #4b4a8f; }
   --field-border: #8a8177; --accent: #d39a63; --accent-strong: #e6b282; --on-accent: #1a120a;
   background: var(--bg); color: var(--text);
 }
-.foto-ficha { display: flex; flex-wrap: wrap; gap: .6rem 2.4rem; margin: .4rem 0 0; }
-.foto-ficha dt { font: 600 .6875rem/1.4 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
-.foto-ficha dd { margin: 0; font-size: 1rem; }
+.foto-ficha { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 2.4rem; margin: .4rem 0 0; }
+.foto-ficha .ficha-k { display: block; font: 600 .6875rem/1.4 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.foto-ficha .ficha-v { display: block; font-size: 1rem; }
 .foto-grelha { list-style: none; margin: 0; padding: 0; columns: 3 17rem; column-gap: clamp(.8rem, 2vw, 1.4rem); }
 .foto { break-inside: avoid; margin-bottom: clamp(1.2rem, 3vw, 2rem); }
 .foto-abrir { display: block; width: 100%; padding: 0; border: 0; border-radius: var(--radius-sm); overflow: hidden; background: none; cursor: zoom-in; }
@@ -1374,7 +1374,7 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .tipo-nome { margin: 0; font: 600 1.25rem/1.2 var(--fonte), var(--font-body); }
 .tipo-uso { margin: 0; color: var(--muted); font-size: .9375rem; }
 .tipo-texto {
-  margin: 1.6rem 0; font-family: var(--fonte), var(--font-body); font-size: calc(var(--tamanho, 48px) * var(--fsx, 1));
+  margin: 1.6rem 0; font-family: var(--fonte), var(--font-body); font-size: calc(var(--tamanho, 3rem) * var(--fsx, 1));
   font-weight: var(--peso, 500); line-height: 1.1; overflow-wrap: anywhere;
 }
 .tipo-controlos { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
@@ -1460,3 +1460,4 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .demo-aviso + .case-hero { padding-top: 1.4rem; }
 .demo-aviso strong { display: inline-block; margin-right: .4rem; padding: .3rem .8rem; border-radius: 999px; background: var(--text); color: var(--bg); font-size: .8125rem; }
 .demo-aviso { color: var(--muted); font-size: .9375rem; }
+.cor-amostra::before { content: "Aa"; } /* decorativo: o nome do botão é "Copiar <cor>" */

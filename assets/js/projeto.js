@@ -121,7 +121,7 @@
   var amostra = document.getElementById('tipo-texto');
   if (tamanho && amostra) {
     var saida = document.getElementById('tipo-valor');
-    tamanho.addEventListener('input', function () { amostra.style.setProperty('--tamanho', tamanho.value + 'px'); if (saida) saida.textContent = tamanho.value + ' px'; });
+    tamanho.addEventListener('input', function () { amostra.style.setProperty('--tamanho', (tamanho.value / 16) + 'rem'); if (saida) saida.textContent = tamanho.value + ' px'; });
     document.querySelectorAll('.tipo-pesos button').forEach(function (b, _, todos) {
       b.addEventListener('click', function () {
         todos.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
@@ -157,7 +157,7 @@
       var f = fotos[atual], img = f.querySelector('img');
       lbImg.src = img.src; lbImg.alt = img.alt;
       lbLeg.textContent = f.querySelector('.foto-leg').textContent;
-      lbPar.innerHTML = f.querySelector('.foto-params').innerHTML;
+      lbPar.innerHTML = ''; var lista = f.querySelector('.foto-params'); if (lista && lista.children.length) lbPar.appendChild(lista.cloneNode(true));
       if (lbStatus) lbStatus.textContent = 'Fotografia ' + (atual + 1) + ' de ' + fotos.length + ': ' + lbLeg.textContent;
     };
     fotos.forEach(function (f, i) {
