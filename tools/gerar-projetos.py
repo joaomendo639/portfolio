@@ -117,6 +117,7 @@ PROJETOS = [
     {
         "slug": 'ia-acessibilidade-digital',
         "tipo": "investigacao",
+        "demonstracao": "mota",  # o artigo é sobre painéis que se adaptam: faz sentido a demonstração
         "titulo": 'IA e acessibilidade digital',
         "etiqueta": 'Investigação · Acessibilidade',
         "resumo": 'Artigo científico publicado pela Springer (IntelliSys 2025): o modelo CAIA usa Inteligência Artificial para adaptar as interfaces de motociclos elétricos a cada pessoa.',
@@ -454,6 +455,27 @@ DEMO = """
             <p class="demo-note">Em todos os modos a informação continua lá: cada estado tem ícone e texto, não só cor.</p>
           </div>"""
 
+# Demonstração com um painel de mota (usar com "demonstracao": "mota" no projeto)
+DEMO_MOTA = """
+          <div class="a11y-demo reveal">
+            <p class="demo-label">Experimente: o painel adapta-se a si</p>
+            <div class="demo-toggles" role="group" aria-label="Simular preferências do condutor no painel de exemplo">
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="contrast">Contraste elevado</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="large">Texto maior</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="mono">Ver sem cores</button>
+              <button type="button" class="demo-btn" aria-pressed="false" data-demo="dark">Modo noite</button>
+            </div>
+            <div class="demo-card demo-mota" role="group" aria-label="Painel de mota de exemplo">
+              <div class="demo-top"><span class="demo-title">Painel de exemplo</span><span class="demo-chip demo-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pronto a andar</span></div>
+              <p class="demo-metric">72<span> km/h</span></p>
+              <p class="demo-sub">Velocidade</p>
+              <div class="demo-bar" role="progressbar" aria-label="Bateria" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+              <p class="demo-sub">Bateria 68 % · autonomia 54 km</p>
+              <div class="demo-row"><span class="demo-chip demo-nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19V11a4 4 0 0 1 4-4h8M14 3l4 4-4 4"/></svg>Direita em 200 m</span><span class="demo-chip demo-warn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3zM12 10v4M12 17.5v.5"/></svg>Pressão do pneu traseiro</span></div>
+            </div>
+            <p class="demo-note">Como no modelo CAIA: cada condutor escolhe as suas preferências e o painel ajusta-se, sem perder informação.</p>
+          </div>"""
+
 
 def capitulo(p, n, tipo, titulo, conteudo):
     cid = "c-" + ident(titulo)
@@ -468,8 +490,10 @@ def capitulo(p, n, tipo, titulo, conteudo):
         corpo = f'<ol class="steps">\n{itens}\n          </ol>'
     else:
         corpo = f'<div class="chapter-text reveal">{conteudo}</div>'
-        if titulo in ("Acessibilidade", "Contribuição"):
-            corpo += DEMO.replace("{titulo}", esc(p["titulo"]))
+        # Demonstração interativa: nos artigos só quando faz sentido para o tema ("demonstracao" no projeto)
+        demo = p.get("demonstracao", "geral" if p.get("tipo", "uiux") == "uiux" else None)
+        if demo and titulo in ("Acessibilidade", "Contribuição"):
+            corpo += DEMO_MOTA if demo == "mota" else DEMO.replace("{titulo}", esc(p["titulo"]))
         if titulo == "Resultado":
             extra = " chapter-result"
     return f"""        <section class="chapter chapter-{tipo}{extra}" id="{cid}" aria-labelledby="{cid}-t" data-stage="{n - 1}">

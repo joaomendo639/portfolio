@@ -1468,3 +1468,6 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .paper-resumo { margin-top: clamp(2rem, 5vw, 3rem); }
 .paper-resumo p { margin: .8rem 0 0; max-width: 72ch; color: var(--muted); line-height: 1.75; }
 .projects + .em-breve { margin-top: clamp(2rem, 5vw, 3.4rem); }
+.demo-nav { background: #2a3f63; } /* azul-escuro: 9,9:1 com texto branco */
+.demo-card.is-contrast .demo-nav { --x: 0; background: #142240; }
+.demo-card.is-contrast.is-dark .demo-nav { background: #b9cdf2; }
