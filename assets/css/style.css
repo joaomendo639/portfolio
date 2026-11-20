@@ -1461,3 +1461,10 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .demo-aviso strong { display: inline-block; margin-right: .4rem; padding: .3rem .8rem; border-radius: 999px; background: var(--text); color: var(--bg); font-size: .8125rem; }
 .demo-aviso { color: var(--muted); font-size: .9375rem; }
 .cor-amostra::before { content: "Aa"; } /* decorativo: o nome do botão é "Copiar <cor>" */
+.paper-detalhes { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: .5rem 1.6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.paper-detalhes .ficha-k { display: block; font: 600 .6875rem/1.4 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.paper-detalhes .ficha-v { display: block; font-size: .9375rem; overflow-wrap: anywhere; }
+.paper-ler { margin: 1.6rem 0 0; }
+.paper-resumo { margin-top: clamp(2rem, 5vw, 3rem); }
+.paper-resumo p { margin: .8rem 0 0; max-width: 72ch; color: var(--muted); line-height: 1.75; }
+.projects + .em-breve { margin-top: clamp(2rem, 5vw, 3.4rem); }

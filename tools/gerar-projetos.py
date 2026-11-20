@@ -115,24 +115,33 @@ PROJETOS = [
         "behance": False,
     },
     {
-        "slug": 'exemplo-investigacao', "demo": True,
+        "slug": 'ia-acessibilidade-digital',
         "tipo": "investigacao",
-        "titulo": 'Investigação',
-        "etiqueta": 'Template · Investigação',
-        "resumo": 'Exemplo do template de investigação: ficha do artigo, palavras-chave e citação para copiar.',
-        "meta": [('Ano', 'AAAA'), ('Papel', 'Autor'), ('Publicação', 'Conferência ou revista'), ('Autores', 'Nomes dos autores')],
+        "titulo": 'IA e acessibilidade digital',
+        "etiqueta": 'Investigação · Acessibilidade',
+        "resumo": 'Artigo científico publicado pela Springer (IntelliSys 2025): o modelo CAIA usa Inteligência Artificial para adaptar as interfaces de motociclos elétricos a cada pessoa.',
+        "meta": [('Ano', '2025'), ('Papel', 'Autor principal'), ('Publicação', 'Springer · LNNS, vol. 1553'), ('Páginas', '155–169')],
         "publicacao": {
-            "titulo": "Title of the article (example)",
-            "autores": ["Autor 1", "Autor 2"],
-            "evento": "Nome da conferência ou revista", "ano": "AAAA",
-            "palavras": ["Palavra-chave 1", "Palavra-chave 2", "Palavra-chave 3"],
-            "citacao": "Apelido, A., & Apelido, B. (AAAA). Title of the article (example). Nome da conferência ou revista.",
+            "titulo": "New Solution to Old Problems: Leveraging AI to Customize User Motorcycle Interfaces and Guarantee Digital Accessibility",
+            "autores": ["João Mendo", "Joana Oliveira", "Tiago Pinto", "Tânia Rocha"],
+            "evento": "IntelliSys 2025 · Intelligent Systems and Applications", "ano": "Springer, 2025",
+            "palavras": ["Computação centrada no ser humano", "Acessibilidade digital", "Design de interação", "Inteligência Artificial", "Motociclos elétricos", "Adaptação dinâmica de interfaces"],
+            "detalhes": [("Série", "Lecture Notes in Networks and Systems, vol. 1553"), ("Publicado", "3 de setembro de 2025"), ("Páginas", "155–169"), ("DOI", "10.1007/978-3-031-99958-1_12")],
+            "url": "https://doi.org/10.1007/978-3-031-99958-1_12",
+            "resumo": "Despite the proliferation of guidelines, standards, and best practices for digital accessibility, many platforms and websites remain inaccessible to people with disabilities. Although global awareness is slowly increasing, little has been done to overcome this issue. This study explores the potential of Artificial Intelligence (AI) and Machine Learning to address this problem, focusing on the personalization of user interfaces (UIs) in electric motorcycles. Unlike static guidelines, AI-driven solutions can dynamically adapt to the specific needs of users, creating more inclusive digital experiences. We propose a CAIA (Comprehensive AI Accessibility) framework model as a way to integrate AI into electric motorcycle interfaces, allowing users to configure their accessibility preferences and for AI to automatically adjust the display and controls of the motorcycle, promoting a human-centered computing approach and an adaptive system. The model has shown to effectively improve user models and personalization, ensuring a personalized and inclusive experience. The study concludes that AI-driven systems, when ethically implemented, can enhance digital inclusion while providing a more tailored and adaptive user experience. It also discusses the ethical implications, privacy concerns, and the role of human involvement in the development of assistive technologies and interaction design, offering a comprehensive solution to improve digital inclusion for all types of users.",
+            "citacao": "Mendo, J., Oliveira, J., Pinto, T., Rocha, T. (2025). New Solution to Old Problems: Leveraging AI to Customize User Motorcycle Interfaces and Guarantee Digital Accessibility. In: Arai, K. (eds) Intelligent Systems and Applications. IntelliSys 2025. Lecture Notes in Networks and Systems, vol 1553. Springer, Cham. https://doi.org/10.1007/978-3-031-99958-1_12",
         },
-        "galeria": [('projeto-6.svg', 'Ilustração de exemplo de um artigo científico.', 'Artigo')],
+        "galeria": [
+            ('projeto-6.svg', 'Ilustração de um artigo científico com gráfico e o símbolo de acessibilidade.', 'O artigo'),
+            ('projeto-1.svg', 'Ilustração do painel digital de um motociclo elétrico.', 'Interfaces de motociclos'),
+            ('hero.svg', 'Ilustração de um painel de mota ao lado de uma aplicação móvel.', 'Painel e aplicação'),
+        ],
         "capitulos": [
-            ('texto', 'Contexto', '<p>Onde nasceu a investigação e <mark>porque é importante</mark>.</p>'),
-            ('frase', 'A pergunta', 'A pergunta de investigação, numa frase.'),
-            ('texto', 'Contribuição', '<p>O que o artigo <mark>acrescenta</mark> ao conhecimento existente.</p>'),
+            ('texto', 'Contexto', '<p>Apesar das diretrizes, normas e boas práticas de acessibilidade digital, muitas plataformas continuam <mark>inacessíveis a pessoas com deficiência</mark>. O estudo nasce do trabalho de design de interfaces no projeto A-MoVeR, centrado em motociclos elétricos.</p>'),
+            ('frase', 'A pergunta', 'E se, em vez de uma interface igual para todos, a mota se adaptasse a cada condutor?'),
+            ('passos', 'O modelo CAIA', ['O condutor configura as suas preferências de acessibilidade.', 'A Inteligência Artificial ajusta automaticamente o ecrã e os controlos da mota.', 'O sistema adapta-se de forma contínua a quem o usa.', 'A pessoa continua no centro e envolvida nas decisões.']),
+            ('texto', 'Contribuição', '<p>O artigo propõe o modelo <mark>CAIA (Comprehensive AI Accessibility)</mark> para integrar Inteligência Artificial nas interfaces de motociclos elétricos. O modelo mostrou melhorar os modelos de utilizador e a personalização, garantindo uma experiência inclusiva.</p>'),
+            ('texto', 'Ética e privacidade', '<p>A IA só aumenta a inclusão digital quando é <mark>implementada de forma ética</mark>. O artigo discute as implicações éticas, a privacidade e o papel das pessoas no desenvolvimento de tecnologias de apoio e no design de interação.</p>'),
         ],
         "behance": False,
     },
@@ -375,6 +384,13 @@ def modulo_investigacao(p):
         return ""
     chips = "".join(f"<li>{esc(k)}</li>" for k in pub.get("palavras", []))
     autores = ", ".join(pub["autores"])
+    detalhes = "".join(f'<li><span class="ficha-k">{esc(k)}:</span> <span class="ficha-v">{esc(v)}</span></li>'
+                       for k, v in pub.get("detalhes", []))
+    detalhes = f'<ul class="paper-detalhes" aria-label="Dados da publicação">{detalhes}</ul>' if detalhes else ""
+    resumo = (f'<div class="paper-resumo reveal"><h3 class="paper-sub">Resumo <span lang="en">(Abstract)</span></h3>'
+              f'<p lang="en">{esc(pub["resumo"])}</p></div>') if pub.get("resumo") else ""
+    ler = (f'<a class="btn btn-primary" href="{pub["url"]}" target="_blank" rel="noopener">Ler o artigo na Springer <span aria-hidden="true">↗</span>'
+           f'<span class="sr-only"> (abre num novo separador)</span></a>') if pub.get("url") else ""
     return f"""      <section class="modulo modulo-paper" aria-labelledby="mod-paper">
         <div class="container paper">
           <div class="modulo-head">
@@ -386,7 +402,10 @@ def modulo_investigacao(p):
             <h3 class="paper-titulo" id="paper-titulo" lang="en">{esc(pub["titulo"])}</h3>
             <p class="paper-autores">{esc(autores)}</p>
             <ul class="paper-chaves" aria-label="Palavras-chave">{chips}</ul>
+            {detalhes}
+            <p class="paper-ler">{ler}</p>
           </article>
+          {resumo}
           <div class="paper-citar reveal">
             <h3 class="paper-sub">Como citar</h3>
             <p class="paper-citacao" id="citacao">{esc(pub["citacao"])}</p>
