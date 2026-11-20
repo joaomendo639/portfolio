@@ -17,11 +17,11 @@
   <meta property="og:url" content="https://joaomendo639.github.io/portfolio/">
   <meta property="og:locale" content="pt_PT">
 
-  <link rel="icon" href="assets/img/favicon.svg?v=202611191759" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.svg?v=202611201117" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611191759">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611201117">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -182,10 +182,10 @@
           <img src="assets/img/hero.svg" width="1200" height="900"
                alt="Painel digital de mota com velocímetro e navegação, ao lado de uma aplicação móvel.">
           <figcaption class="glass hero-card">
-            <span class="hero-card-label">Projeto em destaque</span>
+            <span class="hero-card-label">Em destaque</span>
             <strong class="hero-card-title">A-MoVeR</strong>
             <span class="hero-card-meta">UI/UX para mobilidade elétrica · 2024–25</span>
-            <a class="icon-btn" href="projetos/interfaces-a-mover.html" aria-label="Ver projeto A-MoVeR">
+            <a class="icon-btn" href="#percurso" aria-label="Ver o percurso no A-MoVeR">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
             </a>
           </figcaption>
@@ -216,97 +216,26 @@
             <p class="eyebrow">02 — Projetos</p>
             <h2 id="projetos-title" class="section-title reveal">Trabalho <em>selecionado</em></h2>
           </div>
-          <div class="filters" role="group" aria-label="Filtrar projetos por categoria">
-            <button type="button" class="chip" data-filter="all" aria-pressed="true">Todos</button>
-            <button type="button" class="chip" data-filter="uiux" aria-pressed="false">UI/UX</button>
-            <button type="button" class="chip" data-filter="web" aria-pressed="false">Web</button>
-            <button type="button" class="chip" data-filter="multimedia" aria-pressed="false">Multimédia</button>
-            <button type="button" class="chip" data-filter="fotografia" aria-pressed="false">Fotografia</button>
-            <button type="button" class="chip" data-filter="investigacao" aria-pressed="false">Investigação</button>
-          </div>
         </div>
-        <p class="sr-only" id="filter-status" aria-live="polite"></p>
-
+        
         <!-- EDITAR: substitui as imagens em assets/img/ por capturas reais (formato 4:5, .webp ou .jpg) -->
-        <ul class="projects">
-          <li class="project reveal tilt" data-category="uiux">
-            <article>
-              <img class="is-photo" src="assets/img/projetos/interfaces-a-mover/frente-tres-quartos.jpg" width="800" height="1000" loading="lazy" alt="Fulgora, mota elétrica da AJP Motos, vista de frente a três quartos.">
-              <div class="project-info glass">
-                <p class="project-tag">UI/UX · Investigação</p>
-                <h3><a href="projetos/interfaces-a-mover.html" class="project-link">Interfaces A-MoVeR</a></h3>
-                <p class="project-meta">Mobilidade elétrica · 2024–25</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="web">
-            <article>
-              <img src="assets/img/projeto-2.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um website num browser, com título, imagem de destaque e cartões.">
-              <div class="project-info glass">
-                <p class="project-tag">Web · Multimédia</p>
-                <h3><a href="projetos/website-a-mover.html" class="project-link">Website A-MoVeR</a></h3>
-                <p class="project-meta">Design e desenvolvimento · 2024</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="web uiux">
-            <article>
-              <img src="assets/img/projeto-3.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um website de turismo em computador e telemóvel, com paisagem verde.">
-              <div class="project-info glass">
-                <p class="project-tag">UI/UX · Web</p>
-                <h3><a href="projetos/redesign-turismo-mirandela.html" class="project-link">Redesign Turismo Mirandela</a></h3>
-                <p class="project-meta">Câmara Municipal de Mirandela · 2023</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="multimedia">
-            <article>
-              <img src="assets/img/projeto-4.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um logótipo com paleta de cores e tipografia.">
-              <div class="project-info glass">
-                <p class="project-tag">Branding</p>
-                <h3><a href="projetos/identidade-visual-a-mover.html" class="project-link">Identidade Visual A-MoVeR</a></h3>
-                <p class="project-meta">Adaptação multiplataforma · 2024</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="multimedia">
-            <article>
-              <img src="assets/img/projeto-5.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um leitor de vídeo com botão de reprodução e linha do tempo.">
-              <div class="project-info glass">
-                <p class="project-tag">Vídeo · Comunicação</p>
-                <h3><a href="projetos/videos-promocionais.html" class="project-link">Vídeos promocionais</a></h3>
-                <p class="project-meta">A-MoVeR · Redes sociais · 2024–25</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="multimedia fotografia">
-            <article>
-              <img class="is-photo" src="assets/img/projetos/primeira-comunhao/certificado.jpg" width="800" height="1000" loading="lazy" alt="Menina a sorrir a mostrar o certificado da Primeira Comunhão.">
-              <div class="project-info glass">
-                <p class="project-tag">Fotografia · Reportagem</p>
-                <h3><a href="projetos/primeira-comunhao.html" class="project-link">Primeira Comunhão</a></h3>
-                <p class="project-meta">Reportagem de evento · 2024</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-          <li class="project reveal tilt" data-category="investigacao">
-            <article>
-              <img src="assets/img/projeto-6.svg" width="800" height="1000" loading="lazy" alt="Ilustração de um artigo científico com gráfico e o símbolo internacional de acessibilidade.">
-              <div class="project-info glass">
-                <p class="project-tag">Investigação · Acessibilidade</p>
-                <h3><a href="projetos/ia-acessibilidade-digital.html" class="project-link">IA e acessibilidade digital</a></h3>
-                <p class="project-meta">IntelliSys 2025 · Autor principal</p>
-                <span class="icon-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </div>
-            </article>
-          </li>
-        </ul>
+        <div class="em-breve reveal">
+          <p class="em-breve-titulo">Novos trabalhos <em>em breve.</em></p>
+          <p class="em-breve-texto">Estou a preparar as páginas dos projetos. Enquanto isso, pode ver os trabalhos no Behance ou espreitar os templates de cada tipo de trabalho.</p>
+          <p class="em-breve-acoes">
+            <a class="btn btn-primary" href="https://www.behance.net/joomendo" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span><span class="sr-only"> (abre num novo separador)</span></a>
+            <a class="btn btn-ghost" href="#contacto">Falar comigo <span aria-hidden="true">→</span></a>
+          </p>
+          <h3 class="em-breve-sub">Templates</h3>
+          <ul class="em-breve-templates">
+            <li><a href="projetos/exemplo-uiux.html">UI/UX</a></li>
+            <li><a href="projetos/exemplo-fotografia.html">Fotografia</a></li>
+            <li><a href="projetos/exemplo-design.html">Design de marca</a></li>
+            <li><a href="projetos/exemplo-web.html">Web</a></li>
+            <li><a href="projetos/exemplo-video.html">Vídeo</a></li>
+            <li><a href="projetos/exemplo-investigacao.html">Investigação</a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -316,7 +245,7 @@
       <div class="container about">
         <figure class="about-photo reveal">
           <!-- EDITAR: a tua fotografia (formato 4:5) -->
-          <img src="assets/img/retrato.svg?v=202611191759" width="800" height="1000" loading="lazy" alt="Logótipo jm de João Mendo, espaço reservado para a fotografia.">
+          <img src="assets/img/retrato.svg?v=202611201117" width="800" height="1000" loading="lazy" alt="Logótipo jm de João Mendo, espaço reservado para a fotografia.">
         </figure>
         <div class="about-copy">
           <p class="eyebrow">03 — Sobre</p>
@@ -583,6 +512,6 @@
     </form>
   </dialog>
 
-  <script src="assets/js/main.js?v=202611191759" defer></script>
+  <script src="assets/js/main.js?v=202611201117" defer></script>
 </body>
 </html>

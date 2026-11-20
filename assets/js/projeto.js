@@ -99,6 +99,82 @@
     setActive(0);
   }
 
+  /* ---------- Copiar (cores, citação) ---------- */
+  function copiar(texto, statusEl) {
+    var feito = function () { if (statusEl) { statusEl.textContent = ''; setTimeout(function () { statusEl.textContent = 'Copiado: ' + texto; }, 30); } };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(texto).then(feito, feito); return; }
+    var ta = document.createElement('textarea'); ta.value = texto; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); feito();
+  }
+  document.querySelectorAll('[data-copiar], [data-copiar-de]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var alvo = btn.dataset.copiarDe ? document.getElementById(btn.dataset.copiarDe) : null;
+      var texto = alvo ? alvo.textContent.trim() : btn.dataset.copiar;
+      var status = btn.closest('.modulo').querySelector('.copiar-status');
+      copiar(texto, status);
+      if (alvo) { var orig = btn.textContent; btn.textContent = 'Copiado ✓'; setTimeout(function () { btn.textContent = orig; }, 1800); }
+    });
+  });
+
+  /* ---------- Design: amostra tipográfica ---------- */
+  var tamanho = document.getElementById('tipo-tamanho');
+  var amostra = document.getElementById('tipo-texto');
+  if (tamanho && amostra) {
+    var saida = document.getElementById('tipo-valor');
+    tamanho.addEventListener('input', function () { amostra.style.setProperty('--tamanho', tamanho.value + 'px'); if (saida) saida.textContent = tamanho.value + ' px'; });
+    document.querySelectorAll('.tipo-pesos button').forEach(function (b, _, todos) {
+      b.addEventListener('click', function () {
+        todos.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        amostra.style.setProperty('--peso', b.dataset.peso);
+      });
+    });
+  }
+
+  /* ---------- Web: simulador de dispositivos ---------- */
+  var palco = document.querySelector('.disp-palco');
+  if (palco) {
+    var ecra = palco.querySelector('.disp-ecra');
+    document.querySelectorAll('.disp-btn').forEach(function (b, _, todos) {
+      b.addEventListener('click', function () {
+        var d = b.dataset.disp;
+        todos.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        palco.dataset.atual = d;
+        palco.querySelectorAll('.disp-img').forEach(function (img) { img.classList.toggle('is-on', img.dataset.disp === d); });
+        if (ecra) ecra.scrollTop = 0;
+      });
+    });
+  }
+
+  /* ---------- Fotografia: ecrã inteiro com parâmetros ---------- */
+  var lb = document.querySelector('.lightbox');
+  if (lb && typeof lb.showModal === 'function') {
+    var fotos = Array.prototype.slice.call(document.querySelectorAll('.foto'));
+    var lbImg = lb.querySelector('.lightbox-fig img'), lbLeg = lb.querySelector('.lightbox-leg');
+    var lbPar = lb.querySelector('.lightbox-params'), lbStatus = lb.querySelector('.lightbox-status');
+    var atual = 0, origem = null;
+    var mostrar = function (i) {
+      atual = (i + fotos.length) % fotos.length;
+      var f = fotos[atual], img = f.querySelector('img');
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      lbLeg.textContent = f.querySelector('.foto-leg').textContent;
+      lbPar.innerHTML = f.querySelector('.foto-params').innerHTML;
+      if (lbStatus) lbStatus.textContent = 'Fotografia ' + (atual + 1) + ' de ' + fotos.length + ': ' + lbLeg.textContent;
+    };
+    fotos.forEach(function (f, i) {
+      f.querySelector('.foto-abrir').addEventListener('click', function (e) { origem = e.currentTarget; mostrar(i); lb.showModal(); });
+    });
+    lb.querySelector('.lightbox-prev').addEventListener('click', function () { mostrar(atual - 1); });
+    lb.querySelector('.lightbox-next').addEventListener('click', function () { mostrar(atual + 1); });
+    lb.querySelector('.lightbox-close').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(atual + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(atual - 1); }
+    });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lightbox-inner')) lb.close(); });
+    lb.addEventListener('close', function () { if (origem) origem.focus(); });
+    if (fotos.length < 2) { lb.querySelector('.lightbox-prev').hidden = true; lb.querySelector('.lightbox-next').hidden = true; }
+  }
+
   /* ---------- Demonstração "Experimente" (acessibilidade) ---------- */
   document.querySelectorAll('.a11y-demo').forEach(function (demo) {
     var card = demo.querySelector('.demo-card');

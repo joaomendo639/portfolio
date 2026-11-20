@@ -3,24 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Website A-MoVeR — João Mendo</title>
-  <meta name="description" content="Design e desenvolvimento do website do projeto A-MoVeR — a montra pública da investigação para parceiros, investigadores e público em geral.">
+  <title>Fotografia — João Mendo</title>
+  <meta name="description" content="Exemplo do template de fotografia: galeria em mosaico, ecrã inteiro e os parâmetros de cada fotografia.">
   <meta name="author" content="João Mendo">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f5f1eb" media="(prefers-color-scheme: light)">
   <meta name="color-scheme" content="dark light">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Website A-MoVeR — João Mendo">
-  <meta property="og:description" content="Design e desenvolvimento do website do projeto A-MoVeR — a montra pública da investigação para parceiros, investigadores e público em geral.">
-  <meta property="og:url" content="https://joaomendo639.github.io/portfolio/projetos/website-a-mover.html">
+  <meta property="og:title" content="Fotografia — João Mendo">
+  <meta property="og:description" content="Exemplo do template de fotografia: galeria em mosaico, ecrã inteiro e os parâmetros de cada fotografia.">
+  <meta property="og:url" content="https://joaomendo639.github.io/portfolio/projetos/exemplo-fotografia.html">
   <meta property="og:locale" content="pt_PT">
   <!-- Página gerada por tools/gerar-projetos.py — editar o texto lá, não aqui -->
 
-  <link rel="icon" href="../assets/img/favicon.svg?v=202611191759" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon.svg?v=202611201117" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611191759">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611201117">
 
   <script>
     document.documentElement.classList.add('js');
@@ -56,7 +57,7 @@
     } catch (e) {}
   </script>
 </head>
-<body class="page-case">
+<body class="page-case tipo-fotografia">
   <!-- Logótipo "jm" (proposta A — fita): o j e o m num só traço, o ponto é o pingo do j e o utilizador.
        Cores em variáveis CSS (--logo-*), para seguir os temas claro/escuro e o alto contraste do Windows. -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -112,59 +113,76 @@
 
   <main id="conteudo" tabindex="-1">
     <article class="case">
+      <p class="demo-aviso container"><strong>Página de exemplo.</strong> Mostra o template deste tipo de trabalho; o conteúdo real entra em breve.</p>
       <header class="case-hero container">
         <div class="hero-glow" aria-hidden="true"></div>
         <nav aria-label="Caminho">
           <a class="case-back" href="../#projetos"><span aria-hidden="true">←</span> Todos os projetos</a>
         </nav>
-        <p class="eyebrow">Web · Multimédia</p>
-        <h1 class="case-title" data-split>Website A-MoVeR</h1>
-        <p class="case-lead reveal">Design e desenvolvimento do website do projeto A-MoVeR — a montra pública da investigação para parceiros, investigadores e público em geral.</p>
+        <p class="eyebrow">Template · Fotografia</p>
+        <h1 class="case-title" data-split>Fotografia</h1>
+        <p class="case-lead reveal">Exemplo do template de fotografia: galeria em mosaico, ecrã inteiro e os parâmetros de cada fotografia.</p>
         <ul class="case-chips" aria-label="Ficha do projeto">
-          <li class="case-chip glass reveal"><span class="chip-k">Ano:</span> <span class="chip-v">2024</span></li>
-          <li class="case-chip glass reveal"><span class="chip-k">Papel:</span> <span class="chip-v">Design e desenvolvimento</span></li>
-          <li class="case-chip glass reveal"><span class="chip-k">Contexto:</span> <span class="chip-v">Projeto A-MoVeR</span></li>
-          <li class="case-chip glass reveal"><span class="chip-k">Ferramentas:</span> <span class="chip-v">Figma, Adobe Illustrator</span></li>
+          <li class="case-chip glass reveal"><span class="chip-k">Ano:</span> <span class="chip-v">AAAA</span></li>
+          <li class="case-chip glass reveal"><span class="chip-k">Papel:</span> <span class="chip-v">Fotografia</span></li>
+          <li class="case-chip glass reveal"><span class="chip-k">Contexto:</span> <span class="chip-v">Cliente ou evento</span></li>
+          <li class="case-chip glass reveal"><span class="chip-k">Equipamento:</span> <span class="chip-v">Câmara e objetivas</span></li>
         </ul>
       </header>
 
-      <section class="gallery container" aria-roledescription="carrossel" aria-label="Imagens do projeto">
-        <div class="gallery-viewport">
-          <div class="gallery-track" id="gallery-track" tabindex="0" role="group" aria-label="Imagens: deslize ou use as setas do teclado">
-          <div class="gallery-slide" role="group" aria-roledescription="diapositivo" aria-label="1 de 3: Página inicial">
-            <figure><img src="../assets/img/projeto-2.svg" width="800" height="1000" alt="Website num browser, com título, imagem de destaque e cartões."><figcaption>Página inicial</figcaption></figure>
+
+      <section class="modulo modulo-foto" aria-labelledby="mod-foto">
+        <div class="container">
+          <div class="modulo-head">
+            <p class="eyebrow">Fotografia</p>
+            <h2 id="mod-foto" class="modulo-title">Galeria</h2>
+            <dl class="foto-ficha"><div><dt>Câmara</dt><dd>Câmara (exemplo)</dd></div><div><dt>Data</dt><dd>01-01-2025</dd></div><div><dt>Fotografias</dt><dd>4</dd></div></dl>
           </div>
-          <div class="gallery-slide" role="group" aria-roledescription="diapositivo" aria-label="2 de 3: Identidade aplicada ao site">
-            <figure><img src="../assets/img/projeto-4.svg" width="800" height="1000" alt="Logótipo com paleta de cores e tipografia." loading="lazy"><figcaption>Identidade aplicada ao site</figcaption></figure>
-          </div>
-          <div class="gallery-slide" role="group" aria-roledescription="diapositivo" aria-label="3 de 3: Conteúdos multimédia">
-            <figure><img src="../assets/img/projeto-5.svg" width="800" height="1000" alt="Leitor de vídeo com botão de reprodução." loading="lazy"><figcaption>Conteúdos multimédia</figcaption></figure>
-          </div>
-          </div>
-          <span class="gallery-cursor" aria-hidden="true"></span>
+          <ul class="foto-grelha">
+          <li class="foto reveal">
+            <button type="button" class="foto-abrir" data-foto="0" aria-label="Ver em ecrã inteiro: Fotografia 1">
+              <img src="../assets/img/exemplos/foto-1.jpg" alt="Paisagem de exemplo com colinas ao entardecer." width="800" height="1000" loading="lazy">
+            </button>
+            <div class="foto-info"><p class="foto-leg">Fotografia 1</p><ul class="foto-params" aria-label="Parâmetros da fotografia"><li><span class="sr-only">Abertura: </span>f/8</li><li><span class="sr-only">Velocidade: </span>1/250 s</li><li><span class="sr-only">Sensibilidade: </span>ISO 100</li><li><span class="sr-only">Distância focal: </span>35 mm</li></ul></div>
+          </li>
+          <li class="foto reveal">
+            <button type="button" class="foto-abrir" data-foto="1" aria-label="Ver em ecrã inteiro: Fotografia 2">
+              <img src="../assets/img/exemplos/foto-2.jpg" alt="Paisagem de exemplo em tons de azul." width="800" height="1000" loading="lazy">
+            </button>
+            <div class="foto-info"><p class="foto-leg">Fotografia 2</p><ul class="foto-params" aria-label="Parâmetros da fotografia"><li><span class="sr-only">Abertura: </span>f/2.8</li><li><span class="sr-only">Velocidade: </span>1/500 s</li><li><span class="sr-only">Sensibilidade: </span>ISO 200</li><li><span class="sr-only">Distância focal: </span>50 mm</li></ul></div>
+          </li>
+          <li class="foto reveal">
+            <button type="button" class="foto-abrir" data-foto="2" aria-label="Ver em ecrã inteiro: Fotografia 3">
+              <img src="../assets/img/exemplos/foto-3.jpg" alt="Paisagem de exemplo em tons quentes." width="800" height="1000" loading="lazy">
+            </button>
+            <div class="foto-info"><p class="foto-leg">Fotografia 3</p><ul class="foto-params" aria-label="Parâmetros da fotografia"><li><span class="sr-only">Abertura: </span>f/11</li><li><span class="sr-only">Velocidade: </span>1/125 s</li><li><span class="sr-only">Sensibilidade: </span>ISO 100</li><li><span class="sr-only">Distância focal: </span>24 mm</li></ul></div>
+          </li>
+          <li class="foto reveal">
+            <button type="button" class="foto-abrir" data-foto="3" aria-label="Ver em ecrã inteiro: Fotografia 4">
+              <img src="../assets/img/exemplos/foto-4.jpg" alt="Paisagem de exemplo em tons verdes." width="800" height="1000" loading="lazy">
+            </button>
+            <div class="foto-info"><p class="foto-leg">Fotografia 4</p><ul class="foto-params" aria-label="Parâmetros da fotografia"><li><span class="sr-only">Abertura: </span>f/4</li><li><span class="sr-only">Velocidade: </span>1/60 s</li><li><span class="sr-only">Sensibilidade: </span>ISO 400</li><li><span class="sr-only">Distância focal: </span>85 mm</li></ul></div>
+          </li>
+          </ul>
         </div>
-        <div class="gallery-bar">
-          <button type="button" class="gallery-btn gallery-prev" aria-controls="gallery-track" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <p class="gallery-count"><span class="gallery-now">01</span> <span aria-hidden="true">/</span><span class="sr-only">de</span> 03</p>
-          <span class="gallery-progress" aria-hidden="true"><span style="--p:0.3333"></span></span>
-          <div class="gallery-thumbs">
-            <button type="button" class="gallery-thumb" data-go="0" aria-label="Mostrar imagem 1: Página inicial" aria-current="true"><img src="../assets/img/projeto-2.svg" alt="" width="80" height="100" loading="lazy"></button>
-            <button type="button" class="gallery-thumb" data-go="1" aria-label="Mostrar imagem 2: Identidade aplicada ao site"><img src="../assets/img/projeto-4.svg" alt="" width="80" height="100" loading="lazy"></button>
-            <button type="button" class="gallery-thumb" data-go="2" aria-label="Mostrar imagem 3: Conteúdos multimédia"><img src="../assets/img/projeto-5.svg" alt="" width="80" height="100" loading="lazy"></button>
+        <dialog class="lightbox" aria-label="Fotografia em ecrã inteiro">
+          <div class="lightbox-inner">
+            <figure class="lightbox-fig"><img src="" alt=""><figcaption><span class="lightbox-leg"></span><ul class="foto-params lightbox-params" aria-label="Parâmetros da fotografia"></ul></figcaption></figure>
+            <button type="button" class="lightbox-btn lightbox-prev" aria-label="Fotografia anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button type="button" class="lightbox-btn lightbox-next" aria-label="Fotografia seguinte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            <button type="button" class="lightbox-btn lightbox-close" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            <p class="sr-only lightbox-status" aria-live="polite"></p>
           </div>
-          <button type="button" class="gallery-btn gallery-next" aria-controls="gallery-track" aria-label="Imagem seguinte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-          <p class="sr-only" aria-live="polite" id="gallery-status"></p>
-        </div>
+        </dialog>
       </section>
 
       <div class="case-story container">
         <div class="story-aside">
           <div class="story-stage" aria-hidden="true">
-            <img class="stage-img is-on" data-k="0" data-cap="Contexto" src="../assets/img/projeto-2.svg" alt="" width="800" height="1000">
-            <img class="stage-img" data-k="1" data-cap="O desafio" src="../assets/img/projeto-4.svg" alt="" width="800" height="1000" loading="lazy">
-            <img class="stage-img" data-k="2" data-cap="O que fiz" src="../assets/img/projeto-5.svg" alt="" width="800" height="1000" loading="lazy">
-            <img class="stage-img" data-k="3" data-cap="Acessibilidade" src="../assets/img/projeto-2.svg" alt="" width="800" height="1000" loading="lazy">
-            <img class="stage-img" data-k="4" data-cap="Resultado" src="../assets/img/projeto-4.svg" alt="" width="800" height="1000" loading="lazy">
+            <img class="stage-img is-on is-photo" data-k="0" data-cap="Contexto" src="../assets/img/exemplos/foto-1.jpg" alt="" width="800" height="1000">
+            <img class="stage-img is-photo" data-k="1" data-cap="O desafio" src="../assets/img/exemplos/foto-2.jpg" alt="" width="800" height="1000" loading="lazy">
+            <img class="stage-img is-photo" data-k="2" data-cap="O que fiz" src="../assets/img/exemplos/foto-3.jpg" alt="" width="800" height="1000" loading="lazy">
+            <img class="stage-img is-photo" data-k="3" data-cap="Privacidade" src="../assets/img/exemplos/foto-4.jpg" alt="" width="800" height="1000" loading="lazy">
             <span class="stage-num">01</span>
             <span class="stage-cap">Contexto</span>
           </div>
@@ -173,8 +191,7 @@
             <li><a href="#c-contexto"><span class="story-n" aria-hidden="true">01</span> Contexto</a></li>
             <li><a href="#c-o-desafio"><span class="story-n" aria-hidden="true">02</span> O desafio</a></li>
             <li><a href="#c-o-que-fiz"><span class="story-n" aria-hidden="true">03</span> O que fiz</a></li>
-            <li><a href="#c-acessibilidade"><span class="story-n" aria-hidden="true">04</span> Acessibilidade</a></li>
-            <li><a href="#c-resultado"><span class="story-n" aria-hidden="true">05</span> Resultado</a></li>
+            <li><a href="#c-privacidade"><span class="story-n" aria-hidden="true">04</span> Privacidade</a></li>
             </ol>
             <span class="story-line" aria-hidden="true"><span></span></span>
           </nav>
@@ -182,71 +199,46 @@
         <div class="story-chapters">
         <section class="chapter chapter-texto" id="c-contexto" aria-labelledby="c-contexto-t" data-stage="0">
           <p class="chapter-num" aria-hidden="true">01</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-2.svg" alt="" width="800" height="1000" loading="lazy"></figure>
+          <figure class="chapter-figure" aria-hidden="true"><img class="is-photo" src="../assets/img/exemplos/foto-1.jpg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-contexto-t">Contexto</h2>
-          <div class="chapter-text reveal"><p>O website é o <mark>ponto central de comunicação</mark> do A-MoVeR, ao lado das redes sociais e das newsletters que também produzi.</p></div>
+          <div class="chapter-text reveal"><p>Para quem, onde e quando foi feita a <mark>sessão fotográfica</mark>.</p></div>
         </section>
         <section class="chapter chapter-frase" id="c-o-desafio" aria-labelledby="c-o-desafio-t" data-stage="1">
           <p class="chapter-num" aria-hidden="true">02</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-4.svg" alt="" width="800" height="1000" loading="lazy"></figure>
+          <figure class="chapter-figure" aria-hidden="true"><img class="is-photo" src="../assets/img/exemplos/foto-2.jpg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-o-desafio-t">O desafio</h2>
-          <p class="chapter-statement" data-scrub>Explicar um projeto técnico de forma clara a públicos muito diferentes e manter o site simples de atualizar à medida que a investigação avança.</p>
+          <p class="chapter-statement" data-scrub>A dificuldade principal da sessão: luz, tempo, movimento ou o que tornou este trabalho especial.</p>
         </section>
         <section class="chapter chapter-passos" id="c-o-que-fiz" aria-labelledby="c-o-que-fiz-t" data-stage="2">
           <p class="chapter-num" aria-hidden="true">03</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-5.svg" alt="" width="800" height="1000" loading="lazy"></figure>
+          <figure class="chapter-figure" aria-hidden="true"><img class="is-photo" src="../assets/img/exemplos/foto-3.jpg" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="c-o-que-fiz-t">O que fiz</h2>
           <ol class="steps">
-            <li class="step spot reveal"><span class="step-n" aria-hidden="true">01</span><p>Arquitetura de informação e estrutura das páginas.</p></li>
-            <li class="step spot reveal"><span class="step-n" aria-hidden="true">02</span><p>Design da interface alinhado com a identidade visual do projeto.</p></li>
-            <li class="step spot reveal"><span class="step-n" aria-hidden="true">03</span><p>Desenvolvimento e publicação do website.</p></li>
-            <li class="step spot reveal"><span class="step-n" aria-hidden="true">04</span><p>Produção de conteúdos multimédia para as páginas.</p></li>
+            <li class="step spot reveal"><span class="step-n" aria-hidden="true">01</span><p>Preparação e planeamento.</p></li>
+            <li class="step spot reveal"><span class="step-n" aria-hidden="true">02</span><p>Sessão fotográfica.</p></li>
+            <li class="step spot reveal"><span class="step-n" aria-hidden="true">03</span><p>Seleção e edição.</p></li>
+            <li class="step spot reveal"><span class="step-n" aria-hidden="true">04</span><p>Entrega ao cliente.</p></li>
           </ol>
         </section>
-        <section class="chapter chapter-texto" id="c-acessibilidade" aria-labelledby="c-acessibilidade-t" data-stage="3">
+        <section class="chapter chapter-texto" id="c-privacidade" aria-labelledby="c-privacidade-t" data-stage="3">
           <p class="chapter-num" aria-hidden="true">04</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-2.svg" alt="" width="800" height="1000" loading="lazy"></figure>
-          <h2 class="chapter-title reveal" id="c-acessibilidade-t">Acessibilidade</h2>
-          <div class="chapter-text reveal"><p>Títulos com <mark>estrutura semântica</mark>, contraste adequado, texto alternativo nas imagens e <mark>navegação por teclado</mark>, seguindo as diretrizes WCAG.</p></div>
-          <div class="a11y-demo reveal">
-            <p class="demo-label">Experimente</p>
-            <div class="demo-toggles" role="group" aria-label="Simular preferências de acessibilidade na pré-visualização">
-              <button type="button" class="demo-btn" aria-pressed="false" data-demo="contrast">Contraste elevado</button>
-              <button type="button" class="demo-btn" aria-pressed="false" data-demo="large">Texto maior</button>
-              <button type="button" class="demo-btn" aria-pressed="false" data-demo="mono">Ver sem cores</button>
-              <button type="button" class="demo-btn" aria-pressed="false" data-demo="dark">Modo noite</button>
-            </div>
-            <div class="demo-card" role="group" aria-label="Pré-visualização de interface">
-              <div class="demo-top"><span class="demo-title">Website A-MoVeR</span><span class="demo-chip demo-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Concluído</span></div>
-              <p class="demo-metric">68<span>%</span></p>
-              <p class="demo-sub">Progresso</p>
-              <div class="demo-bar" role="progressbar" aria-label="Progresso" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-              <div class="demo-row"><span class="demo-chip demo-warn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3zM12 10v4M12 17.5v.5"/></svg>Atenção</span><span class="demo-chip demo-err"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Erro</span></div>
-              <span class="demo-action">Continuar <span aria-hidden="true">→</span></span>
-            </div>
-            <p class="demo-note">Em todos os modos a informação continua lá: cada estado tem ícone e texto, não só cor.</p>
-          </div>
+          <figure class="chapter-figure" aria-hidden="true"><img class="is-photo" src="../assets/img/exemplos/foto-4.jpg" alt="" width="800" height="1000" loading="lazy"></figure>
+          <h2 class="chapter-title reveal" id="c-privacidade-t">Privacidade</h2>
+          <div class="chapter-text reveal"><p>Só se publicam imagens de pessoas <mark>com autorização</mark>; dados pessoais visíveis são desfocados.</p></div>
         </section>
-        <section class="chapter chapter-texto chapter-result" id="c-resultado" aria-labelledby="c-resultado-t" data-stage="4">
-          <p class="chapter-num" aria-hidden="true">05</p>
-          <figure class="chapter-figure" aria-hidden="true"><img src="../assets/img/projeto-4.svg" alt="" width="800" height="1000" loading="lazy"></figure>
-          <h2 class="chapter-title reveal" id="c-resultado-t">Resultado</h2>
-          <div class="chapter-text reveal"><p>Um website que reúne a informação do projeto <mark>num só lugar</mark> e que liga a comunicação nas redes sociais e nas newsletters.</p></div>
-        </section>
-        <p class="case-ext reveal"><a class="btn btn-ghost" href="https://www.behance.net/joomendo" target="_blank" rel="noopener">Ver mais imagens no Behance <span aria-hidden="true">↗</span><span class="sr-only"> (abre num novo separador)</span></a></p>
         </div>
       </div>
 
       <nav class="case-next container" aria-label="Outros projetos">
-        <a class="next-card spot" href="redesign-turismo-mirandela.html">
+        <a class="next-card spot" href="exemplo-design.html">
           <span class="next-text">
             <span class="next-label">Próximo projeto <span aria-hidden="true">→</span></span>
-            <span class="next-title">Redesign Turismo Mirandela</span>
-            <span class="next-tag">UI/UX · Web</span>
+            <span class="next-title">Design de marca</span>
+            <span class="next-tag">Template · Branding</span>
           </span>
-          <img class="next-img" src="../assets/img/projeto-3.svg" alt="" width="800" height="1000" loading="lazy">
+          <img class="next-img" src="../assets/img/projeto-4.svg" alt="" width="800" height="1000" loading="lazy">
         </a>
-        <a class="prev-link" href="interfaces-a-mover.html"><span aria-hidden="true">←</span> Anterior: Interfaces A-MoVeR</a>
+        <a class="prev-link" href="exemplo-uiux.html"><span aria-hidden="true">←</span> Anterior: UI/UX</a>
       </nav>
 
       <section class="case-cta container" aria-labelledby="cta-title">
@@ -329,7 +321,7 @@
     </form>
   </dialog>
 
-  <script src="../assets/js/main.js?v=202611191759" defer></script>
-  <script src="../assets/js/projeto.js?v=202611191759" defer></script>
+  <script src="../assets/js/main.js?v=202611201117" defer></script>
+  <script src="../assets/js/projeto.js?v=202611201117" defer></script>
 </body>
 </html>

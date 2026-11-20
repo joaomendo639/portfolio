@@ -18,7 +18,7 @@ Tudo o que precisa de ser personalizado está marcado com `EDITAR` em `index.htm
 | Formulário | em `#contacto`, substitui `COLOCAR_ACCESS_KEY` pela chave do [Web3Forms](https://web3forms.com) |
 | Redes | secção `#contacto` |
 
-Cada projeto abre a sua página em `projetos/<nome>.html`. **Não editar essas páginas à mão**: o texto está em `tools/gerar-projetos.py` (lista `PROJETOS`); depois de alterar o texto ou o `index.html`, correr `python tools/gerar-projetos.py` para as gerar de novo (cabeçalho, painel de acessibilidade e rodapé são copiados do `index.html`). Cada projeto tem `galeria` (imagens do carrossel: ficheiro em `assets/img/`, texto alternativo e legenda) e `capitulos` (`texto`, `frase` que acende com o scroll, ou `passos`).
+Os trabalhos estão por inserir: a secção Projetos mostra "Novos trabalhos em breve" e há uma **página de exemplo por tipo de template** (`projetos/exemplo-*.html`, com `noindex`): `uiux`, `fotografia` (galeria + parâmetros de cada foto de `tools/exif-fotos.json`), `design` (paleta + tipografia), `web` (simulador de dispositivos), `video` (formatos) e `investigacao` (ficha do artigo + citação). Para inserir um trabalho: copiar o bloco do tipo certo em `tools/gerar-projetos.py` (lista `PROJETOS`), retirar `"demo"`, correr `python tools/gerar-projetos.py` e acrescentar o cartão em `index.html`.
 
 Cada projeto tem `data-category` (`uiux`, `web`, `multimedia`, `investigacao`; vários separados por espaço) usado pelos filtros.
 
