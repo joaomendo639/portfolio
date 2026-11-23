@@ -66,6 +66,36 @@ PROJETOS = [
         "behance": False,
     },
     {
+        "slug": 'festas-romarias-mirandela',
+        "tipo": "design",
+        "titulo": 'Festas e Romarias 2023',
+        "etiqueta": 'Design gráfico · Câmara Municipal de Mirandela',
+        "resumo": 'Flyer desdobrável com as festas e romarias das freguesias de Mirandela, de junho a setembro de 2023, criado no estágio curricular na Câmara Municipal.',
+        "meta": [('Ano', '2023'), ('Papel', 'Design gráfico · estágio curricular'), ('Cliente', 'Câmara Municipal de Mirandela'), ('Formato', 'Flyer A4 em três painéis')],
+        "paleta": [("Verde-lima", "#A8B838"), ("Verde-oliva", "#5A7A36"), ("Branco", "#FFFFFF")],
+        "galeria": [
+            ('projetos/festas-romarias-mirandela/final-exterior.jpg', 'Exterior do flyer: painéis das freguesias com igrejas e capa com fogo de artifício.', 'Exterior'),
+            ('projetos/festas-romarias-mirandela/capa.jpg', 'Capa do flyer: fogo de artifício sobre o rio e o título Festas e Romarias 2023.', 'Capa'),
+            ('projetos/festas-romarias-mirandela/paineis.jpg', 'Painéis com a igreja, as datas e o padroeiro de cada freguesia.', 'Painéis das freguesias'),
+            ('projetos/festas-romarias-mirandela/final-verso.jpg', 'Verso do flyer com código QR, contactos e mais freguesias.', 'Verso e contactos'),
+        ],
+        "versoes": [
+            ('projetos/festas-romarias-mirandela/versao-v1.jpg', 'Primeira estrutura', 'Primeira versão: estrutura a branco com fotografias e texto provisório.'),
+            ('projetos/festas-romarias-mirandela/versao-v2.jpg', 'Mapa das freguesias', 'Segunda versão com o mapa colorido das freguesias.'),
+            ('projetos/festas-romarias-mirandela/versao-v3.jpg', 'Primeiras cores', 'Terceira versão com os primeiros painéis verdes.'),
+            ('projetos/festas-romarias-mirandela/versao-v4.jpg', 'Painéis em verde', 'Quarta versão com todos os painéis em verde.'),
+            ('projetos/festas-romarias-mirandela/versao-v5.jpg', 'Interior e capa', 'Quinta versão com o interior completo e a capa com o rio.'),
+            ('projetos/festas-romarias-mirandela/versao-v6.jpg', 'Versão final', 'Versão final: painéis das freguesias e capa com fogo de artifício.'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>No <mark>estágio curricular na Câmara Municipal de Mirandela</mark> (2023), criei o flyer que reúne as festas e romarias das freguesias do concelho, de junho a setembro.</p>'),
+            ('frase', 'O desafio', 'Juntar dezenas de freguesias, datas e padroeiros num só desdobrável, fácil de consultar e com vontade de ir à festa.'),
+            ('passos', 'O que fiz', ['Organização das freguesias, datas e padroeiros.', 'Estrutura em três painéis, frente e verso.', 'Fotografia de cada igreja e mapa do concelho.', 'Capa, código QR e contactos úteis.']),
+            ('texto', 'Resultado', '<p>Um flyer pronto a imprimir que leva o visitante <mark>de freguesia em freguesia</mark>, com a ligação ao Visit Mirandela à distância de um código QR.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
@@ -328,22 +358,11 @@ def modulo_design(p):
             <p class="cor-contraste">Texto {'branco' if texto == '#FFFFFF' else 'preto'}: {melhor:.1f}:1 · {nivel}</p>
           </li>""")
     fontes = p.get("tipografia", [])
-    fonte, uso = fontes[0] if fontes else ("Manrope", "")
-    return f"""      <section class="modulo modulo-design" aria-labelledby="mod-design">
-        <div class="container">
-          <div class="modulo-head">
-            <p class="eyebrow">Sistema visual</p>
-            <h2 id="mod-design" class="modulo-title">Cores e tipografia</h2>
-            <p class="modulo-lead">Clique numa cor para copiar o código HEX. O contraste indicado é o melhor entre texto branco e preto (WCAG).</p>
-          </div>
-          <ul class="paleta">
-{chr(10).join(cores)}
-          </ul>
-          <p class="sr-only copiar-status" aria-live="polite"></p>
-          <div class="tipo-amostra reveal" style="--fonte:'{esc(fonte)}'">
+    fonte, uso = fontes[0] if fontes else ("", "")
+    amostra = ('''          <div class="tipo-amostra reveal" style="--fonte:'' + esc(fonte) + ''">
             <div class="tipo-cab">
-              <p class="tipo-nome">{esc(fonte)}</p>
-              <p class="tipo-uso">{esc(uso)}</p>
+              <p class="tipo-nome">' + esc(fonte) + '</p>
+              <p class="tipo-uso">' + esc(uso) + '</p>
             </div>
             <p class="tipo-texto" id="tipo-texto">Mobilidade verde para todos</p>
             <div class="tipo-controlos">
@@ -355,7 +374,20 @@ def modulo_design(p):
                 <button type="button" aria-pressed="false" data-peso="700">Bold</button>
               </div>
             </div>
+''') if fonte else ""
+    titulo_mod = "Cores e tipografia" if fonte else "Cores"
+    return f"""      <section class="modulo modulo-design" aria-labelledby="mod-design">
+        <div class="container">
+          <div class="modulo-head">
+            <p class="eyebrow">Sistema visual</p>
+            <h2 id="mod-design" class="modulo-title">{titulo_mod}</h2>
+            <p class="modulo-lead">Clique numa cor para copiar o código HEX. O contraste indicado é o melhor entre texto branco e preto (WCAG).</p>
           </div>
+          <ul class="paleta">
+{chr(10).join(cores)}
+          </ul>
+          <p class="sr-only copiar-status" aria-live="polite"></p>
+{amostra}          </div>
         </div>
       </section>"""
 
@@ -491,9 +523,36 @@ MODULOS = {"uiux": modulo_uiux, "fotografia": modulo_fotografia, "design": modul
            "video": modulo_video, "investigacao": modulo_investigacao}
 
 
+def modulo_versoes(p):
+    vs = p.get("versoes", [])
+    if len(vs) < 2:
+        return ""
+    total = len(vs)
+    imgs = "".join(
+        f'<img class="evo-img{" is-on" if k == total - 1 else ""}" data-k="{k}" src="../assets/img/{img}" alt="{esc(alt)}" loading="lazy">'
+        for k, (img, nome, alt) in enumerate(vs))
+    nomes = "".join(f'<li data-nome="{esc(nome)}"></li>' for img, nome, alt in vs)
+    ultimo = vs[-1][1]
+    return f"""      <section class="modulo modulo-evo" aria-labelledby="mod-evo">
+        <div class="container">
+          <div class="modulo-head">
+            <p class="eyebrow">Processo</p>
+            <h2 id="mod-evo" class="modulo-title">Evolução</h2>
+            <p class="modulo-lead">Percorra as versões, da primeira estrutura à versão final.</p>
+          </div>
+          <div class="evo-controlos">
+            <label for="evo-range" class="evo-label">Versão <output id="evo-out" for="evo-range">{total} de {total} · {esc(ultimo)}</output></label>
+            <input type="range" id="evo-range" class="evo-range" min="1" max="{total}" value="{total}" step="1" aria-controls="evo-palco">
+          </div>
+          <div class="evo-palco" id="evo-palco">{imgs}</div>
+          <ul class="evo-nomes" hidden>{nomes}</ul>
+        </div>
+      </section>"""
+
+
 def modulo(p):
     f = MODULOS.get(p.get("tipo", "uiux"))
-    return f(p) if f else ""
+    return (f(p) if f else "") + modulo_versoes(p)
 
 
 def foto(img):

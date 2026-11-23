@@ -1488,3 +1488,13 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .comp-rotulo-a { left: 14px; } .comp-rotulo-b { right: 14px; }
 .comp-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 .comp-palco:has(.comp-range:focus-visible) { outline: 3px solid var(--accent-strong); outline-offset: 4px; }
+
+/* ---------- Evolução: percorrer versões ---------- */
+.evo-controlos { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin-bottom: 1.2rem; }
+.evo-label { font-weight: 600; font-size: .9375rem; }
+.evo-label output { margin-left: .4rem; font-weight: 400; color: var(--muted); }
+.evo-range { flex: 1 1 16rem; max-width: 34rem; height: 44px; accent-color: var(--accent-strong); }
+.evo-palco { position: relative; display: grid; place-items: center; height: min(78vh, 820px); padding: clamp(1rem, 3vw, 2rem); border-radius: var(--radius); background: var(--bg-alt); overflow: hidden; }
+.evo-img { grid-area: 1 / 1; max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: var(--shadow); opacity: 0; transform: scale(.98); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.evo-img.is-on { opacity: 1; transform: none; }
+.reduce-motion .evo-img { transition: none; }

@@ -121,6 +121,23 @@
     mover();
   }
 
+  /* ---------- Evolução: versões ---------- */
+  var evo = document.getElementById('evo-range');
+  if (evo) {
+    var evoImgs = Array.prototype.slice.call(document.querySelectorAll('.evo-img'));
+    var evoNomes = Array.prototype.slice.call(document.querySelectorAll('.evo-nomes li'));
+    var evoOut = document.getElementById('evo-out');
+    var mostrarVersao = function () {
+      var k = parseInt(evo.value, 10) - 1;
+      evoImgs.forEach(function (im, i) { im.classList.toggle('is-on', i === k); });
+      var txt = evo.value + ' de ' + evoImgs.length + ' · ' + evoNomes[k].dataset.nome;
+      if (evoOut) evoOut.textContent = txt;
+      evo.setAttribute('aria-valuetext', txt);
+    };
+    evo.addEventListener('input', mostrarVersao);
+    mostrarVersao();
+  }
+
   /* ---------- Copiar (cores, citação) ---------- */
   function copiar(texto, statusEl) {
     var feito = function () { if (statusEl) { statusEl.textContent = ''; setTimeout(function () { statusEl.textContent = 'Copiado: ' + texto; }, 30); } };
