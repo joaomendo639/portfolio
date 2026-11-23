@@ -214,5 +214,53 @@
   "iso": "ISO 125",
   "focal": "16 mm",
   "data": "2026:06:03 16:53:06"
+ },
+ "batizado/familia-exterior.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/18",
+  "velocidade": "1/125 s",
+  "iso": "ISO 800",
+  "focal": "18 mm",
+  "data": "2024:08:24 13:13:44"
+ },
+ "batizado/padrinhos.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/18",
+  "velocidade": "1/160 s",
+  "iso": "ISO 800",
+  "focal": "21 mm",
+  "data": "2024:08:24 13:23:38"
+ },
+ "batizado/cerimonia.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/5",
+  "velocidade": "1/40 s",
+  "iso": "ISO 800",
+  "focal": "32 mm",
+  "data": "2024:08:24 13:26:35"
+ },
+ "batizado/madrinha.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/5",
+  "velocidade": "1/80 s",
+  "iso": "ISO 800",
+  "focal": "29 mm",
+  "data": "2024:08:24 13:46:54"
+ },
+ "batizado/mesa.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/4",
+  "velocidade": "1/30 s",
+  "iso": "ISO 1600",
+  "focal": "28 mm",
+  "data": "2024:08:24 14:29:12"
+ },
+ "batizado/sorriso.jpg": {
+  "camera": "Canon EOS 1100D",
+  "abertura": "f/5",
+  "velocidade": "1/40 s",
+  "iso": "ISO 1600",
+  "focal": "41 mm",
+  "data": "2024:08:24 16:48:17"
  }
 }

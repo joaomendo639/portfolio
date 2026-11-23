@@ -176,6 +176,30 @@ PROJETOS = [
         "behance": False,
     },
     {
+        "slug": 'batizado',
+        "tipo": "fotografia",
+        "titulo": 'Batizado',
+        "etiqueta": 'Fotografia · Reportagem de evento',
+        "resumo": 'Reportagem fotográfica de um batizado, da cerimónia na igreja à festa com a família, num dia de verão de 2024.',
+        "meta": [('Ano', '2024'), ('Papel', 'Fotografia'), ('Contexto', 'Evento familiar'), ('Equipamento', 'Canon EOS 1100D')],
+        # Autorização da família. Sem o nome da criança; letras com o nome desfocadas.
+        "galeria": [
+            ('projetos/batizado/sorriso.jpg', 'Menina de vestido branco a sorrir junto à mesa da festa.', 'O sorriso'),
+            ('projetos/batizado/madrinha.jpg', 'Mulher de vestido rosa com a menina ao colo na igreja.', 'Ao colo'),
+            ('projetos/batizado/cerimonia.jpg', 'Família reunida junto à pia batismal durante a cerimónia.', 'A cerimónia'),
+            ('projetos/batizado/padrinhos.jpg', 'Pais e padrinhos com a menina à porta da igreja.', 'À porta da igreja'),
+            ('projetos/batizado/familia-exterior.jpg', 'Três mulheres e a menina num jardim com vista.', 'Em família'),
+            ('projetos/batizado/mesa.jpg', 'Mulher e uma menina a sorrir à mesa da festa.', 'À mesa'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>Reportagem de um <mark>batizado</mark> em agosto de 2024: a cerimónia na igreja e a festa com a família, ao longo de uma tarde.</p>'),
+            ('frase', 'O desafio', 'Ser invisível num dia de família: captar os sorrisos verdadeiros, sem pedir poses.'),
+            ('passos', 'O que fiz', ['Acompanhamento da cerimónia e da festa.', 'Retratos espontâneos e de grupo.', 'Seleção e edição das fotografias.', 'Entrega à família.']),
+            ('texto', 'Privacidade', '<p>Publicado <mark>com autorização da família</mark>. O nome da criança não aparece e as letras decorativas com o nome foram desfocadas.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
