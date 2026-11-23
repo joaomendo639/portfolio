@@ -1471,3 +1471,20 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .demo-nav { background: #2a3f63; } /* azul-escuro: 9,9:1 com texto branco */
 .demo-card.is-contrast .demo-nav { --x: 0; background: #142240; }
 .demo-card.is-contrast.is-dark .demo-nav { background: #b9cdf2; }
+
+/* ---------- UI/UX: comparador esboço ↔ final ---------- */
+.comp-botoes { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.2rem; }
+.comp-btn { min-height: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--field-border); background: transparent; color: var(--text); font: 500 .875rem/1 var(--font-body); cursor: pointer; }
+.comp-btn[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.comp-palco { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow); background: #fff; touch-action: pan-y; }
+.comp-palco img { display: block; width: 100%; height: auto; user-select: none; pointer-events: none; }
+.comp-final { position: absolute; inset: 0; height: 100% !important; object-fit: cover; object-position: top; clip-path: inset(0 0 0 var(--pos)); }
+.comp-linha { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .25); pointer-events: none; }
+.comp-pega { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: var(--shadow); }
+.comp-pega::before, .comp-pega::after { content: ""; position: absolute; top: 50%; width: 0; height: 0; margin-top: -7px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.comp-pega::before { left: 9px; border-right: 8px solid #161742; }
+.comp-pega::after { right: 9px; border-left: 8px solid #161742; }
+.comp-rotulo { position: absolute; top: 14px; padding: .35rem .8rem; border-radius: 999px; font: 600 .75rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: #f6f1ea; background: rgba(20, 18, 16, .82); pointer-events: none; }
+.comp-rotulo-a { left: 14px; } .comp-rotulo-b { right: 14px; }
+.comp-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.comp-palco:has(.comp-range:focus-visible) { outline: 3px solid var(--accent-strong); outline-offset: 4px; }

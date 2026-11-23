@@ -30,6 +30,42 @@ PROJETOS = [
     # Tipos: uiux · fotografia · design · web · video · investigacao
     # -----------------------------------------------------------------------
     {
+        "slug": 'futurmedia',
+        "tipo": "uiux",
+        "demonstracao": None,
+        "titulo": 'FuturMedia',
+        "etiqueta": 'UI/UX · Design de Interação',
+        "resumo": 'Website e versão mobile para uma agência de marketing e comunicação fictícia, do esboço em papel ao protótipo de alta fidelidade em Adobe XD.',
+        "meta": [('Ano', '2023'), ('Papel', 'Design de interação · projeto académico'), ('Contexto', 'Mestrado em Tecnologia e Multimédia, UTAD'), ('Ferramentas', 'Adobe XD')],
+        "url": "", "url_nome": "FuturMedia",
+        "dispositivos": {"desktop": "projetos/futurmedia/site-desktop.jpg", "telemovel": "projetos/futurmedia/site-telemovel.jpg"},
+        "comparar": [
+            ("Início", "projetos/futurmedia/esboco-inicio.jpg", "projetos/futurmedia/final-inicio.jpg"),
+            ("Serviços", "projetos/futurmedia/esboco-servicos.jpg", "projetos/futurmedia/final-servicos.jpg"),
+            ("Portfólio", "projetos/futurmedia/esboco-portfolio.jpg", "projetos/futurmedia/final-portfolio.jpg"),
+            ("Sobre", "projetos/futurmedia/esboco-sobre.jpg", "projetos/futurmedia/final-sobre.jpg"),
+            ("Contactos", "projetos/futurmedia/esboco-contactos.jpg", "projetos/futurmedia/final-contactos.jpg"),
+            ("Login", "projetos/futurmedia/esboco-login.jpg", "projetos/futurmedia/final-login.jpg"),
+        ],
+        "galeria": [
+            ('projetos/futurmedia/final-inicio.jpg', 'Página inicial da FuturMedia, em azul-escuro com círculos laranja.', 'Página inicial'),
+            ('projetos/futurmedia/final-servicos.jpg', 'Página de serviços com web design, programação, fotografia e design.', 'Serviços'),
+            ('projetos/futurmedia/final-portfolio.jpg', 'Página de portfólio com filtros por categoria.', 'Portfólio'),
+            ('projetos/futurmedia/final-contactos.jpg', 'Página de contactos com formulário e horário.', 'Contactos'),
+            ('projetos/futurmedia/final-login.jpg', 'Ecrã de login com entrada por email ou por Google, Apple e Facebook.', 'Login'),
+            ('projetos/futurmedia/esboco-inicio.jpg', 'Esboço em preto e branco da página inicial.', 'Esboço da página inicial'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>Projeto da unidade curricular de Design de Interação do Mestrado em Tecnologia e Multimédia: criar a presença digital da <mark>FuturMedia</mark>, uma agência fictícia de marketing e comunicação para empresas de tecnologia.</p>'),
+            ('frase', 'O desafio', 'Apresentar os serviços e o portfólio de uma agência de forma clara, envolvente e acessível a todas as pessoas.'),
+            ('passos', 'Processo', ['Pesquisa de mercado: Mediaon, Qreativ, Bleam e Fiverr.', 'Público-alvo, personas e estratégia de comunicação.', 'Esboços das páginas web e mobile.', 'Mockups de alta fidelidade em Adobe XD.']),
+            ('texto', 'Acessibilidade', '<p>A pesquisa estudou vários <mark>tipos de deficiência</mark> — visual, auditiva, motora, cognitiva, de fala, epilepsia fotossensível, ataxia e défice de atenção — para orientar as decisões de design.</p>'),
+            ('texto', 'Identidade', '<p>A paleta junta o <mark>azul-escuro</mark> (confiança e harmonia) ao <mark>laranja</mark> (criatividade e sociabilidade), com preto e branco, a partir da psicologia da cor de Eva Heller.</p>'),
+            ('texto', 'Resultado', '<p>Um website com <mark>sete ecrãs</mark> — início, serviços, portfólio com filtros, sobre, contactos, login e registo — em versão para computador e telemóvel.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
@@ -417,7 +453,41 @@ def modulo_investigacao(p):
       </section>"""
 
 
-MODULOS = {"fotografia": modulo_fotografia, "design": modulo_design, "web": modulo_web,
+def modulo_uiux(p):
+    """UI/UX: comparador esboço ↔ versão final (arrastar) e, se houver, simulador de dispositivos."""
+    pares = p.get("comparar", [])
+    html = ""
+    if pares:
+        botoes = "".join(
+            f'<button type="button" class="comp-btn" data-par="{k}" aria-pressed="{"true" if k == 0 else "false"}">{esc(nome)}</button>'
+            for k, (nome, esb, fin) in enumerate(pares))
+        nome0, esb0, fin0 = pares[0]
+        dados = "".join(f'<li data-esboco="../assets/img/{esb}" data-final="../assets/img/{fin}" data-nome="{esc(nome)}"></li>' for nome, esb, fin in pares)
+        html += f"""      <section class="modulo modulo-comparar" aria-labelledby="mod-comp">
+        <div class="container">
+          <div class="modulo-head">
+            <p class="eyebrow">Processo</p>
+            <h2 id="mod-comp" class="modulo-title">Do esboço ao ecrã final</h2>
+            <p class="modulo-lead">Arraste a linha (ou use as setas do teclado) para comparar o esboço em papel com o mockup de alta fidelidade.</p>
+          </div>
+          <div class="comp-botoes" role="group" aria-label="Escolher o ecrã">{botoes}</div>
+          <div class="comp-palco" style="--pos:50%">
+            <img class="comp-esboco" src="../assets/img/{esb0}" alt="Esboço em papel do ecrã {esc(nome0)}.">
+            <img class="comp-final" src="../assets/img/{fin0}" alt="Mockup de alta fidelidade do ecrã {esc(nome0)}.">
+            <span class="comp-linha" aria-hidden="true"><span class="comp-pega"></span></span>
+            <span class="comp-rotulo comp-rotulo-a" aria-hidden="true">Esboço</span>
+            <span class="comp-rotulo comp-rotulo-b" aria-hidden="true">Final</span>
+            <input class="comp-range" id="comp-range" aria-label="Comparar esboço e versão final" type="range" min="0" max="100" value="50" aria-valuetext="50% versão final">
+          </div>
+          <ul class="comp-dados" hidden>{dados}</ul>
+        </div>
+      </section>"""
+    if p.get("dispositivos"):
+        html += "\n" + modulo_web(p)
+    return html
+
+
+MODULOS = {"uiux": modulo_uiux, "fotografia": modulo_fotografia, "design": modulo_design, "web": modulo_web,
            "video": modulo_video, "investigacao": modulo_investigacao}
 
 

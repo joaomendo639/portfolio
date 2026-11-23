@@ -99,6 +99,28 @@
     setActive(0);
   }
 
+  /* ---------- UI/UX: comparador esboço ↔ final ---------- */
+  var comp = document.querySelector('.comp-palco');
+  if (comp) {
+    var range = comp.querySelector('.comp-range');
+    var imgA = comp.querySelector('.comp-esboco'), imgB = comp.querySelector('.comp-final');
+    var dados = Array.prototype.slice.call(document.querySelectorAll('.comp-dados li'));
+    var mover = function () {
+      comp.style.setProperty('--pos', range.value + '%');
+      range.setAttribute('aria-valuetext', (100 - range.value) + '% versão final');
+    };
+    range.addEventListener('input', mover);
+    document.querySelectorAll('.comp-btn').forEach(function (b, _, todos) {
+      b.addEventListener('click', function () {
+        var d = dados[parseInt(b.dataset.par, 10)];
+        todos.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        imgA.src = d.dataset.esboco; imgA.alt = 'Esboço em papel do ecrã ' + d.dataset.nome + '.';
+        imgB.src = d.dataset.final; imgB.alt = 'Mockup de alta fidelidade do ecrã ' + d.dataset.nome + '.';
+      });
+    });
+    mover();
+  }
+
   /* ---------- Copiar (cores, citação) ---------- */
   function copiar(texto, statusEl) {
     var feito = function () { if (statusEl) { statusEl.textContent = ''; setTimeout(function () { statusEl.textContent = 'Copiado: ' + texto; }, 30); } };
