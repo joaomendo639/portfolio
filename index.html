@@ -17,11 +17,11 @@
   <meta property="og:url" content="https://joaomendo639.github.io/portfolio/">
   <meta property="og:locale" content="pt_PT">
 
-  <link rel="icon" href="assets/img/favicon.svg?v=202611231557" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.svg?v=202611231604" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611231557">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611231604">
 
   <!-- Aplica o tema guardado antes da pintura, para evitar "flash" -->
   <script>
@@ -216,9 +216,17 @@
             <p class="eyebrow">02 — Projetos</p>
             <h2 id="projetos-title" class="section-title reveal">Trabalho <em>selecionado</em></h2>
           </div>
+          <div class="filters" role="group" aria-label="Filtrar projetos por categoria">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true">Todos</button>
+            <button type="button" class="chip" data-filter="uiux" aria-pressed="false">UI/UX</button>
+            <button type="button" class="chip" data-filter="design" aria-pressed="false">Design gráfico</button>
+            <button type="button" class="chip" data-filter="fotografia" aria-pressed="false">Fotografia</button>
+            <button type="button" class="chip" data-filter="investigacao" aria-pressed="false">Investigação</button>
+          </div>
         </div>
         
         <!-- EDITAR: substitui as imagens em assets/img/ por capturas reais (formato 4:5, .webp ou .jpg) -->
+        <p class="sr-only" id="filter-status" aria-live="polite"></p>
         <ul class="projects">
           <li class="project reveal tilt" data-category="fotografia">
             <article>
@@ -242,7 +250,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal tilt" data-category="multimedia fotografia">
+          <li class="project reveal tilt" data-category="fotografia">
             <article>
               <img class="is-photo" src="assets/img/projetos/amover-visitas/dia2026-auditorio.jpg" width="800" height="1000" loading="lazy" alt="Auditório cheio no Dia da Inovação A-MoVeR 2026.">
               <div class="project-info glass">
@@ -253,7 +261,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal tilt" data-category="multimedia">
+          <li class="project reveal tilt" data-category="design">
             <article>
               <img class="is-photo" src="assets/img/projetos/amover-comunicacao/2026-cartaz.jpg" width="800" height="1000" loading="lazy" alt="Cartaz do Dia da Inovação A-MoVeR 2026, em azul e verde.">
               <div class="project-info glass">
@@ -264,7 +272,7 @@
               </div>
             </article>
           </li>
-          <li class="project reveal tilt" data-category="multimedia">
+          <li class="project reveal tilt" data-category="design">
             <article>
               <img class="is-photo" src="assets/img/projetos/festas-romarias-mirandela/capa.jpg" width="800" height="1000" loading="lazy" alt="Capa do flyer Festas e Romarias 2023, com fogo de artifício sobre o rio.">
               <div class="project-info glass">
@@ -307,7 +315,7 @@
       <div class="container about">
         <figure class="about-photo reveal">
           <!-- EDITAR: a tua fotografia (formato 4:5) -->
-          <img src="assets/img/retrato.svg?v=202611231557" width="800" height="1000" loading="lazy" alt="Logótipo jm de João Mendo, espaço reservado para a fotografia.">
+          <img src="assets/img/retrato.svg?v=202611231604" width="800" height="1000" loading="lazy" alt="Logótipo jm de João Mendo, espaço reservado para a fotografia.">
         </figure>
         <div class="about-copy">
           <p class="eyebrow">03 — Sobre</p>
@@ -574,6 +582,6 @@
     </form>
   </dialog>
 
-  <script src="assets/js/main.js?v=202611231557" defer></script>
+  <script src="assets/js/main.js?v=202611231604" defer></script>
 </body>
 </html>
