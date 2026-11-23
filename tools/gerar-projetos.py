@@ -200,6 +200,26 @@ PROJETOS = [
         "behance": False,
     },
     {
+        "slug": 'primeira-comunhao',
+        "tipo": "fotografia",
+        "titulo": 'Primeira Comunhão',
+        "etiqueta": 'Fotografia · Reportagem de evento',
+        "resumo": 'Reportagem fotográfica de uma Primeira Comunhão em maio de 2024: a alegria de um dia único, contada em retratos.',
+        "meta": [('Ano', '2024'), ('Papel', 'Fotografia e vídeo'), ('Contexto', 'Cerimónia religiosa'), ('Equipamento', 'Canon EOS R50')],
+        # Só imagens com autorização da família (menor). Sem nome. Dados do certificado desfocados.
+        "galeria": [
+            ('projetos/primeira-comunhao/retrato.jpg', 'Retrato de uma menina vestida de branco, a sorrir, com um fio dourado nas mãos.', 'Retrato'),
+            ('projetos/primeira-comunhao/certificado.jpg', 'Menina a sorrir a mostrar o certificado da Primeira Comunhão em frente ao altar.', 'O certificado'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>Reportagem de uma cerimónia de <mark>Primeira Comunhão</mark>, a 30 de maio de 2024, em fotografia e vídeo.</p>'),
+            ('frase', 'O desafio', 'Captar um dia que só acontece uma vez, sem interferir na cerimónia: luz de igreja, movimento constante e emoções que não se repetem.'),
+            ('passos', 'O que fiz', ['Acompanhamento da cerimónia do início ao fim.', 'Fotografia e vídeo em simultâneo.', 'Seleção e edição das imagens.', 'Entrega do trabalho à família.']),
+            ('texto', 'Privacidade', '<p>Por se tratar de crianças, só são publicadas imagens <mark>com autorização da família</mark>. O vídeo e as fotografias de grupo ficam reservados, e os dados pessoais do certificado foram desfocados.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
