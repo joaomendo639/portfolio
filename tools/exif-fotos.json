@@ -30,5 +30,189 @@
   "iso": "ISO 400",
   "focal": "85 mm",
   "data": "2025:01:01 10:00:00"
+ },
+ "amover-visitas/ajp-perfil.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/7.1",
+  "velocidade": "1/500 s",
+  "iso": "ISO 400",
+  "focal": "30 mm",
+  "data": "2024:11:22 10:48:47"
+ },
+ "amover-visitas/ajp-tres-quartos.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/7.1",
+  "velocidade": "1/500 s",
+  "iso": "ISO 400",
+  "focal": "30 mm",
+  "data": "2024:11:22 10:49:11"
+ },
+ "amover-visitas/ajp-suspensao.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/7.1",
+  "velocidade": "1/640 s",
+  "iso": "ISO 400",
+  "focal": "18 mm",
+  "data": "2024:11:22 10:52:33"
+ },
+ "amover-visitas/ajp-armazem.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/60 s",
+  "iso": "ISO 400",
+  "focal": "27 mm",
+  "data": "2024:11:22 11:38:56"
+ },
+ "amover-visitas/ajp-soldadura.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/40 s",
+  "iso": "ISO 400",
+  "focal": "18 mm",
+  "data": "2024:11:22 11:41:45"
+ },
+ "amover-visitas/ajp-linha.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/8 s",
+  "iso": "ISO 400",
+  "focal": "32 mm",
+  "data": "2024:11:22 12:03:12"
+ },
+ "amover-visitas/aumovio-equipa.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/4.5",
+  "velocidade": "1/20 s",
+  "iso": "ISO 100",
+  "focal": "18 mm",
+  "data": "2024:11:18 14:35:55"
+ },
+ "amover-visitas/aumovio-componentes.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/50 s",
+  "iso": "ISO 800",
+  "focal": "22 mm",
+  "data": "2024:11:18 15:19:43"
+ },
+ "amover-visitas/aumovio-laboratorio.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/30 s",
+  "iso": "ISO 800",
+  "focal": "34 mm",
+  "data": "2024:11:18 15:23:45"
+ },
+ "amover-visitas/aumovio-edificio.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/5.6",
+  "velocidade": "1/1250 s",
+  "iso": "ISO 800",
+  "focal": "18 mm",
+  "data": "2024:11:18 15:59:14"
+ },
+ "amover-visitas/inesc-laboratorio.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/4",
+  "velocidade": "1/125 s",
+  "iso": "ISO 800",
+  "focal": "24 mm",
+  "data": "2024:11:22 16:17:23"
+ },
+ "amover-visitas/inesc-camara.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/4.5",
+  "velocidade": "1/2 s",
+  "iso": "ISO 400",
+  "focal": "18 mm",
+  "data": "2024:11:22 17:00:45"
+ },
+ "amover-visitas/inesc-conversa.jpg": {
+  "camera": "Canon EOS 850D",
+  "abertura": "f/4.5",
+  "velocidade": "1/15 s",
+  "iso": "ISO 400",
+  "focal": "18 mm",
+  "data": "2024:11:22 17:00:54"
+ },
+ "amover-visitas/dia2026-chegada.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 2500",
+  "focal": "16 mm",
+  "data": "2026:06:03 13:16:06"
+ },
+ "amover-visitas/dia2026-auditorio.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/3.5",
+  "velocidade": "1/160 s",
+  "iso": "ISO 4000",
+  "focal": "16 mm",
+  "data": "2026:06:03 13:24:14"
+ },
+ "amover-visitas/dia2026-abertura.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/5",
+  "velocidade": "1/160 s",
+  "iso": "ISO 3200",
+  "focal": "31 mm",
+  "data": "2026:06:03 13:28:39"
+ },
+ "amover-visitas/dia2026-plateia.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 4000",
+  "focal": "16 mm",
+  "data": "2026:06:03 13:30:58"
+ },
+ "amover-visitas/dia2026-painel.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/11",
+  "velocidade": "1/25 s",
+  "iso": "ISO 6400",
+  "focal": "16 mm",
+  "data": "2026:06:03 14:52:43"
+ },
+ "amover-visitas/dia2026-realidade-virtual.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 640",
+  "focal": "16 mm",
+  "data": "2026:06:03 16:27:29"
+ },
+ "amover-visitas/dia2026-demonstracao.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 1250",
+  "focal": "23 mm",
+  "data": "2026:06:03 16:30:31"
+ },
+ "amover-visitas/dia2026-simulador.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 800",
+  "focal": "16 mm",
+  "data": "2026:06:03 16:30:56"
+ },
+ "amover-visitas/dia2026-convivio.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 125",
+  "focal": "16 mm",
+  "data": "2026:06:03 16:46:57"
+ },
+ "amover-visitas/dia2026-mota.jpg": {
+  "camera": "ZV-E10",
+  "abertura": "f/4",
+  "velocidade": "1/160 s",
+  "iso": "ISO 125",
+  "focal": "16 mm",
+  "data": "2026:06:03 16:53:06"
  }
 }

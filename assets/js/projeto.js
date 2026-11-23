@@ -141,14 +141,14 @@
   /* ---------- Kit de comunicação: filtros ---------- */
   var filtrosPecas = Array.prototype.slice.call(document.querySelectorAll('.pecas-filtro'));
   if (filtrosPecas.length) {
-    var pecas = Array.prototype.slice.call(document.querySelectorAll('.peca'));
+    var pecas = Array.prototype.slice.call(document.querySelectorAll('.peca, .foto[data-grupo]'));
     var pecasStatus = document.querySelector('.pecas-status');
     filtrosPecas.forEach(function (b) {
       b.addEventListener('click', function () {
         var g = b.dataset.grupo, n = 0;
         filtrosPecas.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
         pecas.forEach(function (pc) { var ok = !g || pc.dataset.grupo === g; pc.hidden = !ok; if (ok) { n++; pc.classList.add('is-visible'); } });
-        if (pecasStatus) pecasStatus.textContent = n + (n === 1 ? ' peça' : ' peças');
+        if (pecasStatus) pecasStatus.textContent = n + (document.querySelector('.peca') ? (n === 1 ? ' peça' : ' peças') : (n === 1 ? ' fotografia' : ' fotografias'));
       });
     });
   }

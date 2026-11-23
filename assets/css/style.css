@@ -1507,3 +1507,12 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .peca[hidden] { display: none; }
 .peca .foto-abrir { background: var(--bg-alt); box-shadow: var(--shadow); }
 .modulo-pecas .lightbox { --text: #f2ede6; --muted: #cfc7bc; --line: rgba(242, 237, 230, .22); --accent-strong: #e6b282; }
+
+/* Fotografia: vídeo do evento e fotografias filtradas */
+.foto-video { margin: 0 0 clamp(2rem, 5vw, 3rem); }
+.foto-video video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius-sm); background: #000; }
+.foto-video figcaption { margin-top: .8rem; color: var(--muted); font-size: .9375rem; }
+.foto-video figcaption strong { color: var(--text); margin-right: .4rem; }
+.foto[hidden] { display: none; }
+.modulo-foto .pecas-filtro { color: var(--text); border-color: var(--field-border); }
+.modulo-foto .pecas-filtro[aria-pressed="true"] { background: var(--text); color: var(--bg); }

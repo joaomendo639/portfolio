@@ -134,6 +134,48 @@ PROJETOS = [
         "behance": False,
     },
     {
+        "slug": 'amover-visitas',
+        "tipo": "fotografia",
+        "titulo": 'A-MoVeR · Visitas e eventos',
+        "etiqueta": 'Fotografia e vídeo · Reportagem',
+        "resumo": 'Reportagem fotográfica do projeto A-MoVeR: visitas à AUMOVIO, à AJP Motos e ao INESC TEC em 2024 e o Dia da Inovação 2026 na UTAD.',
+        "meta": [('Período', '2024–26'), ('Papel', 'Fotografia e vídeo'), ('Projeto', 'A-MoVeR · Agenda Mobilizadora'), ('Equipamento', 'Canon EOS 850D · Sony ZV-E10')],
+        "video": {"src": "projetos/amover-visitas/dia2026-video.mp4", "poster": "projetos/amover-visitas/dia2026-video-poster.jpg", "titulo": "Dia da Inovação 2026 em 45 segundos.",
+                  "descricao": "Vídeo sem som: a sessão de abertura no auditório, as apresentações dos parceiros do consórcio, um painel de perguntas e, no fim, a Fulgora em andamento no campus da UTAD."},
+        "galeria": [
+            ('projetos/amover-visitas/ajp-perfil.jpg', 'Fulgora, mota elétrica da AJP Motos, de perfil no exterior da fábrica.', 'Fulgora', 'AJP Motos'),
+            ('projetos/amover-visitas/ajp-tres-quartos.jpg', 'Fulgora vista de frente a três quartos.', 'Fulgora · três quartos', 'AJP Motos'),
+            ('projetos/amover-visitas/ajp-suspensao.jpg', 'Pormenor da suspensão traseira e do motor da Fulgora.', 'Suspensão e motor', 'AJP Motos'),
+            ('projetos/amover-visitas/ajp-linha.jpg', 'Linha de montagem da AJP com motas e um técnico a trabalhar.', 'Linha de montagem', 'AJP Motos'),
+            ('projetos/amover-visitas/ajp-soldadura.jpg', 'Técnico com máscara a soldar uma peça na oficina da AJP.', 'Soldadura', 'AJP Motos'),
+            ('projetos/amover-visitas/ajp-armazem.jpg', 'Armazém da fábrica com motas e peças em bancadas.', 'Armazém', 'AJP Motos'),
+            ('projetos/amover-visitas/aumovio-equipa.jpg', 'Equipa da AUMOVIO de bata branca sentada a uma mesa de reuniões.', 'Equipa', 'AUMOVIO'),
+            ('projetos/amover-visitas/aumovio-laboratorio.jpg', 'Engenheiro da AUMOVIO a mostrar um componente a dois visitantes.', 'Laboratório', 'AUMOVIO'),
+            ('projetos/amover-visitas/aumovio-componentes.jpg', 'Componentes eletrónicos de um painel dispostos numa mesa.', 'Componentes', 'AUMOVIO'),
+            ('projetos/amover-visitas/aumovio-edificio.jpg', 'Edifício da AUMOVIO ao fim da tarde.', 'Edifício', 'AUMOVIO'),
+            ('projetos/amover-visitas/inesc-camara.jpg', 'Câmara anecoica do INESC TEC com cones de absorção nas paredes.', 'Câmara anecoica', 'INESC TEC'),
+            ('projetos/amover-visitas/inesc-laboratorio.jpg', 'Laboratório do INESC TEC com bancada de testes.', 'Laboratório', 'INESC TEC'),
+            ('projetos/amover-visitas/inesc-conversa.jpg', 'Dois investigadores conversam num laboratório.', 'Conversa', 'INESC TEC'),
+            ('projetos/amover-visitas/dia2026-chegada.jpg', 'Participantes a chegar ao auditório para o Dia da Inovação.', 'Chegada', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-auditorio.jpg', 'Auditório cheio com o ecrã do Dia da Inovação A-MoVeR.', 'Auditório', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-abertura.jpg', 'Oradora na sessão de abertura junto ao ecrã do evento.', 'Sessão de abertura', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-plateia.jpg', 'Plateia nas cadeiras azuis do auditório.', 'Plateia', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-painel.jpg', 'Painel de oradores no palco do auditório.', 'Painel', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-realidade-virtual.jpg', 'Demonstração com óculos de realidade virtual na mostra tecnológica.', 'Realidade virtual', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-demonstracao.jpg', 'Visitantes numa demonstração da mostra tecnológica.', 'Mostra tecnológica', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-simulador.jpg', 'Visitantes junto a um simulador com ecrã grande.', 'Simulador', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-convivio.jpg', 'Participantes reunidos no exterior, no campus da UTAD.', 'Networking', 'Dia da Inovação 2026'),
+            ('projetos/amover-visitas/dia2026-mota.jpg', 'Mota elétrica em demonstração no exterior, rodeada de participantes.', 'Mota em demonstração', 'Dia da Inovação 2026'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>Como bolseiro do <mark>A-MoVeR</mark>, acompanhei com a câmara as visitas aos parceiros do consórcio — AUMOVIO e INESC TEC em novembro de 2024 e a <mark>fábrica da AJP Motos</mark> a 22 de novembro de 2024 — e o Dia da Inovação na UTAD a 3 de junho de 2026.</p>'),
+            ('frase', 'O desafio', 'Mostrar investigação e indústria com pessoas reais, em laboratórios, fábricas e auditórios com luz difícil, sem interromper ninguém.'),
+            ('passos', 'O que fiz', ['Fotografia das visitas aos parceiros.', 'Reportagem fotográfica e vídeo do Dia da Inovação.', 'Seleção e edição das imagens.', 'Montagem de um vídeo curto para as redes sociais.']),
+            ('texto', 'Privacidade', '<p>São eventos institucionais e públicos do projeto. O rosto de quem não foi possível confirmar foi <mark>desfocado</mark>, e as imagens foram publicadas sem dados de localização.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
@@ -343,18 +385,51 @@ def modulo_fotografia(p):
     nomes = {"abertura": "Abertura", "velocidade": "Velocidade", "iso": "Sensibilidade", "focal": "Distância focal"}
     itens = []
     camera = data = ""
-    for k, (img, alt, leg) in enumerate(p["galeria"]):
+    grupos, cameras, datas = [], [], []
+    for k, item in enumerate(p["galeria"]):
+        img, alt, leg = item[:3]
+        grupo = item[3] if len(item) > 3 else ""
+        if grupo and grupo not in grupos:
+            grupos.append(grupo)
         params, e = _parametros(img)
+        if e.get("camera") and e["camera"] not in cameras:
+            cameras.append(e["camera"])
+        dd = (e.get("data") or "")[:10]
+        if dd:
+            datas.append(dd)
         camera = camera or e.get("camera", "")
         data = data or (e.get("data") or "")[:10].replace(":", "-")
         chips = "".join(f'<li><span class="sr-only">{nomes[n]}: </span>{esc(v)}</li>' for n, v in params)
-        itens.append(f"""          <li class="foto reveal">
+        g_attr = f' data-grupo="{esc(grupo)}"' if grupo else ""
+        g_chip = f'<li><span class="sr-only">Local: </span>{esc(grupo)}</li>' if grupo else ""
+        itens.append(f"""          <li class="foto reveal"{g_attr}>
             <button type="button" class="foto-abrir" data-foto="{k}" aria-label="Ver em ecrã inteiro: {esc(leg)}">
               <img src="../assets/img/{img}" alt="{esc(alt)}" width="800" height="1000" loading="lazy">
             </button>
-            <div class="foto-info"><p class="foto-leg">{esc(leg)}</p><ul class="foto-params" aria-label="Parâmetros da fotografia">{chips}</ul></div>
+            <div class="foto-info"><p class="foto-leg">{esc(leg)}</p><ul class="foto-params" aria-label="Parâmetros da fotografia">{g_chip}{chips}</ul></div>
           </li>""")
-    ficha = [("Câmara", camera), ("Data", "-".join(reversed(data.split("-"))) if data else ""), ("Fotografias", str(len(p["galeria"])))]
+    fmt = lambda d: "/".join(reversed(d.split(":")))
+    periodo = ""
+    if datas:
+        a, b = min(datas), max(datas)
+        periodo = fmt(a) if a == b else f"{fmt(a)} – {fmt(b)}"
+    ficha = [("Câmara" if len(cameras) < 2 else "Câmaras", " · ".join(cameras)), ("Data" if len(set(datas)) < 2 else "Período", periodo), ("Fotografias", str(len(p["galeria"])))]
+    filtros = ""
+    if len(grupos) > 1:
+        filtros = ('<div class="pecas-filtros" role="group" aria-label="Filtrar fotografias">'
+                   '<button type="button" class="pecas-filtro" data-grupo="" aria-pressed="true">Todas</button>'
+                   + "".join(f'<button type="button" class="pecas-filtro" data-grupo="{esc(g)}" aria-pressed="false">{esc(g)}</button>' for g in grupos)
+                   + '</div><p class="sr-only pecas-status" aria-live="polite"></p>')
+    video = ""
+    v = p.get("video")
+    if v:
+        video = f"""          <figure class="foto-video reveal">
+            <video controls preload="none" playsinline muted poster="../assets/img/{v['poster']}" aria-describedby="video-desc">
+              <source src="../assets/img/{v['src']}" type="video/mp4">
+            </video>
+            <figcaption><strong>{esc(v['titulo'])}</strong> <span id="video-desc">{esc(v['descricao'])}</span></figcaption>
+          </figure>
+"""
     ficha_html = "".join(f'<li><span class="ficha-k">{esc(a)}:</span> <span class="ficha-v">{esc(b)}</span></li>' for a, b in ficha if b)
     return f"""      <section class="modulo modulo-foto" aria-labelledby="mod-foto">
         <div class="container">
@@ -363,6 +438,7 @@ def modulo_fotografia(p):
             <h2 id="mod-foto" class="modulo-title">Galeria</h2>
             <ul class="foto-ficha" aria-label="Ficha técnica">{ficha_html}</ul>
           </div>
+{video}          {filtros}
           <ul class="foto-grelha">
 {chr(10).join(itens)}
           </ul>
