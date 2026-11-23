@@ -1516,3 +1516,18 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .foto[hidden] { display: none; }
 .modulo-foto .pecas-filtro { color: var(--text); border-color: var(--field-border); }
 .modulo-foto .pecas-filtro[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+
+/* ---------- Imagens: fundo desfocado da própria imagem (em vez de barras pretas ou cortes) ---------- */
+.tem-fundo { position: relative; overflow: hidden; isolation: isolate; background: #1b1916; }
+.tem-fundo::before {
+  content: ""; position: absolute; inset: -40px; z-index: -1;
+  background: var(--bg) center / cover no-repeat; filter: blur(28px) saturate(1.15) brightness(.72);
+}
+.gallery-slide figure.tem-fundo img { object-fit: contain; background: transparent; }
+.gallery-slide figure.tem-fundo img.is-photo { background: transparent; }
+div.stage-img { display: grid; place-items: center; padding: 6%; }
+div.stage-img > img { position: relative; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; box-shadow: 0 18px 40px -12px rgba(0, 0, 0, .55); }
+.chapter-figure.tem-fundo { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 5%; }
+.chapter-figure.tem-fundo img { position: relative; max-width: 100%; max-height: 100%; width: auto; height: auto; aspect-ratio: auto; object-fit: contain; border-radius: 6px; box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .5); }
+.next-img { object-position: 50% 30%; }
+@media (min-width: 1024px) { .chapter-figure.tem-fundo { display: none; } }

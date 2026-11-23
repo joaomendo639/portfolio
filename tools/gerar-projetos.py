@@ -31,6 +31,7 @@ PROJETOS = [
     # -----------------------------------------------------------------------
     {
         "slug": 'futurmedia',
+        "capa": "projetos/futurmedia/card.jpg",
         "tipo": "uiux",
         "demonstracao": None,
         "titulo": 'FuturMedia',
@@ -67,6 +68,7 @@ PROJETOS = [
     },
     {
         "slug": 'festas-romarias-mirandela',
+        "capa": "projetos/festas-romarias-mirandela/card.jpg",
         "tipo": "design",
         "titulo": 'Festas e Romarias 2023',
         "etiqueta": 'Design gráfico · Câmara Municipal de Mirandela',
@@ -97,6 +99,7 @@ PROJETOS = [
     },
     {
         "slug": 'amover-comunicacao',
+        "capa": "projetos/amover-comunicacao/card.jpg",
         "tipo": "design",
         "titulo": 'A-MoVeR · Comunicação e eventos',
         "etiqueta": 'Design gráfico · Comunicação',
@@ -762,6 +765,16 @@ def foto(img):
     return img.lower().endswith((".jpg", ".jpeg", ".webp", ".png"))
 
 
+def grafico(p, img):
+    """Peças gráficas e ecrãs (cartazes, flyers, mockups): mostram-se inteiras, sobre um fundo desfocado da própria imagem."""
+    return foto(img) and p.get("tipo") in ("design", "uiux")
+
+
+def fundo(img):
+    # o url() numa variável CSS resolve-se a partir do style.css (assets/css/), por isso ../img/
+    return f' style="--bg:url(\'../img/{img}\')"'
+
+
 def ident(t):
     return re.sub(r"[^a-z0-9]+", "-", t.lower().translate(str.maketrans("áàâãéêíóôõúç", "aaaaeeiooouc"))).strip("-")
 
@@ -829,7 +842,7 @@ def capitulo(p, n, tipo, titulo, conteudo):
             extra = " chapter-result"
     return f"""        <section class="chapter chapter-{tipo}{extra}" id="{cid}" aria-labelledby="{cid}-t" data-stage="{n - 1}">
           <p class="chapter-num" aria-hidden="true">{n:02d}</p>
-          <figure class="chapter-figure" aria-hidden="true"><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" alt="" width="800" height="1000" loading="lazy"></figure>
+          <figure class="chapter-figure{' tem-fundo' if grafico(p, img) else ''}" aria-hidden="true"{fundo(img) if grafico(p, img) else ''}><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" alt="" width="800" height="1000" loading="lazy"></figure>
           <h2 class="chapter-title reveal" id="{cid}-t">{esc(titulo)}</h2>
           {corpo}
         </section>"""
@@ -840,7 +853,7 @@ def galeria(p):
     total = len(g)
     slides = "\n".join(
         f"""          <div class="gallery-slide" role="group" aria-roledescription="diapositivo" aria-label="{k} de {total}: {esc(leg)}">
-            <figure><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" width="800" height="1000" alt="{esc(alt)}"{' loading="lazy"' if k > 1 else ''}><figcaption>{esc(leg)}</figcaption></figure>
+            <figure{' class="tem-fundo"' + fundo(img) if foto(img) else ''}><img{' class="is-photo"' if foto(img) else ''} src="../assets/img/{img}" width="800" height="1000" alt="{esc(alt)}"{' loading="lazy"' if k > 1 else ''}><figcaption>{esc(leg)}</figcaption></figure>
           </div>""" for k, (img, alt, leg) in enumerate(g, 1))
     thumbs = "\n".join(
         f'            <button type="button" class="gallery-thumb" data-go="{k - 1}" aria-label="Mostrar imagem {k}: {esc(leg)}"'
@@ -868,19 +881,26 @@ def galeria(p):
 
 
 def pagina(i, p):
-    ant = PROJETOS[i - 1]
-    seg = PROJETOS[(i + 1) % len(PROJETOS)]
+    grupo = [q for q in PROJETOS if bool(q.get("demo")) == bool(p.get("demo"))]
+    j = grupo.index(p)
+    ant = grupo[j - 1]
+    seg = grupo[(j + 1) % len(grupo)]
     meta = "\n".join(f'          <li class="case-chip glass reveal"><span class="chip-k">{esc(k)}:</span> <span class="chip-v">{esc(v)}</span></li>' for k, v in p["meta"])
     caps = p["capitulos"]
     indice = "\n".join(
         f'            <li><a href="#c-{ident(t)}"><span class="story-n" aria-hidden="true">{n:02d}</span> {esc(t)}</a></li>'
         for n, (tipo, t, c) in enumerate(caps, 1))
     capitulos = "\n".join(capitulo(p, n, *c) for n, c in enumerate(caps, 1))
-    palco = "\n".join(
-        f'            <img class="stage-img{" is-on" if n == 1 else ""}{" is-photo" if foto(p["galeria"][(n - 1) % len(p["galeria"])][0]) else ""}" data-k="{n - 1}" data-cap="{esc(t)}" '
-        f'src="../assets/img/{p["galeria"][(n - 1) % len(p["galeria"])][0]}" alt="" width="800" height="1000"'
-        + (' loading="lazy"' if n > 1 else '') + '>'
-        for n, (tipo, t, c) in enumerate(caps, 1))
+    def palco_img(n, t):
+        img = p["galeria"][(n - 1) % len(p["galeria"])][0]
+        on = " is-on" if n == 1 else ""
+        lazy = ' loading="lazy"' if n > 1 else ''
+        if grafico(p, img):
+            return (f'            <div class="stage-img tem-fundo{on}" data-k="{n - 1}" data-cap="{esc(t)}"{fundo(img)}>'
+                    f'<img src="../assets/img/{img}" alt="" width="800" height="1000"{lazy}></div>')
+        return (f'            <img class="stage-img{on}{" is-photo" if foto(img) else ""}" data-k="{n - 1}" data-cap="{esc(t)}" '
+                f'src="../assets/img/{img}" alt="" width="800" height="1000"{lazy}>')
+    palco = "\n".join(palco_img(n, t) for n, (tipo, t, c) in enumerate(caps, 1))
     behance = ""
     if p["behance"]:
         behance = (f'\n        <p class="case-ext reveal"><a class="btn btn-ghost" href="{BEHANCE}" target="_blank" rel="noopener">'
@@ -965,7 +985,7 @@ def pagina(i, p):
             <span class="next-title">{esc(seg["titulo"])}</span>
             <span class="next-tag">{esc(seg["etiqueta"])}</span>
           </span>
-          <img class="next-img{' is-photo' if foto(seg["galeria"][0][0]) else ''}" src="../assets/img/{seg["galeria"][0][0]}" alt="" width="800" height="1000" loading="lazy">
+          <img class="next-img{' is-photo' if foto(seg.get("capa", seg["galeria"][0][0])) else ''}" src="../assets/img/{seg.get("capa", seg["galeria"][0][0])}" alt="" width="800" height="1000" loading="lazy">
         </a>
         <a class="prev-link" href="{ant["slug"]}.html"><span aria-hidden="true">←</span> Anterior: {esc(ant["titulo"])}</a>
       </nav>
