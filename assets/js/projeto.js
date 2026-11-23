@@ -138,6 +138,21 @@
     mostrarVersao();
   }
 
+  /* ---------- Kit de comunicação: filtros ---------- */
+  var filtrosPecas = Array.prototype.slice.call(document.querySelectorAll('.pecas-filtro'));
+  if (filtrosPecas.length) {
+    var pecas = Array.prototype.slice.call(document.querySelectorAll('.peca'));
+    var pecasStatus = document.querySelector('.pecas-status');
+    filtrosPecas.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var g = b.dataset.grupo, n = 0;
+        filtrosPecas.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        pecas.forEach(function (pc) { var ok = !g || pc.dataset.grupo === g; pc.hidden = !ok; if (ok) { n++; pc.classList.add('is-visible'); } });
+        if (pecasStatus) pecasStatus.textContent = n + (n === 1 ? ' peça' : ' peças');
+      });
+    });
+  }
+
   /* ---------- Copiar (cores, citação) ---------- */
   function copiar(texto, statusEl) {
     var feito = function () { if (statusEl) { statusEl.textContent = ''; setTimeout(function () { statusEl.textContent = 'Copiado: ' + texto; }, 30); } };
@@ -187,7 +202,8 @@
   /* ---------- Fotografia: ecrã inteiro com parâmetros ---------- */
   var lb = document.querySelector('.lightbox');
   if (lb && typeof lb.showModal === 'function') {
-    var fotos = Array.prototype.slice.call(document.querySelectorAll('.foto'));
+    var todasFotos = function () { return Array.prototype.slice.call(document.querySelectorAll('.foto')).filter(function (f) { return !f.hidden; }); };
+    var fotos = todasFotos();
     var lbImg = lb.querySelector('.lightbox-fig img'), lbLeg = lb.querySelector('.lightbox-leg');
     var lbPar = lb.querySelector('.lightbox-params'), lbStatus = lb.querySelector('.lightbox-status');
     var atual = 0, origem = null;
@@ -200,7 +216,7 @@
       if (lbStatus) lbStatus.textContent = 'Fotografia ' + (atual + 1) + ' de ' + fotos.length + ': ' + lbLeg.textContent;
     };
     fotos.forEach(function (f, i) {
-      f.querySelector('.foto-abrir').addEventListener('click', function (e) { origem = e.currentTarget; mostrar(i); lb.showModal(); });
+      f.querySelector('.foto-abrir').addEventListener('click', function (e) { origem = e.currentTarget; fotos = todasFotos(); mostrar(fotos.indexOf(f)); lb.showModal(); });
     });
     lb.querySelector('.lightbox-prev').addEventListener('click', function () { mostrar(atual - 1); });
     lb.querySelector('.lightbox-next').addEventListener('click', function () { mostrar(atual + 1); });

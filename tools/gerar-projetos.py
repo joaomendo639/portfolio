@@ -96,6 +96,44 @@ PROJETOS = [
         "behance": False,
     },
     {
+        "slug": 'amover-comunicacao',
+        "tipo": "design",
+        "titulo": 'A-MoVeR · Comunicação e eventos',
+        "etiqueta": 'Design gráfico · Comunicação',
+        "resumo": 'Comunicação visual do projeto A-MoVeR: dois Dias da Inovação na UTAD, formação e redes sociais, do roll-up ao post de Instagram.',
+        "meta": [('Ano', '2024–26'), ('Papel', 'Design gráfico e comunicação'), ('Projeto', 'A-MoVeR · Agenda Mobilizadora'), ('Peças', 'Cartazes, roll-ups, crachás, folhetos, posts')],
+        "paleta": [("Azul-noite", "#001C61"), ("Verde", "#528E4F"), ("Verde-claro", "#A4CE99"), ("Branco", "#FFFFFF")],
+        "galeria": [
+            ('projetos/amover-comunicacao/2026-ecra.jpg', 'Ecrã do Dia da Inovação 2026 com o logótipo A-MoVeR e a data 3 de junho.', 'Dia da Inovação 2026'),
+            ('projetos/amover-comunicacao/2025-evento-rollups.jpg', 'Roll-ups do Dia da Inovação 2025 montados à entrada do auditório.', 'Roll-ups no evento'),
+            ('projetos/amover-comunicacao/2025-evento-ecra.jpg', 'Sessão do Dia da Inovação 2025 com o logótipo A-MoVeR projetado.', 'Dia da Inovação 2025'),
+            ('projetos/amover-comunicacao/redes-quem-sou-eu-1.jpg', 'Post da série Quem sou eu, com o retrato de um bolseiro do projeto.', 'Série Quem sou eu'),
+        ],
+        "pecas": [
+            ('projetos/amover-comunicacao/2025-rollup.jpg', 'Roll-up', '2025', '91 × 206 cm', 'Roll-up do Dia da Inovação A-MoVeR, 27 de fevereiro de 2025.'),
+            ('projetos/amover-comunicacao/2025-cartaz.jpg', 'Cartaz com programa', '2025', '44 × 61 cm', 'Cartaz com o programa da manhã e da tarde do Dia da Inovação 2025.'),
+            ('projetos/amover-comunicacao/2025-folheto-frente.jpg', 'Folheto · frente', '2025', 'A5', 'Frente do folheto do Dia da Inovação 2025.'),
+            ('projetos/amover-comunicacao/2025-folheto-verso.jpg', 'Folheto · verso', '2025', 'A5', 'Verso do folheto com o programa do Dia da Inovação 2025.'),
+            ('projetos/amover-comunicacao/2025-cracha.jpg', 'Crachá', '2025', 'A6', 'Crachá do Dia da Inovação 2025.'),
+            ('projetos/amover-comunicacao/2026-cartaz.jpg', 'Cartaz com programa', '2026', 'A3', 'Cartaz do Dia da Inovação 2026 com o programa da tarde.'),
+            ('projetos/amover-comunicacao/2026-ecra.jpg', 'Ecrã de projeção', '2026', '16:9', 'Ecrã de projeção do Dia da Inovação 2026.'),
+            ('projetos/amover-comunicacao/2026-post-1.jpg', 'Post · capa', '2026', '1080 × 1080 px', 'Primeiro post do carrossel de Instagram do Dia da Inovação 2026.'),
+            ('projetos/amover-comunicacao/2026-post-2.jpg', 'Post · programa', '2026', '1080 × 1080 px', 'Segundo post do carrossel com o programa do Dia da Inovação 2026.'),
+            ('projetos/amover-comunicacao/2026-cracha.jpg', 'Crachá', '2026', '8,6 × 5,4 cm', 'Crachá em formato de cartão do Dia da Inovação 2026.'),
+            ('projetos/amover-comunicacao/redes-quem-sou-eu-1.jpg', 'Quem sou eu · retrato', 'Redes sociais', 'Instagram', 'Post Quem sou eu com o retrato de um bolseiro.'),
+            ('projetos/amover-comunicacao/redes-quem-sou-eu-2.jpg', 'Quem sou eu · perfil', 'Redes sociais', 'Instagram', 'Post Quem sou eu com o percurso e as funções do bolseiro.'),
+            ('projetos/amover-comunicacao/redes-quem-sou-eu-3.jpg', 'Quem sou eu · citação', 'Redes sociais', 'Instagram', 'Post com a citação: A-MoVeR é investir num futuro inteligente e sustentável.'),
+            ('projetos/amover-comunicacao/2024-formacao-kotlin.jpg', 'Cartaz da formação Android com Kotlin', 'Formação', 'Cartaz', 'Cartaz da formação de desenvolvimento Android com Kotlin, junho de 2024.'),
+        ],
+        "capitulos": [
+            ('texto', 'Contexto', '<p>O <mark>A-MoVeR</mark> é uma agenda mobilizadora para a mobilidade verde que junta a UTAD, a AJP, a AUMOVIO (Continental), o INESC TEC, a Neoception e a up_motion. Fui responsável pela comunicação visual dos seus eventos, formação e redes sociais.</p>'),
+            ('frase', 'O desafio', 'Dar uma imagem única a um consórcio de seis parceiros, do roll-up de dois metros ao crachá no bolso.'),
+            ('passos', 'O que fiz', ['Dia da Inovação 2025 (27 de fevereiro, UTAD): cartaz, roll-up, folheto e crachá.', 'Dia da Inovação 2026 (3 de junho, UTAD): cartaz, ecrã, crachá e carrossel de Instagram.', 'Série Quem sou eu para apresentar a equipa nas redes sociais.', 'Cartaz da formação em desenvolvimento Android com Kotlin.']),
+            ('texto', 'Resultado', '<p>Um sistema visual <mark>reconhecível de um ano para o outro</mark>: as mesmas cores, o logótipo e os parceiros sempre presentes, adaptados a cada formato.</p>'),
+        ],
+        "behance": False,
+    },
+    {
         "slug": 'exemplo-fotografia', "demo": True,
         "tipo": "fotografia",
         "titulo": 'Fotografia',
@@ -523,6 +561,50 @@ MODULOS = {"uiux": modulo_uiux, "fotografia": modulo_fotografia, "design": modul
            "video": modulo_video, "investigacao": modulo_investigacao}
 
 
+def modulo_pecas(p):
+    pecas = p.get("pecas", [])
+    if not pecas:
+        return ""
+    grupos = []
+    for pc in pecas:
+        if pc[2] not in grupos:
+            grupos.append(pc[2])
+    filtros = '<button type="button" class="pecas-filtro" data-grupo="" aria-pressed="true">Todas</button>' + "".join(
+        f'<button type="button" class="pecas-filtro" data-grupo="{esc(g)}" aria-pressed="false">{esc(g)}</button>' for g in grupos)
+    itens = []
+    for k, (img, nome, grupo, medida, alt) in enumerate(pecas):
+        chips = f'<li><span class="sr-only">Grupo: </span>{esc(grupo)}</li>' + (f'<li><span class="sr-only">Medida: </span>{esc(medida)}</li>' if medida else "")
+        itens.append(f"""          <li class="foto peca reveal" data-grupo="{esc(grupo)}">
+            <button type="button" class="foto-abrir" data-foto="{k}" aria-label="Ver em ecrã inteiro: {esc(nome)}">
+              <img src="../assets/img/{img}" alt="{esc(alt)}" loading="lazy">
+            </button>
+            <div class="foto-info"><p class="foto-leg">{esc(nome)}</p><ul class="foto-params" aria-label="Detalhes da peça">{chips}</ul></div>
+          </li>""")
+    return f"""      <section class="modulo modulo-pecas" aria-labelledby="mod-pecas">
+        <div class="container">
+          <div class="modulo-head">
+            <p class="eyebrow">Peças</p>
+            <h2 id="mod-pecas" class="modulo-title">Kit de comunicação</h2>
+            <p class="modulo-lead">Cada peça com o seu formato real. Abra qualquer uma em ecrã inteiro.</p>
+          </div>
+          <div class="pecas-filtros" role="group" aria-label="Filtrar peças">{filtros}</div>
+          <p class="sr-only pecas-status" aria-live="polite"></p>
+          <ul class="pecas-grelha">
+{chr(10).join(itens)}
+          </ul>
+        </div>
+        <dialog class="lightbox" aria-label="Peça em ecrã inteiro">
+          <div class="lightbox-inner">
+            <figure class="lightbox-fig"><img src="" alt=""><figcaption><span class="lightbox-leg"></span><span class="lightbox-params"></span></figcaption></figure>
+            <button type="button" class="lightbox-btn lightbox-prev" aria-label="Peça anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button type="button" class="lightbox-btn lightbox-next" aria-label="Peça seguinte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            <button type="button" class="lightbox-btn lightbox-close" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            <p class="sr-only lightbox-status" aria-live="polite"></p>
+          </div>
+        </dialog>
+      </section>"""
+
+
 def modulo_versoes(p):
     vs = p.get("versoes", [])
     if len(vs) < 2:
@@ -552,7 +634,7 @@ def modulo_versoes(p):
 
 def modulo(p):
     f = MODULOS.get(p.get("tipo", "uiux"))
-    return (f(p) if f else "") + modulo_versoes(p)
+    return (f(p) if f else "") + modulo_pecas(p) + modulo_versoes(p)
 
 
 def foto(img):

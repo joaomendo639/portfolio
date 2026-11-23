@@ -1498,3 +1498,12 @@ body:has(.lightbox[open]) { overflow: hidden; }
 .evo-img { grid-area: 1 / 1; max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: var(--shadow); opacity: 0; transform: scale(.98); transition: opacity .45s var(--ease), transform .45s var(--ease); }
 .evo-img.is-on { opacity: 1; transform: none; }
 .reduce-motion .evo-img { transition: none; }
+
+/* ---------- Kit de comunicação (peças com medidas e filtros) ---------- */
+.pecas-filtros { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.6rem; }
+.pecas-filtro { min-height: 44px; padding: 0 1.1rem; border-radius: 999px; border: 1px solid var(--field-border); background: transparent; color: var(--text); font: 500 .875rem/1 var(--font-body); cursor: pointer; }
+.pecas-filtro[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.pecas-grelha { list-style: none; margin: 0; padding: 0; columns: 4 14rem; column-gap: clamp(.8rem, 2vw, 1.4rem); }
+.peca[hidden] { display: none; }
+.peca .foto-abrir { background: var(--bg-alt); box-shadow: var(--shadow); }
+.modulo-pecas .lightbox { --text: #f2ede6; --muted: #cfc7bc; --line: rgba(242, 237, 230, .22); --accent-strong: #e6b282; }
